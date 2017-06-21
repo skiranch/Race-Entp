@@ -1,0 +1,17 @@
+<div class="sidebar" *ngIf="location.indexOf('applauncher') === -1">
+  <ul id="sidebar_menu" class="sidebar__nav">
+    <li class="sidebar__name" (click)="toggleSidebar()" id="menu-toggle">
+        Name
+        <span id="main_icon" class="sidebar__menu-icon pull-right glyphicon glyphicon-align-justify"></span>
+    </li>
+  </ul>
+  <ul class="sidebar__nav" id="sidebar">
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">Home <span class="glyphicon glyphicon-home"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="app-designer">App Designer <span class="glyphicon glyphicon-book"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="/a">Race SDK Access <span class="glyphicon glyphicon-cloud-download"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="/b">Race API Explorer <span class="glyphicon glyphicon-hdd"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="app-generation-portal">App Generation Portal <span class="glyphicon glyphicon-th"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="/c">User Managment <span class="glyphicon glyphicon-user"></span></a></li>
+    <li class="sidebar__menu-item"><a class="sidebar__menu-link" routerLinkActive="active" routerLink="/d">Product Documentation <span class="glyphicon glyphicon-file"></span></a></li>
+  </ul>
+</div>

@@ -1,0 +1,43 @@
+.leftpane{
+    font-size: 12px;
+    font-weight: 400;
+
+    &__header{
+        background: #e3e3e3;
+        padding: 10px 0;
+    }
+
+    &__link{
+        color: #242424;
+        // > mixins
+        transition: color 1s ease;
+        cursor: pointer;
+        
+        &:hover{
+            color: #8c8c8c;
+            text-decoration: none;
+            
+        }
+    }
+
+    &__tree-btn{
+        font-size: 9px;
+        border-radius: 20px;
+        font-weight: 500;
+        color: #fff;
+        padding: 3px 10px;
+        border: 0;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        outline: none;
+        background: #ddd;
+        
+        &.enable{
+            background: #39AAD7;
+        }
+    }
+}
+
+
+//Angular tree custom overwrite

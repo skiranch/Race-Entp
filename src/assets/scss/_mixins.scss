@@ -1,0 +1,5 @@
+@mixin bottomOnlyShadow($a, $b, $c, $d, $e) {
+    -webkit-box-shadow: $a, $b, $c, $d, $e;
+    -moz-box-shadow: $a, $b, $c, $d, $e;
+    box-shadow: $a, $b, $c, $d, $e;
+}

@@ -1,0 +1,126 @@
+body{
+    background: #fff;
+    // padding-top: 50px;
+}
+.nopadding{
+    padding: 0 !important;
+}
+
+.wrapper {
+    padding-left: 45px;
+    transition: all .4s ease 0s;
+    height: 100%;
+}
+
+.wrapper.active {
+    padding-left: 220px;
+}
+.wrapper.active .sidebar-wrapper {
+    left: 220px;
+}
+
+@media (max-width:767px) {
+    .wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+}
+.sidebar-wrapper {
+    left: 70px;
+}
+.wrapper.active {
+    padding-left: 220px;
+}
+.wrapper.active .sidebar-wrapper {
+    left: 220px;
+    width: 220px;
+    transition: all .4s ease 0s;
+}
+}
+
+.apps{
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 10px #ccc;
+}
+.apps__list{
+    padding: 20px 0 0;
+}
+.apps__list-item{
+    border-top: solid 1px #ccc;
+    padding: 10px 0;
+}
+.apps__list::after{
+    clear: both;
+}
+
+/****** form classes *****/
+
+    .formHelp{
+        text-transform: capitalize;
+        font-size: 12px;
+        font-weight: 400;
+        color: #888;
+    }
+    
+// .leftpane, .rightpane{
+//     height: 75vw;
+//     overflow-x: auto;
+//     padding: 10px;
+//     background: #ddd;
+//     border-right: solid 1px #ccc;
+// }
+// .rightpane{
+//     position: absolute;
+//     right: 0;
+//     border-right: 0;
+//     border-left: solid 1px #ccc;
+//     background: #222;
+    
+// }
+.rightpane label{
+    color: #fff;
+    font-weight: normal;
+}
+.rightpane .form-control{
+    background: #222;
+    border: solid 1px #333;
+    border-radius: 0;
+    color: #888;
+    -webkit-box-shadow: none ;
+    -moz-box-shadow: none ;
+    box-shadow: none ;
+}
+.rightpane .form-control:focus{
+    background: #333;
+}
+
+.leftpane__items{
+    margin: 0;
+    padding: 0;
+}
+.leftpane__item{
+    list-style: none;
+    border-bottom: solid 1px #ccc;
+}
+.leftpane__item-link{
+    font-size: 13px;
+    color: #999;display: block;
+    padding: 5px;
+    
+}
+.leftpane__item-link:hover{
+    text-decoration: none;
+    color: #000;
+    background: #f5f5f5;
+
+}
+
+.area{
+    padding-top: 50px;
+}
+.navbar{
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+

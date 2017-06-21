@@ -1,0 +1,94 @@
+.sidebar {
+    margin-left: -220px;
+    width: 220px;
+    background:#071D2B;
+    position: fixed;
+    height: 100%;
+    z-index: 10000;
+    transition: all .4s ease 0s;
+
+    &__name{
+        height: 65px;
+        font-size: 18px;
+        color: #fff;
+        opacity: 0.7;
+        padding: 20px 5px 20px 20px;
+    }
+
+    &__menu-icon{
+        border: solid 1px #CACDCC;
+        padding: 2px 3px 3px 3px;
+        border-radius: 2px;
+        font-size: 12px;
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+
+    &__nav{
+        display: block;
+        float: left;
+        width: 220px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__menu-item{
+
+        // background: #252525;
+        border-top: 1px solid #112735;
+        border-bottom: 1px solid #112735;
+        -webkit-transition: background .5s;
+        -moz-transition: background .5s;
+        -o-transition: background .5s;
+        -ms-transition: background .5s;
+        transition: background .5s;
+        // clear: both;
+        height: 40px;
+
+         &:hover{
+            background: #152735;
+
+            .sidebar__menu-link{
+                color: #2A99B9;
+            }
+            .glyphicon{
+                color: #2A99B9;
+            }
+        }
+    }
+
+    &__menu-link{
+        color: #929698;
+        text-decoration: none;
+        text-indent: 10px;
+        display: block;
+        font-size: 13px;
+        padding: 10px;
+        
+        &.active{
+            background: #152735;
+            color: #2A99B9;
+
+            .glyphicon{
+                color: #2A99B9;
+            }
+        }
+    }
+
+    .glyphicon{
+        margin-right: 5px;
+        float: right;
+        // color: #CACDCC;
+    }
+
+}
+

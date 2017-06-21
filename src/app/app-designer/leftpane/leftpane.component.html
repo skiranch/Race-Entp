@@ -1,0 +1,52 @@
+<div class="leftpane">
+  <div class="leftpane__header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4">mOrder</div>
+        <div class="col-md-2">
+          <span class="leftpane__link glyphicon glyphicon-search"></span>
+        </div>
+        <div class="col-md-2">
+          <span class="leftpane__link glyphicon glyphicon-flag"></span>
+        </div>
+        <div class="col-md-2">
+          <span class="leftpane__link glyphicon glyphicon-folder-close"></span>
+        </div>
+        <div class="col-md-2">
+          <span class="leftpane__link glyphicon glyphicon-plus"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<tree-root #tree [nodes]="nodes">
+    <ng-template #treeNodeTemplate let-node let-index="index">
+      <span>{{ node.data.name }} </span>
+      <button class="leftpane__tree-btn" #nodeButton (click)="onOff(nodeButton)" *ngIf="node.data.button == true">ON</button>
+    </ng-template>
+  </tree-root>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="createNodeModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" routerLink="/" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New Screen</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="pwd">Id</label>
+          <input class="new-todo" class="form-control" placeholder="Description" [(ngModel)]="newNode.id">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Screen Name</label>
+          <input class="new-todo" class="form-control" placeholder="Description" [(ngModel)]="newNode.name">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">ok</button>
+      </div>
+    </div>
+  </div>
+</div>
