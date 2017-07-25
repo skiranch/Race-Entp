@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
 
+# How to run this on your local ?
+
+### Prerequisites
+
+* Install Nodejs https://nodejs.org/en/download/
+* Install typescript npm install typescript
+* Install angular-cli npm install angular-cli
+#### ............
+* Fork or clone this project on your local.
+* Navigate to "race-enterprise" folder and do "npm install".
+* Run 'ng srve' for a dev server.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
