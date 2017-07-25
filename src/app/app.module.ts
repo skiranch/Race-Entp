@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -70,7 +70,7 @@ const appRoutes: Routes  = [
     ReactiveFormsModule
     //AlertModule.forRoot() //uncomment this line when we need an alert module
   ],
-  providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}],
+  providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}, Title],
   bootstrap: [AppComponent]
 })
 
