@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   toggleSidebar(){
       event.preventDefault();
       jQuery(".wrapper").toggleClass("active");
-      jQuery('#main_icon').toggleClass('open');
+      jQuery('#main_icon').toggleClass('active');
   }
 
 }
