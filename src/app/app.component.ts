@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 
+import { AppRoutingModule } from './app-routing.module';
+
 @Component({
   selector: 'app-root',
   template: `

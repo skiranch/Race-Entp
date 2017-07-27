@@ -1,0 +1,18 @@
+.floor-plans{
+    &__tile{
+        width: calc( 33.333% - 5px);
+        margin: 0 2px 15px 0;
+        border: solid 2px #EBEFF2;
+        transition: all 0.1s ease-in;
+        cursor: move;
+        
+        &:hover{
+            border: solid 2px #C9DEDF;
+        }
+    }
+
+    &__tile-img{
+        max-width: 100%;
+    }
+
+}

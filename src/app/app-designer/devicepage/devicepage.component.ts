@@ -20,14 +20,14 @@ declare var jQuery: any;
 })
 
 export class DevicepageComponent {
-    
-    constructor(public sh: ShowHideSharedService) {
-    }
+    simpleDrop: any = null;
+
+    constructor(public sh: ShowHideSharedService) {}
 
     receivedData: Array<any> = [];
+
     transferDataSuccess($event: any) {
         this.receivedData.push($event);
-        //console.log(this.receivedData);
     }
     
 
@@ -65,7 +65,9 @@ export class DevicepageComponent {
         jQuery('.device-area__dragged-items div').removeClass('device-area__highlight');
 
         jQuery("."+formContainer).show();
-        jQuery(elm).toggleClass('device-area__highlight');
+        if(elm != undefined){
+            jQuery(elm).toggleClass('device-area__highlight');
+        }
         
     }
 
@@ -75,15 +77,15 @@ export class DevicepageComponent {
     }
 
     textComponent: Array<any> = [{
-                                "id": 1, "type": "text", "name": "textName", "schema": "textInputSchema", 
+                                "id": "ft" + new Date().getTime(), "type": "text", "name": "textName", "schema": "textInputSchema", 
                                 "properties": [] }];
 
     selectComponent: Array<any> = [{
-                                "id": 2, "type": 'select', "name": "selectName", "schema": "selectInputSchema", 
+                                "id": "ft" + new Date().getTime(), "type": 'select', "name": "selectName", "schema": "selectInputSchema", 
                                 "properties": [] }];
 
     dateComponent: Array<any> = [{
-                                "id": 3, "type": 'date', "name": "dateName", "schema": "dateInputSchema", 
+                                "id": "ft" + new Date().getTime(), "type": 'date', "name": "dateName", "schema": "dateInputSchema", 
                                 "properties": [] }];
 
     addTextProperties(form: NgForm) {

@@ -33,15 +33,55 @@
         <span [class.glyphicon-resize-small]="sh.showhide.show" href="#" class="device-area__full-screen-button glyphicon glyphicon-resize-full"
           (click)=fullScreen()></span>
 
-        <div class="device-area__all device-area__{{device.value}} device-area__{{device.value}}--{{rotate}}" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-          <div class="device-area__dragged-items">
+        <!-- <div class="device-area__all device-area__{{device.value}} device-area__{{device.value}}--{{rotate}}" dnd-droppable (onDropSuccess)="transferDataSuccess($event)"> -->
+        
+          <div class="device-area__all device-area__{{device.value}} device-area__{{device.value}}--{{rotate}}" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+          
+            <div class="device-area__dragged-items">
+              
             <div *ngFor="let data of receivedData; let x = index">
-              <div class="form-group form-comp" #element (click)="ShowProperties(data.dragData[0].schema, element)" dnd-sortable [sortableIndex]="x"
+              <!-- {{data.dragData[0].name}} -->
+              
+              <div class="" *ngIf="data.dragData[0].name == 'onboardLogin'" (click)="ShowProperties(data.dragData[0].schema)">
+                <!-- {{data.dragData | json}} -->
+                <div class="onborad-login">
+                  <img class="onborad-login__logo" src="../../../assets/img/floorplans/default/default-logo.png" />
+                  <div class="onborad-login__name">Title</div>
+                  <input class="onborad-login__text" type="text" /> 
+                  <input class="onborad-login__pwd" type="password" /> 
+                  <button class="onborad-login__btn">Activate</button>
+                  <a href="javascript:void(0);" class="onborad-login__link">English Language</a>
+                  <a href="javascript:void(0);" class="onborad-login__link">Settings</a>
+                </div>
+              </div>
+
+              <div style="padding: 5px;" #element (click)="ShowProperties(data.dragData[0].schema, element)">
+                
+                <div *ngIf="data.dragData[0].name == 'textName'" dnd-sortable [sortableIndex]="x"
+                  [dragEnabled]="!dragOperation" [dragData]="data" [dragData]="source">
+
+                  <label>{{comp1Title.value}}</label>
+                  <input [ngStyle]="{'background-color': comp1BgColor.value, 'color': comp1TextColor.value}" type="text" class="form-control" placeholder="{{comp1Placeholder.value}}"  />
+                </div>
+
+                  <div *ngIf="data.dragData[0].name =='selectName'" dnd-sortable [sortableIndex]="x"
+                  [dragEnabled]="!dragOperation" [dragData]="data" [dragData]="source">
+                    <label>{{comp2Title.value}}</label>
+                    <select [ngStyle]="{'background-color': comp2BgColor.value, 'color': comp2TextColor.value}" class="form-control"></select>
+                  </div>
+
+                  <div *ngIf="data.dragData[0].name =='dateName'" dnd-sortable [sortableIndex]="x"
+                  [dragEnabled]="!dragOperation" [dragData]="data" [dragData]="source">
+                    <label>{{comp3Title.value}}</label>
+                    <input [ngStyle]="{'background-color': comp3BgColor.value, 'color': comp3TextColor.value}" type="text" class="form-control" onBlur="(this.type='text')" onfocus="(this.type='date')" placeholder="{{comp3Placeholder.value}}"  /> 
+                  </div>
+
+              </div>
+              <!-- <div class="form-group form-comp" #element (click)="ShowProperties(data.dragData[0].schema, element)" dnd-sortable [sortableIndex]="x"
                 [dragEnabled]="!dragOperation" [dragData]="data" [dragData]="source">
-                <!-- {{receivedData | json}} -->
+                
                 <div *ngIf="data.dragData[0].type=='text'">
                   <label>{{comp1Title.value}}</label>
-                  <!-- <span class="glyphicon glyphicon-remove pull-right" (click)="removeDraggedData()"></span> -->
                   <input [ngStyle]="{'background-color': comp1BgColor.value, 'color': comp1TextColor.value}" type="text" class="form-control" placeholder="{{comp1Placeholder.value}}"  />
                 </div>
 
@@ -55,7 +95,7 @@
                   <input [ngStyle]="{'background-color': comp3BgColor.value, 'color': comp3TextColor.value}" type="text" class="form-control" onBlur="(this.type='text')" onfocus="(this.type='date')" placeholder="{{comp3Placeholder.value}}"  /> 
                 </div>
 
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -70,28 +110,38 @@
         <li class="tabs__item">
           <a class="tabs__item-link" href="#tab1default" data-toggle="tab">All</a>
         </li>
-        <li class="tabs__item"><a class="tabs__item-link" href="#tab2default" data-toggle="tab">Floorplans</a>
+        <li class="tabs__item active"><a class="tabs__item-link active" href="#tab2default" data-toggle="tab">Floorplans</a>
         </li>
         <li class="tabs__item"><a class="tabs__item-link" href="#tab3default" data-toggle="tab">Frameworks</a>
         </li>
         <li class="tabs__item"><a class="tabs__item-link" href="#tab4default" data-toggle="tab">Views</a>
         </li>
-        <li class="tabs__item active"><a class="active tabs__item-link" href="#tab5default" data-toggle="tab">Field Types</a>
+        <li class="tabs__item"><a class="tabs__item-link" href="#tab5default" data-toggle="tab">Field Types</a>
         </li>
         <li class="tabs__item"><a class="tabs__item-link" href="#tab6default" data-toggle="tab">Controls</a></li>
       </ul>
       <div class="tabs__body tab-content">
         <div class="tab-pane fade" id="tab1default">All Content here</div>
-        <div class="tab-pane fade" id="tab2default">Floorplans content here</div>
+        <div class="tab-pane fade in active" id="tab2default">
+          <div class="floor-plans">
+            <ul class="tabs__content-items">
+            <li class="tabs__content-item">
+              <app-onboard-login></app-onboard-login>
+
+
+            </li>
+            </ul>
+          </div>
+        </div>
         <div class="tab-pane fade" id="tab3default">Frameworks content here</div>
         <div class="tab-pane fade" id="tab4default">Views content here</div>
-        <div class="tab-pane fade in active" id="tab5default">
+        <div class="tab-pane fade" id="tab5default">
           <ul class="tabs__content-items">
             <li class="tabs__content-item">
+              
               <img src="../../assets/img/field-types/01-Text-Input.png" dnd-draggable [dragData]="textComponent" class="tabs__content-item-img"
                 alt="Text Input" />
                 <span class="tabs__content-item-name">Text Input</span>
-
 
               <div class="tabs__properties {{textComponent[0].schema}}">
 

@@ -13,6 +13,7 @@ import { DndModule } from 'ng2-dnd';
 import { AngularSplitModule } from 'angular-split';
 import { TreeModule } from 'angular-tree-component';
 import { SchemaFormModule, WidgetRegistry, DefaultWidgetRegistry } from "angular2-schema-form";
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './app-designer/footer/footer.component';
@@ -22,6 +23,9 @@ import { DevicepageComponent } from './app-designer/devicepage/devicepage.compon
 import { WelcomeComponent } from './app-designer/welcome/welcome.component';
 import { LeftpaneComponent } from './app-designer/leftpane/leftpane.component';
 import { SanitizeHtmlPipe } from './app-designer/sanitize-html.pipe';
+import { OnboardLoginComponent } from './app-designer/floorplans/onboard-login.component';
+import { TestComponent } from './app-designer/floorplans/test.component';
+
 import { firebaseConfig } from './firebaseConfig';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -30,14 +34,14 @@ import { HomeComponent } from './home/home.component';
 import { AppGenerationPortalComponent } from './app-generation-portal/app-generation-portal.component';
 
 
-const appRoutes: Routes  = [
-    { path: '', component: HomeComponent, data:{ name: 'Home'}},
-    { path: 'app-designer', component: WelcomeComponent, data:{ name: 'App Designer Landing'}},
-    { path: 'app-generation-portal', component: AppGenerationPortalComponent, data:{ name: 'App Genaration Landing'}},
-    { path: 'app-designer/applauncher', component: AppsComponent, data:{ name: 'List of apps'}},
-    { path: 'app-designer/applauncher/:id', component: DevicepageComponent, data:{ name: 'Apps Designer'}},
+// const appRoutes: Routes  = [
+//     { path: '', component: HomeComponent, data:{ name: 'Home'}},
+//     { path: 'app-designer', component: WelcomeComponent, data:{ name: 'App Designer Landing'}},
+//     { path: 'app-generation-portal', component: AppGenerationPortalComponent, data:{ name: 'App Genaration Landing'}},
+//     { path: 'app-designer/applauncher', component: AppsComponent, data:{ name: 'List of apps'}},
+//     { path: 'app-designer/applauncher/:id', component: DevicepageComponent, data:{ name: 'Apps Designer'}},
     
-]
+// ]
 
 @NgModule({
   declarations: [
@@ -47,19 +51,20 @@ const appRoutes: Routes  = [
     AppsComponent,
     DevicepageComponent,
     LeftpaneComponent,
-    // TabsComponent,
     SanitizeHtmlPipe,
     SidebarComponent,
     TopmenuComponent,
     HomeComponent,
     WelcomeComponent,
-    AppGenerationPortalComponent
+    AppGenerationPortalComponent,
+    OnboardLoginComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     DndModule.forRoot(),
     AngularFireDatabaseModule,

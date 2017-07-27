@@ -36,7 +36,9 @@ body{
     transition: all .4s ease 0s;
 }
 }
-
+.full-width{
+    max-width: 100%;
+}
 .apps{
     background: #fff;
     padding: 10px;
