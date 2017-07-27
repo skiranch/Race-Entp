@@ -42,16 +42,16 @@
             <div *ngFor="let data of receivedData; let x = index">
               <!-- {{data.dragData[0].name}} -->
               
-              <div class="" *ngIf="data.dragData[0].name == 'onboardLogin'" (click)="ShowProperties(data.dragData[0].schema)">
+              <div class="" *ngIf="data.dragData[0].name == 'onboardLogin'" (click)="ShowProperties('loginFormProperties')">
                 <!-- {{data.dragData | json}} -->
                 <div class="onborad-login">
-                  <img class="onborad-login__logo" src="../../../assets/img/floorplans/default/default-logo.png" />
-                  <div class="onborad-login__name">Title</div>
-                  <input class="onborad-login__text" type="text" /> 
-                  <input class="onborad-login__pwd" type="password" /> 
-                  <button class="onborad-login__btn">Activate</button>
-                  <a href="javascript:void(0);" class="onborad-login__link">English Language</a>
-                  <a href="javascript:void(0);" class="onborad-login__link">Settings</a>
+                  <img class="onborad-login__logo img-circle"  src="../../../../assets/img/floorplans/default/{{fileName}}" />
+                  <div class="onborad-login__name">{{floorplan1Title.value}}</div>
+                  <input class="onborad-login__text" type="text" placeholder="username" [ngStyle]="{'border-color': floorplan1FormBC.value }" /> 
+                  <input class="onborad-login__pwd" type="password" placeholder="password" [ngStyle]="{'border-color': floorplan1FormBC.value }" /> 
+                  <button class="onborad-login__btn" [ngStyle]="{'background-color': floorplan1FormBBG.value, 'color': floorplan1FormBTC.value }">Activate</button>
+                  <a href="javascript:void(0);" [ngStyle]="{'color': floorplan1FormLinkTC.value }" class="onborad-login__link">English Language</a>
+                  <a href="javascript:void(0);" [ngStyle]="{'color': floorplan1FormLinkTC.value }" class="onborad-login__link">Settings</a>
                 </div>
               </div>
 
@@ -127,7 +127,49 @@
             <ul class="tabs__content-items">
             <li class="tabs__content-item">
               <app-onboard-login></app-onboard-login>
+              
+              <div class="tabs__properties loginFormProperties">
 
+                  <form #floorplan1Form="ngForm" (ngSubmit)="addLoginFormProperties(floorplan1Form)">
+                  
+                <div class="tabs__buttons">
+                  <button class="btn btn-primary btn-sm" type="submit" (click)="ShowHidePanel('loginFormProperties')">Done</button>
+                  <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="ShowHidePanel('loginFormProperties')"></span>                  
+                </div>
+
+                  <div class="form-group">
+                     <label class="tabs__form-label" for="logo">Logo</label>
+                     <input type="file" value="" name="logo" #floorplan1Logo (change)="getFiles($event)" ngModel /> 
+                  </div>
+
+                  <div class="form-group">
+                    <label class="tabs__form-label" for="title">Title</label>
+                    <input type="text" value="Title" class="form-control" name="title" #floorplan1Title [ngModel]="floorplan1Title.value">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="tabs__form-label" for="textfieldBorder">Border color</label>
+                    <input type="color" value="#3678AF" class="form-control input-sm" style="width: 50px; padding: 0; border: 0; border-radius: 0; box-shadow: none;" name="textfieldBorder" #floorplan1FormBC [ngModel]="floorplan1FormBC.value">
+                  </div>
+                 
+                  <div class="form-group">
+                    <label class="tabs__form-label" for="buttonBG">Button background</label>
+                    <input type="color" value="#3678AF" class="form-control input-sm" style="width: 50px; padding: 0; border: 0; border-radius: 0; box-shadow: none;" name="buttonBG" #floorplan1FormBBG [ngModel]="floorplan1FormBBG.value">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="tabs__form-label" for="buttonTC">Button Text Color</label>
+                    <input type="color" value="#ffffff" class="form-control input-sm" style="width: 50px; padding: 0; border: 0; border-radius: 0; box-shadow: none;" name="buttonTC" #floorplan1FormBTC [ngModel]="floorplan1FormBTC.value">
+                  </div>
+
+                   <div class="form-group">
+                    <label class="tabs__form-label" for="linkTC">Link Color</label>
+                    <input type="color" value="#337AB9" class="form-control input-sm" style="width: 50px; padding: 0; border: 0; border-radius: 0; box-shadow: none;" name="linkTC" #floorplan1FormLinkTC [ngModel]="floorplan1FormLinkTC.value">
+                  </div>
+                  
+                </form>
+
+              </div>
 
             </li>
             </ul>

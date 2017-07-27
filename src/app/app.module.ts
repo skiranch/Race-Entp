@@ -6,6 +6,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
+import { DynamicComponentModule } from 'ng-dynamic';
 
 //import { AlertModule } from 'ngx-bootstrap'; //uncomment this line when we need an alert module
 //import { DragulaModule } from 'ng2-dragula'; //============ third party module ==============//
@@ -24,7 +25,6 @@ import { WelcomeComponent } from './app-designer/welcome/welcome.component';
 import { LeftpaneComponent } from './app-designer/leftpane/leftpane.component';
 import { SanitizeHtmlPipe } from './app-designer/sanitize-html.pipe';
 import { OnboardLoginComponent } from './app-designer/floorplans/onboard-login.component';
-import { TestComponent } from './app-designer/floorplans/test.component';
 
 import { firebaseConfig } from './firebaseConfig';
 
@@ -33,15 +33,6 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
 import { HomeComponent } from './home/home.component';
 import { AppGenerationPortalComponent } from './app-generation-portal/app-generation-portal.component';
 
-
-// const appRoutes: Routes  = [
-//     { path: '', component: HomeComponent, data:{ name: 'Home'}},
-//     { path: 'app-designer', component: WelcomeComponent, data:{ name: 'App Designer Landing'}},
-//     { path: 'app-generation-portal', component: AppGenerationPortalComponent, data:{ name: 'App Genaration Landing'}},
-//     { path: 'app-designer/applauncher', component: AppsComponent, data:{ name: 'List of apps'}},
-//     { path: 'app-designer/applauncher/:id', component: DevicepageComponent, data:{ name: 'Apps Designer'}},
-    
-// ]
 
 @NgModule({
   declarations: [
@@ -57,8 +48,7 @@ import { AppGenerationPortalComponent } from './app-generation-portal/app-genera
     HomeComponent,
     WelcomeComponent,
     AppGenerationPortalComponent,
-    OnboardLoginComponent,
-    TestComponent
+    OnboardLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +62,8 @@ import { AppGenerationPortalComponent } from './app-generation-portal/app-genera
     TreeModule,
     SchemaFormModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DynamicComponentModule.forRoot({})
     //AlertModule.forRoot() //uncomment this line when we need an alert module
   ],
   providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}, Title],

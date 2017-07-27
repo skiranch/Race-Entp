@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef } from '@angular/core';
 import { saveAs } from 'file-saver';
 
 // import { TabsComponent } from '../tabs/tabs.component';
@@ -22,7 +22,7 @@ declare var jQuery: any;
 export class DevicepageComponent {
     simpleDrop: any = null;
 
-    constructor(public sh: ShowHideSharedService) {}
+    constructor(public sh: ShowHideSharedService, private element: ElementRef) {}
 
     receivedData: Array<any> = [];
 
@@ -64,6 +64,7 @@ export class DevicepageComponent {
         jQuery(".tabs__properties").hide();
         jQuery('.device-area__dragged-items div').removeClass('device-area__highlight');
 
+        console.log(':::::'+ formContainer);
         jQuery("."+formContainer).show();
         if(elm != undefined){
             jQuery(elm).toggleClass('device-area__highlight');
@@ -104,5 +105,17 @@ export class DevicepageComponent {
         this.dateComponent[0].properties.push(form.value);
         console.log(this.dateComponent[0])
         
+    }
+
+    public fileName: string = 'default-logo.png'; 
+    getFiles(fileInput: any){ 
+        let file = fileInput.target.files[0];
+        this.fileName = file.name;
+        console.log(this.fileName);
+    } 
+
+    addLoginFormProperties(form: NgForm){
+        form.value.logo = this.fileName;
+        console.log(form.value);
     }
 }
