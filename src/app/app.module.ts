@@ -6,7 +6,6 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
-import { DynamicComponentModule } from 'ng-dynamic';
 
 //import { AlertModule } from 'ngx-bootstrap'; //uncomment this line when we need an alert module
 //import { DragulaModule } from 'ng2-dragula'; //============ third party module ==============//
@@ -62,8 +61,7 @@ import { AppGenerationPortalComponent } from './app-generation-portal/app-genera
     TreeModule,
     SchemaFormModule,
     FormsModule,
-    ReactiveFormsModule,
-    DynamicComponentModule.forRoot({})
+    ReactiveFormsModule
     //AlertModule.forRoot() //uncomment this line when we need an alert module
   ],
   providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}, Title],

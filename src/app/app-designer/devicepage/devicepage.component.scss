@@ -48,8 +48,12 @@
             padding: 48px 30px 85px 35px;
         }
 
+        &.device-area__android{
+            padding: 63px 25px 80px 27px;
+        }
+
         &.device-area__android-tab{
-            padding: 30px 30px 85px 35px;
+            padding: 30px 30px 105px 35px;
         }
     }
 
@@ -80,7 +84,7 @@
 
     &__android{
         background: url("../../../assets/img/android-mobile.png") no-repeat 0 0;
-        width: 260px;
+        width: 266px;
     }
 
     &__android--true{
@@ -288,9 +292,9 @@
     text-align: center;
 
       &__logo{
-          width: 50%;
-          margin: 20px auto 10px auto;
-          min-height: 100px;
+          width: 40%;
+          min-height: 80px;
+          margin: 12px 0;
       }
       &__name{
           font-size: 30px;
@@ -318,6 +322,8 @@
       &__link{
           display: block;
           margin-bottom: 10px;
-          
       }
+    &__powered-by{
+        max-width: 50%;    
+    }
 }

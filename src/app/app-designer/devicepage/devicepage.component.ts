@@ -114,8 +114,12 @@ export class DevicepageComponent {
         console.log(this.fileName);
     } 
 
+    public updated: boolean = false;
     addLoginFormProperties(form: NgForm){
+        this.updated = true;
+        console.log(this.updated);
         form.value.logo = this.fileName;
+        this.receivedData[0].dragData[0].properties.shift(); //remove first
         this.receivedData[0].dragData[0].properties.push(form.value);
     }
 }
