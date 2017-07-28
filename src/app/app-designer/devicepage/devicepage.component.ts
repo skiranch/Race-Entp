@@ -116,6 +116,6 @@ export class DevicepageComponent {
 
     addLoginFormProperties(form: NgForm){
         form.value.logo = this.fileName;
-        console.log(form.value);
+        this.receivedData[0].dragData[0].properties.push(form.value);
     }
 }
