@@ -24,7 +24,7 @@
             </div>
             <span class="device-area__rotate-icon" (click)="rotateScreen(device.value)" [hidden]="!sh.showhide.show"></span>
             <div class="col-md-4 pull-right text-right" [hidden]="sh.showhide.show">
-              <button class="btn btn-success btn-download" [disabled]="updated != true ? true : null " (click)="downloadJSON()">Save</button>
+              <button class="btn btn-success btn-download"  (click)="downloadJSON()">Save</button>
               <button class="btn btn-default">Preview</button>
             </div>
           </div>
@@ -36,29 +36,12 @@
         <!-- <div class="device-area__all device-area__{{device.value}} device-area__{{device.value}}--{{rotate}}" dnd-droppable (onDropSuccess)="transferDataSuccess($event)"> -->
         
           <div class="device-area__all device-area__{{device.value}} device-area__{{device.value}}--{{rotate}}" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-          
             <div class="device-area__dragged-items">
-              
             <div *ngFor="let data of receivedData; let x = index">
-              <!-- {{data.dragData[0].name}} -->
               
-              <div class="" *ngIf="data.dragData[0].name == 'onboardLogin'" (click)="ShowProperties('loginFormProperties')">
-                <!-- {{data.dragData | json}} -->
-                <div class="onborad-login">
-                  <img class="onborad-login__logo img-circle"  src="../../../../assets/img/floorplans/default/{{fileName}}" />
-                  <div class="onborad-login__name" [ngStyle]="{'color': floorplan1TitleColor.value }">{{floorplan1Title.value}}</div>
-                  <input class="onborad-login__text" type="text" placeholder="username" [ngStyle]="{'border-color': floorplan1FormBC.value }" /> 
-                  <input class="onborad-login__pwd" type="password" placeholder="password" [ngStyle]="{'border-color': floorplan1FormBC.value }" /> 
-                  <div>
-                    <button class="onborad-login__btn" [ngStyle]="{'background-color': floorplan1FormBBG.value, 'color': floorplan1FormBTC.value }">Activate</button>
-                  </div>
-                  <a href="javascript:void(0);" [ngStyle]="{'color': floorplan1FormLinkTC.value }" class="onborad-login__link">English Language</a>
-                  <a href="javascript:void(0);" [ngStyle]="{'color': floorplan1FormLinkTC.value }" class="onborad-login__link">Settings</a>
-                  <img class="onborad-login__powered-by"  src="../../../../assets/img/floorplans/default/powered-by-logo.png" />
-                  
-                </div>
-              </div>
-
+              <app-floorplans-img-1-properties *ngIf="floorPlan1==true"></app-floorplans-img-1-properties>
+              <app-floorplans-img-2-properties *ngIf="floorPlan2==true"></app-floorplans-img-2-properties>
+              
               <div style="padding: 5px;" #element (click)="ShowProperties(data.dragData[0].schema, element)">
                 
                 <div *ngIf="data.dragData[0].name == 'textName'" dnd-sortable [sortableIndex]="x"
@@ -130,9 +113,11 @@
           <div class="floor-plans">
             <ul class="tabs__content-items">
             <li class="tabs__content-item">
-              <app-onboard-login></app-onboard-login>
+              <app-floorplans-img-1></app-floorplans-img-1>
               
-              <div class="tabs__properties loginFormProperties">
+              <!-- <app-onboard-login></app-onboard-login> -->
+              
+              <!-- <div class="tabs__properties loginFormProperties">
 
                   <form #floorplan1Form="ngForm" (ngSubmit)="addLoginFormProperties(floorplan1Form)">
                   
@@ -179,8 +164,11 @@
                   
                 </form>
 
-              </div>
+              </div> -->
 
+            </li>
+            <li class="tabs__content-item">
+              <app-floorplans-img-2></app-floorplans-img-2>
             </li>
             </ul>
           </div>

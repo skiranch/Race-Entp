@@ -1,5 +1,6 @@
 import {Component, ElementRef } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { AppDesignerJSON }  from '../globals';
 
 // import { TabsComponent } from '../tabs/tabs.component';
 import { LeftpaneComponent } from '../leftpane/leftpane.component';
@@ -20,7 +21,8 @@ declare var jQuery: any;
 })
 
 export class DevicepageComponent {
-    simpleDrop: any = null;
+    floorPlan1: boolean = false;
+    floorPlan2: boolean = false;
 
     constructor(public sh: ShowHideSharedService, private element: ElementRef) {}
 
@@ -28,12 +30,18 @@ export class DevicepageComponent {
 
     transferDataSuccess($event: any) {
         this.receivedData.push($event);
+
+        if($event.dragData[0].name == "floorPlan1"){
+            this.floorPlan1 = true;
+        }
+        if($event.dragData[0].name == "floorPlan2"){
+            this.floorPlan2 = true;
+        }
     }
-    
 
     downloadJSON() {
         console.log('Downloading...');
-        let formatToJson = JSON.stringify(this.receivedData);
+        let formatToJson = JSON.stringify(AppDesignerJSON.data);
         saveAs(new Blob([formatToJson], { type: "application/json" }), 'data.json');
         //console.log(formatToJson);
     }
@@ -107,19 +115,5 @@ export class DevicepageComponent {
         
     }
 
-    public fileName: string = 'default-logo.png'; 
-    getFiles(fileInput: any){ 
-        let file = fileInput.target.files[0];
-        this.fileName = file.name;
-        console.log(this.fileName);
-    } 
-
-    public updated: boolean = false;
-    addLoginFormProperties(form: NgForm){
-        this.updated = true;
-        console.log(this.updated);
-        form.value.logo = this.fileName;
-        this.receivedData[0].dragData[0].properties.shift(); //remove first
-        this.receivedData[0].dragData[0].properties.push(form.value);
-    }
+    
 }

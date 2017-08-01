@@ -54,7 +54,16 @@ body{
 .apps__list::after{
     clear: both;
 }
-
+.tabs__buttons{
+    position: fixed;
+    width: 30%;
+    height: 40px;
+    background: #fff;
+    z-index: 11;
+    margin: -10px -10px 0px -13px;
+    padding: 5px 15px 5px 5px;
+    box-shadow: 0px 8px 4px -5px #ccc;
+}
 /****** form classes *****/
 
     .formHelp{
@@ -63,7 +72,9 @@ body{
         font-weight: 400;
         color: #888;
     }
-    
+    .mat-input-placeholder-wrapper{
+        position: relative !important;
+  }
 // .leftpane, .rightpane{
 //     height: 75vw;
 //     overflow-x: auto;

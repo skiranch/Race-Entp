@@ -6,7 +6,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
-
+import { JsonSchemaFormModule } from 'angular2-json-schema-form';
 //import { AlertModule } from 'ngx-bootstrap'; //uncomment this line when we need an alert module
 //import { DragulaModule } from 'ng2-dragula'; //============ third party module ==============//
 import { DndModule } from 'ng2-dnd';
@@ -24,6 +24,10 @@ import { WelcomeComponent } from './app-designer/welcome/welcome.component';
 import { LeftpaneComponent } from './app-designer/leftpane/leftpane.component';
 import { SanitizeHtmlPipe } from './app-designer/sanitize-html.pipe';
 import { OnboardLoginComponent } from './app-designer/floorplans/onboard-login.component';
+import { FloorPlansImg1Component } from './app-designer/floorplans/floorplans-img-1.component';
+import { FloorPlansImg1ComponentProperties } from './app-designer/floorplans/floorplans-img-1.properties.component';
+import { FloorPlansImg2Component } from './app-designer/floorplans/floorplans-img-2.component';
+import { FloorPlansImg2ComponentProperties } from './app-designer/floorplans/floorplans-img-2.properties.component';
 
 import { firebaseConfig } from './firebaseConfig';
 
@@ -47,7 +51,11 @@ import { AppGenerationPortalComponent } from './app-generation-portal/app-genera
     HomeComponent,
     WelcomeComponent,
     AppGenerationPortalComponent,
-    OnboardLoginComponent
+    OnboardLoginComponent,
+    FloorPlansImg1Component,
+    FloorPlansImg1ComponentProperties,
+    FloorPlansImg2Component,
+    FloorPlansImg2ComponentProperties
   ],
   imports: [
     BrowserModule,
@@ -61,7 +69,8 @@ import { AppGenerationPortalComponent } from './app-generation-portal/app-genera
     TreeModule,
     SchemaFormModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JsonSchemaFormModule
     //AlertModule.forRoot() //uncomment this line when we need an alert module
   ],
   providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}, Title],
