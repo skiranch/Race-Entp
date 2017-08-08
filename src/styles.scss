@@ -1,6 +1,48 @@
+/************************* FONTS CSS START IMPORTANT - Do not delete or change *********************/
+
+@font-face {
+    font-family: 'SFUIText-Semibold';
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Semibold.eot?ed1wcy');
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Semibold.eot?ed1wcy#iefix') format('embedded-opentype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Semibold.woff2?ed1wcy') format('woff2'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Semibold.ttf?ed1wcy') format('truetype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Semibold.woff?ed1wcy') format('woff'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Semibold.svg?ed1wcy#innovapptive-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SFUIText-Regular';
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Regular.eot?ed1wcy');
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Regular.eot?ed1wcy#iefix') format('embedded-opentype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Regular.woff2?ed1wcy') format('woff2'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Regular.ttf?ed1wcy') format('truetype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Regular.woff?ed1wcy') format('woff'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Regular.svg?ed1wcy#innovapptive-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+  @font-face {
+    font-family: 'SFUIDisplay-Thin';
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Thin.eot?ed1wcy');
+    src:  url('assets/vendor/fonts/body/SFUIDisplay-Thin.eot?ed1wcy#iefix') format('embedded-opentype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Thin.woff2?ed1wcy') format('woff2'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Thin.ttf?ed1wcy') format('truetype'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Thin.woff?ed1wcy') format('woff'),
+      url('assets/vendor/fonts/body/SFUIDisplay-Thin.svg?ed1wcy#innovapptive-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  
+
+/************************* FONTS CSS END *********************/
 body{
     background: #fff;
-    // padding-top: 50px;
+    font-family: 'Open Sans', sans-serif;
 }
 .nopadding{
     padding: 0 !important;
@@ -64,8 +106,82 @@ body{
     padding: 5px 15px 5px 5px;
     box-shadow: 0px 8px 4px -5px #ccc;
 }
+.tabs__close-icon{
+    padding-top: 7px;
+    font-size: 18px;
+}
 /****** form classes *****/
 
+.tabs__properties{
+    position: fixed;
+    top: 90px;
+    right: 0;
+    width: 29.2%;
+    z-index: 12;
+    background: #fff;
+    padding: 10px;
+    height: calc( 100% - 120px );
+    overflow: auto;
+}
+
+.frame{
+    border: solid 2px #bd8d1b;
+    position: relative;
+    height: 100%;
+}
+.frame__next, .frame__prev{
+    color: #fff;
+    position: absolute;
+    z-index: 10;
+    font-size: 9px;
+    transform: translate(0, -18px);
+    background: #bd8d1b;
+    padding: 1px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 3px 5px;
+    
+}
+.frame__prev{
+    right: -2px;
+}
+.frame__next{
+    left: -2px;
+}
+.legend{
+    position: absolute;
+    font-size: 9px;
+    color: #fff;
+    background: #bd8d1b;
+    padding: 3px 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    left: 50%;
+    transform: translate(-50%, -18px);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.legend:hover{
+    text-decoration: none;
+}
+.legend:focus{
+    background: #e6930b;
+    text-decoration: none;
+}
+.legend:hover .frame{
+    border: solid 2px #e6930b;
+}
+
+.color-input input{
+            padding: 0;
+    width: 25px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    height: 25px;
+        
+    }
+    
     .formHelp{
         text-transform: capitalize;
         font-size: 12px;

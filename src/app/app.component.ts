@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 @Component({
   selector: 'app-root',
   template: `
-    <div class="wrapper active" [ngClass]="location.indexOf('applauncher') === -1 ? '' : 'applauncher'">
+    <div class="wrapper active" [ngClass]="location.indexOf('list') === -1 ? '' : 'applauncher'">
           <app-sidebar></app-sidebar>
           <div id="page-content-wrapper">
             <app-topmenu></app-topmenu>

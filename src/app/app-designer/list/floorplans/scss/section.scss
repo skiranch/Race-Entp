@@ -1,0 +1,23 @@
+.section{
+    padding-top: 80px;
+
+    &__header{
+        background: #337ab7;
+        padding: 10px;
+        font-size: 12px;
+        text-transform: uppercase;
+        position: fixed;
+        width: 28%;
+        margin-top: -40px;
+        color: #fff;
+
+    }
+    &__selected-source, &__button-close{
+        font-size: 11px; 
+        color: #fff; 
+        font-weight: bolder;
+        float: right;
+        text-transform: capitalize;
+        text-decoration: underline;
+    }
+}
