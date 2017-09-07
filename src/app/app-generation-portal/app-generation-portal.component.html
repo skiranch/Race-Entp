@@ -3,3 +3,13 @@
 <p style="padding: 10px;">
   app-generation-portal works!
 </p>
+   <div>
+            <table border="1">
+            <tr>
+            <td>ProductName </td><td>Platform</td> <td>HostName</td> <td>Port</td> <td>ApplicationId</td> <td>SecurityType</td> <td>Environment</td>
+        </tr>
+                <tr *ngFor="let appsetting of appsettings">
+                    <td>{{appsetting.ProductName}} </td> <td>{{appsetting.Platform}}</td> <td>{{appsetting.HostName}}</td> <td>{{appsetting.Port}}</td> <td>{{appsetting.ApplicationId}}</td> <td>{{appsetting.SecurityType}}</td> <td>{{appsetting.Environment}}</td>
+                </tr>
+            </table>
+        </div>

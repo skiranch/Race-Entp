@@ -1,0 +1,37 @@
+/**
+ * Created by namita on 7/15/16.
+ */
+export interface AppSettings {
+    ID:number;
+    AppsettingsId:string;
+    CustomerId:string;
+    ProductCode:string;
+    ProductName:string;
+    Platform:string;
+    HostName:string;
+    Port:string;
+    ApplicationId:string;
+    Https:boolean;
+    SampleData:boolean;
+    AppName:string;
+    SecurityType:string;
+    Environment:string;
+    Logo:string;
+    AppIcon:string;
+    SplashScreen:string;
+    AppBackground:string;
+    Theme:string;
+    StoreName:string;
+    ShowDemoButton:boolean;
+    AppPassCode:boolean;
+    TouchId:boolean;
+    TimeOut:string;
+    Languages:string;
+    WhiteListUrl:string;
+    BuildNo:number;
+    BuildLink:string;
+    CreatedOn:string;
+    CreatedBy:string;
+    Modified:string;
+    Settings:string;
+ }

@@ -3,6 +3,10 @@
         "target": "http://10.0.0.23:8002/",
         "secure": false,
         "loglevel": "debug"
+    },
+    "/AppGenerationPortal/*":{
+        "target": "https://appgenerationportalb70068d2c.us1.hana.ondemand.com",
+        "secure": false,
+        "loglevel": "debug"
     }
-
 }
