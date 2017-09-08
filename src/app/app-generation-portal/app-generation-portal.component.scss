@@ -25,3 +25,51 @@
         padding: 15px 10px;
     }
 }
+label{
+    
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      padding:10px 5px 10px 10px;
+}
+input[type="text"],select{
+    padding: 6px 6px 6px 6px;
+    border: solid 1px #dcdcdc;
+    border-radius: 15px;
+    height: 30px;
+    width:275px; 
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #0B72CA;
+    font-weight: bold;
+    color:#0B72CB;
+}
+.nav-tabs > li >a{
+    color:#787D79;
+}
+/* remove the "grey" border when hovering the li elements */
+.nav-tabs>li>a:hover{
+    border: 1px solid transparent;
+}
+
+/* remove the "grey" background colour when hovering the li elements */
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: transparent;
+}
+.modal-header {
+    padding-bottom: 5px;
+   
+    border: 0px; 
+}
+.tab-content .tab-pane {
+	padding: 20px 10px 0 50px;
+}
+.modal-body {
+    position: relative;
+    padding: 2px 20px 0px 20px;
+}
+.modal-title{
+    padding-left: 15px;
+}

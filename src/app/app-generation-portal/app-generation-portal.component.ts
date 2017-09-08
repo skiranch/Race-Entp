@@ -24,9 +24,9 @@ declare var jQuery: any;
             <table class="table table-striped table-responsive table-sortable content__table">
               <thead>
                 <tr>
-                <th class="pointer" (click)="sort('ProductName')">
+                <th class="pointer">
                 ProductName
-                <i class="fa" [ngClass]="{'fa-sort': column != 'ProductName', 'fa-sort-asc': (column == 'ProductName' && isDesc), 'fa-sort-desc': (column == 'ProductName' && !isDesc) }" aria-hidden="true"> </i>
+                
               </th>
                   <th>Platform</th>
                   <th>Host Name</th>
@@ -48,8 +48,8 @@ declare var jQuery: any;
           <div class="modal-dialog" role="document">
               <div class="modal-content">
               <div class="modal-header">
-                  <button type="button" routerLink="/" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">NEW SETTING</h4>
+                  <button type="button" routerLink="/app-generation-portal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title bold">NEW SETTING</h4>
               </div>
               <div class="modal-body">
               <form #appSettingsForm="ngForm" (ngSubmit)="onSubmit(appSettingsForm)">
@@ -70,12 +70,12 @@ declare var jQuery: any;
             
               <div role="tabpanel" class="tab-pane active" id="connectionsettings">
                 <div class="form-group">            
-                      <div class="row">
+                      <div class="row modalControl_centercontent">
                                     <div class="col-md-3">
-                                       <label for="email">App Name</label>
+                                       <label for="email" class="modalControl_modalControlLabel">App Name</label>
                                     </div>
                                     <div class="col-md-9">
-                                       <input class="new-todo" #AppName class="form-control" name="AppName" [ngModel]="AppName.value"  placeholder="App Name" autofocus="" >
+                                       <input type="text" #AppName class="form-control modalControl_inputtext" name="AppName" [ngModel]="AppName.value"  placeholder="App Name" autofocus="" >
                                     </div>
                               </div>
                               </div>
@@ -99,7 +99,7 @@ declare var jQuery: any;
                                   <label for="HostName">Host Name</label>
                                 </div>
                                 <div class="col-md-9">
-                                  <input #HostName name="HostName" [ngModel]="HostName.value"class="new-todo" class="form-control" placeholder="Host Name">
+                                  <input  type="text"  #HostName name="HostName" [ngModel]="HostName.value"class="new-todo" class="form-control" placeholder="Host Name">
                                 </div>
                               </div>
                               </div>
@@ -109,7 +109,7 @@ declare var jQuery: any;
                                   <label for="portnumber">Port Number</label>
                                 </div>
                                 <div class="col-md-9">
-                                  <input #Port name="Port" [ngModel]="Port.value" class="new-todo" class="form-control" placeholder="Port Number">
+                                  <input  type="text"  #Port name="Port" [ngModel]="Port.value" class="new-todo" class="form-control" placeholder="Port Number">
                                 </div>
                               </div>
                               </div>
@@ -119,7 +119,7 @@ declare var jQuery: any;
                                   <label for="applicationid">Application ID</label>
                                 </div>
                                 <div class="col-md-9">
-                                  <input #ApplicationId name="ApplicationId" [ngModel]="ApplicationId.value" class="new-todo" class="form-control" placeholder="Application ID">
+                                  <input  type="text"  #ApplicationId name="ApplicationId" [ngModel]="ApplicationId.value" class="new-todo" class="form-control" placeholder="Application ID">
                                 </div>
                               </div>
                               </div>
@@ -287,7 +287,7 @@ declare var jQuery: any;
                              <label for="languages">Languages</label>
                            </div>
                            <div class="col-md-9">
-                              <select  #Languages name="Languages" [ngModel]="''"  class="new-todo" class="form-control">
+                              <select #Languages multiple name="Languages" [ngModel]="''"  class="new-todo" class="form-control">
                                 <option value=""></option>
                                 <option value="English">English</option>
                                 <option value="Japanese">Japanese</option>
@@ -321,7 +321,7 @@ declare var jQuery: any;
                                 <label for="Website URL">Website URL</label>
                               </div>
                               <div class="col-md-9">
-                                <input #WhiteListUrl name="WhiteListUrl" [ngModel]="WhiteListUrl.value" class="new-todo" class="form-control" placeholder="Website URL">
+                                <input  type="text"  #WhiteListUrl name="WhiteListUrl" [ngModel]="WhiteListUrl.value" class="new-todo" class="form-control" placeholder="Website URL">
                               </div>
                           </div>
                           </div>
@@ -331,7 +331,7 @@ declare var jQuery: any;
                              <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Cancel</button>
                           </div>
                           <div class="col-md-9">
-                            <button type="submit" class="btn btn-primary Next">Submit</button>
+                            <button type="submit"  class="btn btn-primary Next">Submit</button>
                           </div>
                           </div>
                         </div>
@@ -352,12 +352,12 @@ declare var jQuery: any;
 
 })
 export class AppGenerationPortalComponent implements OnInit {
-  private appsettings: AppSettings[] = [];
+  public appsettings: AppSettings[] = [];
   private postData;
   constructor(private _getDataService: AppSettingsListService, private _appsettingsPostService: AppSettingsPostService) { }
   ngOnInit() {
-  this.getData();
-    //this.PostSettings();
+   this.getData();
+   // this.PostSettings();
   }
   getData() {
     this._getDataService.getDataSources()
@@ -371,7 +371,7 @@ export class AppGenerationPortalComponent implements OnInit {
       data => this.postData = data,
       error => console.log(error),
       () => {
-
+        this.getData();
         //console.log(this.postData)
       }
       )
@@ -410,6 +410,7 @@ export class AppGenerationPortalComponent implements OnInit {
     "Modified": "",
     "Settings": ""
   }
+ 
   onSubmit(form: NgForm) {
     //this is a hack for the demo purpose
     this.appSettingPayload.AppName = form.value.AppName;
@@ -434,7 +435,7 @@ export class AppGenerationPortalComponent implements OnInit {
 
     console.log(this.appSettingPayload);
     //Calls
-    this.PostSettings();
+   this.PostSettings();
   }
   imageUploadLogo(e) {
     let reader = new FileReader();
