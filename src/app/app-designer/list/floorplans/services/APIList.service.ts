@@ -3,12 +3,14 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+import { API } from './api.conf';
+
 @Injectable()
 
 export class APIListService{
     private _headers;
     private _options;
-    private _baseApiUrl = '/sap/opu/odata/INVAPI/RACE_API_SRV/APIListCollection?$filter=APIName%20eq%20%27';
+    private _baseApiUrl = API.baseUrl+'/APIListCollection?$filter=APIName%20eq%20%27';
     //inputval
     private _urlPart1 = '*%27%20and%20DataSource%20eq%20%27';
     //SAP

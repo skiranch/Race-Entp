@@ -3,6 +3,7 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+import { API } from './api.conf';
 
 @Injectable()
 export class CPDPPostService {
@@ -11,7 +12,7 @@ export class CPDPPostService {
 
     private _options;
 
-    private _baseApiUrl = '/sap/opu/odata/INVAPI/RACE_API_SRV/DataProvidersCollection';
+    private _baseApiUrl = API.baseUrl+'/DataProvidersCollection';
     constructor(private http: Http) {
         this._headers = new Headers();
         this._headers2 = new Headers();

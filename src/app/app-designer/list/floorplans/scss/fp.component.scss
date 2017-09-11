@@ -1,6 +1,6 @@
  /*************
- SFUIText-Semibold
- SFUIText-Regular
+ SFUIDisplay-Semibold
+ SFUIDisplay-Regular
  SFUIDisplay-Thin
  ****************/
  
@@ -26,7 +26,7 @@
         text-overflow: ellipsis;
         padding: 0 15px;
         font-size: 17px;
-        font-family: 'SFUIText-Semibold';
+        font-family: 'SFUIDisplay-Semibold';
         padding-left: 30px;
     }
     &__search-bar{
@@ -84,6 +84,7 @@
                 border: solid 1px #337ab7;
             }
         }
+
     }
     &__nav-link{
         font-size: 13px;
@@ -91,7 +92,7 @@
         display: block;
         color: #999;
         text-align: center;
-        font-family: 'SFUIText-Semibold';
+        font-family: 'SFUIDisplay-Semibold';
 
 
         &:hover{
@@ -111,7 +112,17 @@
         transform: translate(-50%, 0);
         left: 50%;
         z-index: 10;
-        font-family: 'SFUIText-Semibold';
+        font-family: 'SFUIDisplay-Semibold';
+
+
+        &--done{
+            padding: 0;
+            height: 13px;
+            width: 16px;
+            vertical-align: middle;
+            font-size: 16px;
+            border: 0;
+        }
         
     }
     &__guide{
@@ -124,7 +135,7 @@
         margin: 0;
         padding: 0;
         line-height: 16px;
-        font-family: 'SFUIText-Semibold';
+        font-family: 'SFUIDisplay-Semibold';
         color: #838388;
 
     }
@@ -133,7 +144,7 @@
         font-weight: 200;   
         padding: 10px 0 0;
         margin: 0;  
-        font-family: 'SFUIText-Regular';
+        font-family: 'SFUIDisplay-Regular';
         color: #838388;
     }
 
@@ -148,7 +159,7 @@
     }
     &__color-white{
         color: #fff;
-        font-family: 'SFUIText-Regular';
+        font-family: 'SFUIDisplay-Regular';
         font-size: 15px;
     }
     &__body-container{
@@ -159,7 +170,7 @@
         margin: 0;
         font-size: 15px;
         color: #3f3a3a;
-        font-family: 'SFUIText-Regular';
+        font-family: 'SFUIDisplay-Regular';
         line-height: 22px;
         
     }
@@ -167,7 +178,7 @@
         margin: 0;
         font-size: 17px;
         color: #3f3a3a;
-        font-family: 'SFUIText-Regular';
+        font-family: 'SFUIDisplay-Regular';
         line-height: 22px;
         
     }
@@ -175,7 +186,7 @@
         margin: 0;
         font-size: 17px;
         color: #3f3a3a;
-        font-family: 'SFUIText-Semibold';
+        font-family: 'SFUIDisplay-Semibold';
         line-height: 22px;
         
     }
@@ -192,7 +203,7 @@
     }
 
     &__highlight{
-        background: rgb(245, 236, 201);
+        border: solid 1px #bd8d1b;
     }
 
     &__header-props{
@@ -251,7 +262,7 @@
         padding: 15px 0;
         background: #efeff4;
         color: #838388;
-        font-family: 'SFUIText-Regular';
+        font-family: 'SFUIDisplay-Regular';
         font-size: 15px;        
     }
 }

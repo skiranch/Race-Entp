@@ -4,6 +4,6 @@ export class API {
     //Data source collection
     public static dataSourceCollection = 'DataSourcesCollection?'
 
-    public static formatJson = '&$format=json'
+    public static formatJson = '$format=json'
  }
  

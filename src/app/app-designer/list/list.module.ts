@@ -27,6 +27,8 @@ import { FP0Component } from './floorplans/fp0.component';
 import { FP01Component } from './floorplans/fp01.component';
 import { FP1Component } from './floorplans/fp1.component';
 import { FP2Component } from './floorplans/fp2.component';
+import { FP3Component } from './floorplans/fp3.component';
+
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { FP2Component } from './floorplans/fp2.component';
     FP01Component,
     FP1Component, //new floorplans
     FP2Component,
+    FP3Component,
     RepeatComponent,
     LoadingComponent
   ],

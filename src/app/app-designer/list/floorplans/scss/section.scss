@@ -1,15 +1,13 @@
 .section{
-    padding-top: 80px;
+    padding-top: 40px;
 
     &__header{
         background: #337ab7;
         padding: 10px;
         font-size: 12px;
         text-transform: uppercase;
-        position: fixed;
-        width: 28%;
-        margin-top: -40px;
         color: #fff;
+        position:  relative;
 
     }
     &__selected-source, &__button-close{

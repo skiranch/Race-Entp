@@ -104,7 +104,7 @@ declare var jQuery: any;
                 <input type="text" value="Confirm" class="form-control" name="tabFour" #tabFour [ngModel]="tabFour.value" /> 
             </div>
 
-            <button class="btn btn-primary col-md-12" type="submit">Submit</button>
+            <button class="btn btn-success col-md-12" type="submit">Submit changes</button>
             
        </form>
     </div>

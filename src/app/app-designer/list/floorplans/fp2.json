@@ -1,0 +1,97 @@
+{
+    "id": 1,
+    "floorName": "FP_07_DOL_01",
+    "header": {
+        
+        "pageTitle": "Service Orders",
+        "headerColor": "red",
+        "headerIconsColor": "#87A4B8",
+        "pageTitleColor": "#87A4B8",
+        
+        "left":[],
+        "right":[{
+                 "elementTitle":"",
+                 "position":1,
+                 "style":"{'textColor':'#87A4B8'}",
+                 "componentCategory":"BTN",
+                 "componentType":"DEFAULTSBTN",
+                 "dataprovider":"",
+                 "dataproviderType":"",
+                 "dataproviderParameters":"",
+                 "dpParameters":"",
+                 "navigation":""
+                 },
+                 {
+                 "elementTitle":"",
+                 "position":2,
+                 "style":"{'textColor':'#87A4B8'}",
+                 "componentCategory":"BTN",
+                 "componentType":"SEARCHBTN",
+                 "dataprovider":"",
+                 "dataproviderType":"",
+                 "dpParameters":"",
+                 "navigation":""
+                 }]
+        
+    },
+    "body":{
+        "HEADER":[{"elementTitle":"PO Out standing value",
+                  "position":1,
+                  "style":"{'textColor':'','selectionColor':''}",
+                  "componentCategory":"WIDGETTABBARITEM",
+                  "componentType":"ORDERSTAB",
+                  "dataprovider":"POHEADER",
+                  "dataproviderType":"GET",
+                  "dpParameters":"",
+                  "navigation":""
+                  }],
+        "TABS":[
+                {"elementTitle":"FIND ORDER",
+                "position":1,
+                "style":"{'textColor':'','selectionColor':''}",
+                "componentCategory":"WIDGETTABBARITEM",
+                "componentType":"ORDERSTAB",
+                "dataprovider":"SOHEADER",
+                "dataproviderType":"GET",
+                "dpParameters":"",
+                "navigation":""
+                },
+                {"elementTitle":"ENTER SERVICES",
+                "position":2,
+                "style":"{'textColor':'','selectionColor':''}",
+                "componentCategory":"WIDGETTABBARITEM",
+                "componentType":"ORDERSTAB",
+                "dataprovider":"",
+                "dataproviderType":"GET",
+                "dpParameters":"",
+                "navigation":""
+                },
+                {"elementTitle":"ADD NOTES & MEDIA",
+                "position":3,
+                "style":"{'textColor':'','selectionColor':''}",
+                "componentCategory":"WIDGETTABBARITEM",
+                "componentType":"ORDERSTAB",
+                "dataprovider":"",
+                "dataproviderType":"GET",
+                "dpParameters":"",
+                "navigation":""
+                },
+                {"elementTitle":"REVIEW AND CONFIRM",
+                "position":4,
+                "style":"{'textColor':'','selectionColor':''}",
+                "componentCategory":"WIDGETTABBARITEM",
+                "componentType":"ORDERSTAB",
+                "dataprovider":"",
+                "dataproviderType":"GET",
+                "dpParameters":"",
+                "navigation":""
+                }
+                ],
+        
+        "BODY":[]
+        
+    },
+    
+    "footer": []
+    
+}

@@ -1,7 +1,21 @@
 /************************* FONTS CSS START IMPORTANT - Do not delete or change *********************/
 
+/*
 @font-face {
-    font-family: 'SFUIText-Semibold';
+    font-family: 'SFUIText-Regular';
+    src:  url('assets/vendor/fonts/body/SFUIText-Regular?ed1wcy');
+    src:  url('assets/vendor/fonts/body/SFUIText-Regular.eot?ed1wcy#iefix') format('embedded-opentype'),
+      url('assets/vendor/fonts/body/SFUIText-Regular.woff2?ed1wcy') format('woff2'),
+      url('assets/vendor/fonts/body/SFUIText-Regular.ttf?ed1wcy') format('truetype'),
+      url('assets/vendor/fonts/body/SFUIText-Regular.woff?ed1wcy') format('woff'),
+      url('assets/vendor/fonts/body/SFUIText-Regular.svg?ed1wcy#innovapptive-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  */
+
+@font-face {
+    font-family: 'SFUIDisplay-Semibold';
     src:  url('assets/vendor/fonts/body/SFUIDisplay-Semibold.eot?ed1wcy');
     src:  url('assets/vendor/fonts/body/SFUIDisplay-Semibold.eot?ed1wcy#iefix') format('embedded-opentype'),
       url('assets/vendor/fonts/body/SFUIDisplay-Semibold.woff2?ed1wcy') format('woff2'),
@@ -13,7 +27,7 @@
   }
 
   @font-face {
-    font-family: 'SFUIText-Regular';
+    font-family: 'SFUIDisplay-Regular';
     src:  url('assets/vendor/fonts/body/SFUIDisplay-Regular.eot?ed1wcy');
     src:  url('assets/vendor/fonts/body/SFUIDisplay-Regular.eot?ed1wcy#iefix') format('embedded-opentype'),
       url('assets/vendor/fonts/body/SFUIDisplay-Regular.woff2?ed1wcy') format('woff2'),
