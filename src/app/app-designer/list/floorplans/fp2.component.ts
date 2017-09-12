@@ -73,9 +73,9 @@ declare var jQuery: any;
                                 <div class="col-md-12">
                                     <div class="col-md-1" style="padding: 0;"><input type="radio" /></div>
                                     <div class="col-md-11" style="padding: 0;">
-                                        <h4 class="floorplan__body-heading">{{purchasingDoc.value}} 4500004876</h4>
-                                        <h4 class="floorplan__body-heading">{{purchasingOrg.value}} R300</h4>
-                                        <p class="floorplan__body-text-1">{{vendor.value }} </p>
+                                        <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
+                                        <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
+                                        <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
                                     </div>
                                 </div>
                             </div>
@@ -101,13 +101,18 @@ declare var jQuery: any;
             </div>
         
             <div class="section">
-                <div class="" [hidden]="poHeaderPanel === true">
+                
+                <div [hidden]="poSummaryPanel === true || poHeaderPanel ===true ">
                     
-                    <h4 class="section__header" (click)="togglePanel('floorplan__summary-props')">
-                        {{dataProvider.value}}
-                        <span class="section__selected-source">
-                            <span class="section__button-change" (click)="showSourceSelector()">Data Provider</span>
+                    <span class="section__selected-source">
+                        <span class="section__button-change" (click)="showSourceSelector()">Configure data Providers</span>
+                    </span>
+
+                    <h4 class="section__header">
+                        <span (click)="togglePanel('floorplan__summary-props')">
+                            {{dataProvider.value}}
                         </span>
+                        
                     </h4>
                         
                     <div class="floorplan__summary-props">                        
@@ -145,18 +150,20 @@ declare var jQuery: any;
                         </div>
                     </div>
 
-                    <h4 class="section__header" (click)="togglePanel('floorplan__header-props')">
-                        {{bodyDataProvider.value}}
-                        <!--<span class="section__selected-source">
-                            <span class="section__button-change" *ngIf="poHeaderPanel !==true" (click)="showSourceSelector()">Data Provider</span>
-                            <span class="section__button-done" (click)="closeSourceSelector()" *ngIf="poHeaderPanel === true">Back</span>
-                        </span>-->
+                </div>
+
+                <div [hidden]=" poHeaderPanel === true || poSummaryPanel ===true">
+
+                    <h4 class="section__header">
+                        <span (click)="togglePanel('floorplan__header-props')">
+                            {{headerDataProvider.value}}
+                        </span>
                     </h4>
 
                     <div class="floorplan__header-props" style="display: none;">
                         <div class="form-group">
-                            <label class="floorplan__form-label" for="bodyDataProvider">Data Provider</label>
-                            <input type="text" value="POHEADER" #bodyDataProvider name="bodyDataProvider" class="form-control" [ngModel]="bodyDataProvider.value" />
+                            <label class="floorplan__form-label" for="headerDataProvider">Data Provider</label>
+                            <input type="text" value="POHEADER" #headerDataProvider name="headerDataProvider" class="form-control" [ngModel]="headerDataProvider.value" />
                         </div>
 
                         <div class="form-group">
@@ -171,59 +178,63 @@ declare var jQuery: any;
 
                         <div class="form-group">
                             <input type="text" value="Vendor:" #vendor name="vendor" class="form-control" [ngModel]="vendor.value" />
-                            <input type="text" value="" class="form-control" disabled/>
+                            <input type="text" value="" class="form-control" disabled />
                         </div>
 
                     </div>
-                    <div class="floorplan__buttons">
-                        <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
-                    </div>
 
                 </div>
+
+                <div class="floorplan__buttons" [hidden]=" poHeaderPanel === true || poSummaryPanel === true ">
+                    <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
+                </div>
+                
             </div>
         </form>
         <!-- UI FORM END-->
 
-        <!--POHEADER START-->
+        <!--POSUMMARY START-->
         <form #floorplanDCForm="ngForm" (ngSubmit)="sendFloorplanDC(floorplanDCForm)">
             
-            <div id="prop" [hidden]="poHeaderPanel !==true">
+        <div [hidden]="poSummaryPanel !==true">
 
             <h4 class="section__header" >
-                {{dataProvider.value}}
+                {{dataProvider.value}} / {{headerDataProvider.value}}
+                
                 <span class="section__selected-source">
-                    <span class="section__button-done" (click)="closeSourceSelector()">Back</span>
+                    <span class="section__button-done" (click)="showSourceSelector()">Back</span>
                 </span>
+
             </h4>
-            
-                <div class="form-group">
-                    <label class="floorplan__form-label">Select data sources</label>
-                    <select class="form-control" #dataSources name="dataSources" (change)="showSelectedServices(dataSources.value)" [ngModel]="dataSources.value">
-                        <option value="" disabled selected>--Select--</option>
-                        <option value="{{data.DataSource}}" *ngFor="let data of dataSource">
-                            {{data.DataSource}}
-                        </option>
-                    </select>
-                </div>
+        
+            <div class="form-group">
+                <label class="floorplan__form-label">Select data sources</label>
+                <select class="form-control" #dataSources name="dataSources" (change)="showSelectedServices(dataSources.value)" [ngModel]="dataSources.value">
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="{{data.DataSource}}" *ngFor="let data of dataSource">
+                        {{data.DataSource}}
+                    </option>
+                </select>
+            </div>
 
-                <div class="form-group" *ngIf="connectionServiceDD !== false">
-                    <label class="floorplan__form-label" for="connectionService">
-                        Connection services
-                    </label>
-                    <select class="form-control" #connectionService name="connectionService" (change)="onSelectService(connectionService.value)" [ngModel]="connectionService.value">
-                        <option value="" disabled selected>--Select--</option>
-                        <option value="{{data.ConnectionProvider}}" *ngFor="let data of connectionProviders">
-                            {{data.ConnectionProvider}}
-                        </option>
-                    </select>
-                </div>
+            <div class="form-group" *ngIf="connectionServiceDD !== false">
+                <label class="floorplan__form-label" for="connectionService">
+                    Connection services
+                </label>
+                <select class="form-control" #connectionService name="connectionService" (change)="onSelectService(connectionService.value)" [ngModel]="connectionService.value">
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="{{data.ConnectionProvider}}" *ngFor="let data of connectionProviders">
+                        {{data.ConnectionProvider}}
+                    </option>
+                </select>
+            </div>
 
-            <div class="form-group" [hidden]="searchAPI === false">
+                <div class="form-group" [hidden]="searchAPI === false">
                     <label class="floorplan__form-label" for="searchApi">Search API</label>
                     <input type="text" class="form-control" #searchApi (blur)="showListOfAPIs(searchApi.value)" placeholder="Enter API name" />
                 </div>
 
-                <div class="form-group" >
+                <div class="form-group">
                     <div *ngIf="apiListDD !== false">
                     <label class="floorplan__form-label" for="listofSearchedApis">
                         Select API
@@ -238,17 +249,20 @@ declare var jQuery: any;
                 </div>
 
                 <div class="" *ngIf="showFields !== false">
+                    <input type="hidden" [ngModel]="dataProvider.value" #dataProviderVal name="dataProviderVal" value="dataProvider.value" />
+                    <input type="hidden" [ngModel]="headerDataProvider.value" #headerDataProviderVal name="headerDataProviderVal" value="headerDataProvider.value" />
+
+                    <input type="hidden" [ngModel]="purchasingDoc.value" #purchasingDocVal name="purchasingDocVal" value="purchasingDoc.value" />
+                    <input type="hidden" [ngModel]="purchasingOrg.value" #purchasingOrgVal name="purchasingOrgVal" value="purchasingOrg.value" />
+                    <input type="hidden" [ngModel]="vendor.value" #vendorVal name="vendorVal" value="vendor.value" />
+
                     <div class="form-group">
                         <label class="floorplan__form-label" for="totalAmmount">
                             Total Ammount
                         </label>
                     
                         <select (focusout)="removeHighlightCorresponding('valHighlight')" (focus)="highlightCorresponding('valHighlight')" class="form-control" name="totalAmmount" #totalAmmount [ngModel]="totalAmmount.value">
-                            <!--<ng-template #arun *ngFor="let data of listOfFields">
-                                <optgroup *ngIf="data.ParameterType === 'IMPORT'">
-                                    <option> {{data.FieldName}} - {{data.FieldDesc}}</option>
-                                </optgroup>
-                            </ng-template>-->
+                            
                             <option value="" disabled selected>--Select--</option>
                             <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
                                 {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
@@ -278,15 +292,51 @@ declare var jQuery: any;
                                 {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                             </option>
                         </select>
+                    </div>
 
-                        <input type="hidden" [ngModel]="dataProvider.value" #dataProviderVal name="dataProviderVal" value="dataProvider.value" />
+                    <div class="form-group">
+                        <label class="floorplan__form-label" for="headerPurchasingDoc">
+                            {{purchasingDoc.value}}
+                        </label>
+                    
+                        <select (focusout)="removeHighlightCorresponding('purchasingDocVal')" (focus)="highlightCorresponding('purchasingDocVal')" class="form-control" name="headerPurchasingDoc" #headerPurchasingDoc [ngModel]="headerPurchasingDoc.value">
+                            <option value="" disabled selected>--Select--</option>
+                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
+                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                            </option>
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="floorplan__form-label" for="headerPurchasingOrg">
+                            {{purchasingOrg.value}}
+                        </label>
+                        <select (focusout)="removeHighlightCorresponding('purchasingOrgVal')" (focus)="highlightCorresponding('purchasingOrgVal')" class="form-control" #headerPurchasingOrg name="headerPurchasingOrg" [ngModel]="headerPurchasingOrg.value">
+                            <option value="" disabled selected>--Select--</option>
+                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="floorplan__form-label" for="headerVendor">
+                            {{vendor.value}}
+                        </label>
+                        <select (focusout)="removeHighlightCorresponding('purchasingVendorVal')" (focus)="highlightCorresponding('purchasingVendorVal')" class="form-control" #headerVendor name="headerVendor" [ngModel]="headerVendor.value">
+                            <option value="" disabled selected>--Select--</option>
+                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                            </option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
                 </div>
             </div>
-            </form>
-        <!--POHEADER END-->
+
+        </form>
+        <!--POSUMMARY END-->
+
    </div>
 
   `,
@@ -305,6 +355,7 @@ export class FP2Component {
     success: boolean = false;
 
     public showPropertyPanel: boolean = false;
+    public poSummaryPanel;
     public poHeaderPanel;
     public dataSource = [];
     public connectionProviders = [];
@@ -334,7 +385,7 @@ export class FP2Component {
         "DPConfig": "[{\"label\":\"SummaryAmount\",\"position\":\"1\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
-        "DataProvider": "POHEADER",
+        "DataProvider": "",
         "FieldName": "", //* field name
         "APIName": "", // * api name
         "ParameterName": "", //* param name
@@ -348,7 +399,7 @@ export class FP2Component {
         "DPConfig": "[{\"label\":\"CurrencyType\",\"position\":\"2\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
-        "DataProvider": "POHEADER",
+        "DataProvider": "",
         "FieldName": "", //* field name
         "APIName": "", // * api name
         "ParameterName": "", //* param name
@@ -357,12 +408,54 @@ export class FP2Component {
         "ConnectionProvider": "" //* cp name
     }
 
-    //post request 2
+    //post request 3
     cpdpHeaderDesc = {
         "DPConfig": "[{\"label\":\"HeaderDesc\",\"position\":\"3\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
-        "DataProvider": "POHEADER",
+        "DataProvider": "",
+        "FieldName": "", //* field name
+        "APIName": "", // * api name
+        "ParameterName": "", //* param name
+        "Status": true, // always true
+        "DataSource": "", //* system id
+        "ConnectionProvider": "" //* cp name
+    }
+
+      //post request 4
+      cpdpPurchasingDoc = {
+        "DPConfig": "[{\"label\":\"\",\"position\":\"4\"}]",
+        "Key": true,
+        "ModuleID": "SES_CONF",
+        "DataProvider": "",
+        "FieldName": "", //* field name
+        "APIName": "", // * api name
+        "ParameterName": "", //* param name
+        "Status": true, // always true
+        "DataSource": "", //* system id
+        "ConnectionProvider": "" //* cp name
+    }
+
+     //post request 5
+     cpdpPurchasingOrg = {
+        "DPConfig": "[{\"label\":\"\",\"position\":\"5\"}]",
+        "Key": true,
+        "ModuleID": "SES_CONF",
+        "DataProvider": "",
+        "FieldName": "", //* field name
+        "APIName": "", // * api name
+        "ParameterName": "", //* param name
+        "Status": true, // always true
+        "DataSource": "", //* system id
+        "ConnectionProvider": "" //* cp name
+    }
+
+    //post request 6
+    cpdpPurchasingVendor = {
+        "DPConfig": "[{\"label\":\"\",\"position\":\"6\"}]",
+        "Key": true,
+        "ModuleID": "SES_CONF",
+        "DataProvider": "",
         "FieldName": "", //* field name
         "APIName": "", // * api name
         "ParameterName": "", //* param name
@@ -497,6 +590,7 @@ export class FP2Component {
             }
             )
     }
+
     onSelectService(val: string) {
         console.log("selected: " + val);
         this.cpName = val;
@@ -507,6 +601,7 @@ export class FP2Component {
         }
 
     }
+
     showListOfAPIs(val: string) {
         if (val.length >= 2) {
             this.loading = true;
@@ -523,6 +618,7 @@ export class FP2Component {
 
         }
     }
+
     showListOfFields(val: string) {
         if (val !== 'Select') {
             this.selectedAPI = val;
@@ -542,7 +638,7 @@ export class FP2Component {
         }
     }
 
-    postallObjects($obj1, $obj2, $obj3) {
+    postallObjects($obj1, $obj2, $obj3, $obj4, $obj5, $obj6) {
         this.loading = true;
         let _token: string = '';
         let _status;
@@ -555,43 +651,54 @@ export class FP2Component {
                 if (_token !== '') {
                     console.log('its not empty');
                     console.log("token before:: " + _token);
-
+                    
                     this._cpdpPostService.doPost1($obj1, _token).subscribe(
-
-                        () => {
-
-                        }
+                        () => {}
                     )
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost2($obj2, _token).subscribe(
-
-                            () => {
-
-                            }
+                            () => {}
                         )
                     }, 4000);
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost3($obj3, _token).subscribe(
+                            () => {}
+                        )
+                    }, 6000);
 
+                    setTimeout(() => {
+                        this._cpdpPostService.doPost4($obj4, _token).subscribe(
+                            () => {}
+                        )
+                    }, 8000);
+
+                    setTimeout(() => {
+                        this._cpdpPostService.doPost5($obj5, _token).subscribe(
+                            () => {}
+                        )
+                    }, 10000);
+
+                    setTimeout(() => {
+                        this._cpdpPostService.doPost6($obj6, _token).subscribe(
                             () => {
-                                console.log('completed 3')
+                                console.log('completed all 6')
                                 this.loading = false;
-
-                                console.log(this.poHeaderPanel)
-                                this.poHeaderPanel = false;
+                                this.poSummaryPanel = false;
                                 this.success = true;
+                                
                                 setTimeout(() => {
                                     this.success = false;
-                                }, 8000);
+                                }, 13000);
                             }
                         )
-                    }, 5000);
+                    }, 12000);
                 }
             }
         )
     }
+
     postUIObject($uiObj) {
 
         console.log('initiating..');
@@ -619,6 +726,10 @@ export class FP2Component {
     }
 
     closeSourceSelector() {
+        this.poSummaryPanel = !this.poSummaryPanel;
+    }
+
+    closeHeaderSourceSelector() {
         this.poHeaderPanel = !this.poHeaderPanel;
     }
 
@@ -629,6 +740,7 @@ export class FP2Component {
     gotToNextScreen() {
         this.router.navigateByUrl('app-designer/list/ui/fp3');
     }
+
     gotToPreviousScreen() {
         this.router.navigateByUrl('app-designer/list/ui/fp1');
     }
@@ -641,6 +753,14 @@ export class FP2Component {
     }
 
     showSourceSelector() {
+        this.poSummaryPanel = !this.poSummaryPanel;
+        if (this.dataSource.length === 0) {
+            this.onGetData();
+        }
+    }
+
+    //can be removed
+    showHeaderSourceSelector() {
         this.poHeaderPanel = !this.poHeaderPanel;
         if (this.dataSource.length === 0) {
             this.onGetData();
@@ -659,7 +779,6 @@ export class FP2Component {
         jQuery("." + id).slideToggle();
         
     }
-
 
     sendFloorplanUI(form: NgForm) {
 
@@ -690,8 +809,15 @@ export class FP2Component {
 
     }
 
-    sendFloorplanDC(form: NgForm) {
+    sendFloorplanHeaderData(form: NgForm) {
+        console.log('Header data');
 
+        console.log(form.value)
+
+    }
+
+    sendFloorplanDC(form: NgForm) {
+        
         //this is a hack for the demo purpose
         var feild1 = form.value.totalAmmount;
         var parts1 = feild1.split('/', 2);
@@ -701,6 +827,15 @@ export class FP2Component {
 
         var feild3 = form.value.headerDesc;
         var parts3 = feild3.split('/', 2);
+
+        var feild4 = form.value.headerPurchasingDoc;
+        var parts4 = feild4.split('/', 2);
+
+        var feild5 = form.value.headerPurchasingOrg;
+        var parts5 = feild5.split('/', 2);
+
+        var feild6 = form.value.headerVendor;
+        var parts6 = feild6.split('/', 2);
 
         this.cpdpTotalAmmout.DataSource = form.value.dataSources;
         this.cpdpTotalAmmout.ConnectionProvider = form.value.connectionService;
@@ -725,16 +860,71 @@ export class FP2Component {
         this.cpdpHeaderDesc.FieldName = parts3[0];
 
         this.cpdpHeaderDesc.DataProvider = form.value.dataProviderVal;
+        
+        this.cpdpPurchasingDoc.DataSource = form.value.dataSources;
+        this.cpdpPurchasingDoc.ConnectionProvider = form.value.connectionService;
+        this.cpdpPurchasingDoc.ParameterName = parts4[1];
+        this.cpdpPurchasingDoc.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingDoc.FieldName = parts4[0];
 
+        this.cpdpPurchasingDoc.DataProvider = form.value.headerDataProviderVal;
+
+        this.cpdpPurchasingOrg.DataSource = form.value.dataSources;
+        this.cpdpPurchasingOrg.ConnectionProvider = form.value.connectionService;
+        this.cpdpPurchasingOrg.ParameterName = parts5[1];
+        this.cpdpPurchasingOrg.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingOrg.FieldName = parts5[0];
+
+        this.cpdpPurchasingOrg.DataProvider = form.value.headerDataProviderVal;
+
+        this.cpdpPurchasingVendor.DataSource = form.value.dataSources;
+        this.cpdpPurchasingVendor.ConnectionProvider = form.value.connectionService;
+        this.cpdpPurchasingVendor.ParameterName = parts6[1];
+        this.cpdpPurchasingVendor.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingVendor.FieldName = parts6[0];
+
+        this.cpdpPurchasingVendor.DataProvider = form.value.headerDataProviderVal;
+
+        console.log(form.value.vendorVal)
+        
         console.log("field 1 object...");
         console.log(this.cpdpTotalAmmout)
         console.log("field 2 object...");
         console.log(this.cpdpCurrencyType)
         console.log("field 3 object...");
         console.log(this.cpdpHeaderDesc)
+        
+        //create function todo
+        let cpdpPurchasingDocDPConfig = JSON.parse(this.cpdpPurchasingDoc.DPConfig);
+        cpdpPurchasingDocDPConfig[0].label = form.value.purchasingDocVal;
+        this.cpdpPurchasingDoc.DPConfig = JSON.stringify(cpdpPurchasingDocDPConfig[0]);
+        
+        //create function todo        
+        let cpdpPurchasingOrgDPConfig = JSON.parse(this.cpdpPurchasingOrg.DPConfig);
+        cpdpPurchasingOrgDPConfig[0].label = form.value.purchasingOrgVal;
+        this.cpdpPurchasingOrg.DPConfig = JSON.stringify(cpdpPurchasingOrgDPConfig[0]);
+        
+        //create function todo
+        let cpdpPurchasingVendorDPConfig = JSON.parse(this.cpdpPurchasingVendor.DPConfig);
+        cpdpPurchasingVendorDPConfig[0].label = form.value.vendorVal;    
+        this.cpdpPurchasingVendor.DPConfig = JSON.stringify(cpdpPurchasingVendorDPConfig[0]);
 
+        console.log("field 4 object...");
+        console.log(this.cpdpPurchasingDoc)
+        console.log("field 5 object...");
+        console.log(this.cpdpPurchasingOrg)
+        console.log("field 6 object...");
+        console.log(this.cpdpPurchasingVendor)
+            
 
         //Calls
-       // this.postallObjects(this.cpdpTotalAmmout, this.cpdpCurrencyType, this.cpdpHeaderDesc)
+       this.postallObjects(
+           this.cpdpTotalAmmout, 
+           this.cpdpCurrencyType, 
+           this.cpdpHeaderDesc, 
+           this.cpdpPurchasingDoc,
+           this.cpdpPurchasingOrg,
+           this.cpdpPurchasingVendor
+        )
     }
 }

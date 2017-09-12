@@ -8,14 +8,21 @@
         text-transform: uppercase;
         color: #fff;
         position:  relative;
+        clear: right;
 
     }
     &__selected-source, &__button-close{
         font-size: 11px; 
-        color: #fff; 
+        color: #337ab7; 
         font-weight: bolder;
         float: right;
         text-transform: capitalize;
         text-decoration: underline;
+        margin-bottom: 10px;
+        font-weight: 900;
+    }
+
+    &__button-done{
+        color: #fff;
     }
 }

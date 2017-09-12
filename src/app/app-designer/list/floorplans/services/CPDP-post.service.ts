@@ -12,7 +12,7 @@ export class CPDPPostService {
 
     private _options;
 
-    private _baseApiUrl = API.baseUrl+'/DataProvidersCollection';
+    private _baseApiUrl = API.baseUrl+'DataProvidersCollection';
     constructor(private http: Http) {
         this._headers = new Headers();
         this._headers2 = new Headers();
@@ -79,6 +79,54 @@ export class CPDPPostService {
                 // res.status
                     if (res.status === 201) {
                         console.log("3: Configuration saved successfully!!")
+                    }
+                }
+            )
+    }
+
+    doPost4($obj4, token) {
+        // console.log('posting... from doPOst')
+        console.log('4: posting now...');
+        this._headers2.delete("x-csrf-token");
+        this._headers2.append("x-csrf-token", token);
+        return this.http.post(this._baseApiUrl, $obj4, {
+            headers: this._headers2
+        }).map(res => {
+                // res.status
+                    if (res.status === 201) {
+                        console.log("4: Configuration saved successfully!!")
+                    }
+                }
+            )
+    }
+
+    doPost5($obj5, token) {
+        // console.log('posting... from doPOst')
+        console.log('5: posting now...');
+        this._headers2.delete("x-csrf-token");
+        this._headers2.append("x-csrf-token", token);
+        return this.http.post(this._baseApiUrl, $obj5, {
+            headers: this._headers2
+        }).map(res => {
+                // res.status
+                    if (res.status === 201) {
+                        console.log("5: Configuration saved successfully!!")
+                    }
+                }
+            )
+    }
+
+    doPost6($obj6, token) {
+        // console.log('posting... from doPOst')
+        console.log('6: posting now...');
+        this._headers2.delete("x-csrf-token");
+        this._headers2.append("x-csrf-token", token);
+        return this.http.post(this._baseApiUrl, $obj6, {
+            headers: this._headers2
+        }).map(res => {
+                // res.status
+                    if (res.status === 201) {
+                        console.log("6: Configuration saved successfully!!")
                     }
                 }
             )
