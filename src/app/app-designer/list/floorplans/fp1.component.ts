@@ -57,16 +57,16 @@ declare var jQuery: any;
 
     <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
          <app-loading *ngIf="loading===true"></app-loading>
-
          <form #floorplanForm="ngForm" (ngSubmit)="onSubmit(floorplanForm)">
-            
             <div class="tabs__buttons">
                 <button class="btn btn-primary btn-sm" type="button" (click)="showProperties()">Done</button>
                 <button class="btn btn-sm btn-danger" type="button" (click)="removeFloorplan()">Remove</button>
                 <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="showProperties()"></span>
             </div>
-            
+           
             <div class="form-group" style="padding-top: 40px;">
+            <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
+
                 <label class="tabs__form-label" for="title">Title</label>
                 <input type="text" value="Scan service order" class="form-control" name="title" #title [ngModel]="title.value" /> 
             </div>
@@ -116,6 +116,7 @@ declare var jQuery: any;
 export class FP1Component {
     
     loading: boolean;
+    success: boolean = false;
     public showPropertyPanel: boolean = false;
 
     constructor(
@@ -319,6 +320,11 @@ export class FP1Component {
                     this._floorplan1UIPostService.doPost($uiObj, _token).subscribe(
                         ()=> {
                             this.loading = false;
+                            this.success = true;
+                            
+                            setTimeout(() => {
+                                this.success = false;
+                            }, 5000);
                         }
                     )
                 }
