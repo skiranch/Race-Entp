@@ -71,8 +71,8 @@ declare var jQuery: any;
                             <p class="floorplan__body-text-2" >Outstanding PO Value: 180,200 USD</p>-->
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-1" style="padding: 0;"><input type="radio" /></div>
-                                    <div class="col-md-11" style="padding: 0;">
+                                    <div class="col-md-1 no-padding"><input type="radio" /></div>
+                                    <div class="col-md-11 no-padding">
                                         <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
                                         <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
                                         <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
@@ -198,7 +198,7 @@ declare var jQuery: any;
             
         <div [hidden]="poSummaryPanel !==true">
 
-            <h4 class="section__header" >
+            <h4 class="section__header">
                 {{dataProvider.value}} / {{headerDataProvider.value}}
                 
                 <span class="section__selected-source">
@@ -228,111 +228,146 @@ declare var jQuery: any;
                     </option>
                 </select>
             </div>
-
-                <div class="form-group" [hidden]="searchAPI === false">
-                    <label class="floorplan__form-label" for="searchApi">Search API</label>
-                    <input type="text" class="form-control" #searchApi (blur)="showListOfAPIs(searchApi.value)" placeholder="Enter API name" />
-                </div>
-
-                <div class="form-group">
-                    <div *ngIf="apiListDD !== false">
-                    <label class="floorplan__form-label" for="listofSearchedApis">
-                        Select API
-                    </label>
-                    <select  class="form-control" #listofSearchedApis name="listofSearchedApis" (change)="showListOfFields(listofSearchedApis.value)" [ngModel]="listofSearchedApis.value">
-                        <option value="" disabled selected>--Select--</option>
-                        <option value="{{data.APIName}}" *ngFor="let data of APIList">
-                            {{data.APIName}} - {{data.APIDesc}}
-                        </option>
-                    </select>
+            
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="tab" href="#1b">{{dataProvider.value}}</a></li>
+                <li><a data-toggle="tab" href="#2b">{{headerDataProvider.value}}</a></li>
+            </ul>
+            
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1b">
+                
+                    <div class="form-group" [hidden]="searchAPI === false">
+                        <label class="floorplan__form-label" for="searchApi">Search API</label>
+                        <input type="text" class="form-control" #searchApi (blur)="showListOfAPIs(searchApi.value)" placeholder="Enter API name" />
                     </div>
+
+                    <div class="form-group">
+                        <div *ngIf="apiListDD !== false">
+                            <label class="floorplan__form-label" for="listofSearchedApis">
+                                Select API
+                            </label>
+                            <select  class="form-control" #listofSearchedApis name="listofSearchedApis" (change)="showListOfFields(listofSearchedApis.value)" [ngModel]="listofSearchedApis.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.APIName}}" *ngFor="let data of APIList">
+                                    {{data.APIName}} - {{data.APIDesc}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+            <div class="" *ngIf="showFields !== false">
+                        <input type="hidden" [ngModel]="dataProvider.value" #dataProviderVal name="dataProviderVal" value="dataProvider.value" />
+                        <input type="hidden" [ngModel]="headerDataProvider.value" #headerDataProviderVal name="headerDataProviderVal" value="headerDataProvider.value" />
+
+                        <div class="form-group">
+                            <label class="floorplan__form-label" for="totalAmmount">
+                                Total Ammount
+                            </label>
+                        
+                            <select (focusout)="removeHighlightCorresponding('valHighlight')" (focus)="highlightCorresponding('valHighlight')" class="form-control" name="totalAmmount" #totalAmmount [ngModel]="totalAmmount.value">
+                                
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
+                                    {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="floorplan__form-label" for="currencyType">
+                                Currency Type
+                            </label>
+                            <select (focusout)="removeHighlightCorresponding('currencyHighlight')" (focus)="highlightCorresponding('currencyHighlight')" class="form-control" #currencyType name="currencyType" [ngModel]="currencyType.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                    {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="floorplan__form-label" for="headerDesc">
+                                Header Description
+                            </label>
+                            <select (focusout)="removeHighlightCorresponding('descHighlight')" (focus)="highlightCorresponding('descHighlight')" class="form-control" #headerDesc name="headerDesc" [ngModel]="headerDesc.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                    {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                </option>
+                            </select>
+                        </div>
+
+            </div>
+
                 </div>
-
-                <div class="" *ngIf="showFields !== false">
-                    <input type="hidden" [ngModel]="dataProvider.value" #dataProviderVal name="dataProviderVal" value="dataProvider.value" />
-                    <input type="hidden" [ngModel]="headerDataProvider.value" #headerDataProviderVal name="headerDataProviderVal" value="headerDataProvider.value" />
-
+                <div class="tab-pane" id="2b">
+                
                     <input type="hidden" [ngModel]="purchasingDoc.value" #purchasingDocVal name="purchasingDocVal" value="purchasingDoc.value" />
                     <input type="hidden" [ngModel]="purchasingOrg.value" #purchasingOrgVal name="purchasingOrgVal" value="purchasingOrg.value" />
                     <input type="hidden" [ngModel]="vendor.value" #vendorVal name="vendorVal" value="vendor.value" />
-
-                    <div class="form-group">
-                        <label class="floorplan__form-label" for="totalAmmount">
-                            Total Ammount
-                        </label>
                     
-                        <select (focusout)="removeHighlightCorresponding('valHighlight')" (focus)="highlightCorresponding('valHighlight')" class="form-control" name="totalAmmount" #totalAmmount [ngModel]="totalAmmount.value">
-                            
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                        </select>
+                    <div class="form-group" [hidden]="searchAPI2 === false">
+                        <label class="floorplan__form-label" for="searchApi2">Search API</label>
+                        <input type="text" class="form-control" #searchApi2 (blur)="showListOfAPIs2(searchApi2.value)" placeholder="Enter API name" />
                     </div>
 
                     <div class="form-group">
-                        <label class="floorplan__form-label" for="currencyType">
-                            Currency Type
-                        </label>
-                        <select (focusout)="removeHighlightCorresponding('currencyHighlight')" (focus)="highlightCorresponding('currencyHighlight')" class="form-control" #currencyType name="currencyType" [ngModel]="currencyType.value">
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                        </select>
+                        <div *ngIf="apiListDD2 !== false">
+                            <label class="floorplan__form-label" for="listofSearchedApis">
+                                Select API
+                            </label>
+                            <select  class="form-control" #listofSearchedApis2 name="listofSearchedApis2" (change)="showListOfFields2(listofSearchedApis2.value)" [ngModel]="listofSearchedApis2.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data2.APIName}}" *ngFor="let data2 of APIList2">
+                                    {{data2.APIName}} - {{data2.APIDesc}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="floorplan__form-label" for="headerDesc">
-                            Header Description
-                        </label>
-                        <select (focusout)="removeHighlightCorresponding('descHighlight')" (focus)="highlightCorresponding('descHighlight')" class="form-control" #headerDesc name="headerDesc" [ngModel]="headerDesc.value">
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                        </select>
-                    </div>
+                    <div class="" *ngIf="showFields2 !== false">
+                        <div class="form-group">
+                            <label class="floorplan__form-label" for="headerPurchasingDoc">
+                                {{purchasingDoc.value}}
+                            </label>
+                        
+                            <select (focusout)="removeHighlightCorresponding('purchasingDocVal')" (focus)="highlightCorresponding('purchasingDocVal')" class="form-control" name="headerPurchasingDoc" #headerPurchasingDoc [ngModel]="headerPurchasingDoc.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2">
+                                    {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                </option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="floorplan__form-label" for="headerPurchasingDoc">
-                            {{purchasingDoc.value}}
-                        </label>
-                    
-                        <select (focusout)="removeHighlightCorresponding('purchasingDocVal')" (focus)="highlightCorresponding('purchasingDocVal')" class="form-control" name="headerPurchasingDoc" #headerPurchasingDoc [ngModel]="headerPurchasingDoc.value">
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
+                        <div class="form-group">
+                                <label class="floorplan__form-label" for="headerPurchasingOrg">
+                                    {{purchasingOrg.value}}
+                                </label>
+                                <select (focusout)="removeHighlightCorresponding('purchasingOrgVal')" (focus)="highlightCorresponding('purchasingOrgVal')" class="form-control" #headerPurchasingOrg name="headerPurchasingOrg" [ngModel]="headerPurchasingOrg.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
                                 {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                             </option>
-                        </select>
-                    </div>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="floorplan__form-label" for="headerPurchasingOrg">
-                            {{purchasingOrg.value}}
-                        </label>
-                        <select (focusout)="removeHighlightCorresponding('purchasingOrgVal')" (focus)="highlightCorresponding('purchasingOrgVal')" class="form-control" #headerPurchasingOrg name="headerPurchasingOrg" [ngModel]="headerPurchasingOrg.value">
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                        </select>
+                        <div class="form-group">
+                            <label class="floorplan__form-label" for="headerVendor">
+                                {{vendor.value}}
+                            </label>
+                            <select (focusout)="removeHighlightCorresponding('purchasingVendorVal')" (focus)="highlightCorresponding('purchasingVendorVal')" class="form-control" #headerVendor name="headerVendor" [ngModel]="headerVendor.value">
+                                <option value="" disabled selected>--Select--</option>
+                                <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
+                                    {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="floorplan__form-label" for="headerVendor">
-                            {{vendor.value}}
-                        </label>
-                        <select (focusout)="removeHighlightCorresponding('purchasingVendorVal')" (focus)="highlightCorresponding('purchasingVendorVal')" class="form-control" #headerVendor name="headerVendor" [ngModel]="headerVendor.value">
-                            <option value="" disabled selected>--Select--</option>
-                            <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
                 </div>
             </div>
+            <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
+        </div>
 
         </form>
         <!--POSUMMARY END-->
@@ -349,9 +384,12 @@ export class FP2Component {
     loading: boolean;
     connectionServiceDD: boolean = false;
     searchAPI: boolean = false;
+    searchAPI2: boolean = false;
     apiListDD: boolean = false;
+    apiListDD2: boolean = false;
     loadingApis: boolean = false;
     showFields: boolean = false;
+    showFields2: boolean = false;
     success: boolean = false;
 
     public showPropertyPanel: boolean = false;
@@ -360,7 +398,10 @@ export class FP2Component {
     public dataSource = [];
     public connectionProviders = [];
     public APIList = [];
+    public APIList2 = [];
     public listOfFields = [];
+    public listOfFields2 = [];
+    
 
     private postData;
 
@@ -368,6 +409,7 @@ export class FP2Component {
     systemId: string
     cpName: string
     selectedAPI: string;
+    selectedAPI2: string;
 
     constructor(
         private router: Router,
@@ -422,8 +464,8 @@ export class FP2Component {
         "ConnectionProvider": "" //* cp name
     }
 
-      //post request 4
-      cpdpPurchasingDoc = {
+    //post request 4
+    cpdpPurchasingDoc = {
         "DPConfig": "[{\"label\":\"\",\"position\":\"4\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
@@ -436,8 +478,8 @@ export class FP2Component {
         "ConnectionProvider": "" //* cp name
     }
 
-     //post request 5
-     cpdpPurchasingOrg = {
+    //post request 5
+    cpdpPurchasingOrg = {
         "DPConfig": "[{\"label\":\"\",\"position\":\"5\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
@@ -508,60 +550,60 @@ export class FP2Component {
         },
         "body": [
             {
-            "elementTitle": "Outstanding PO Value",
-            "position": 1,
-            "style": "",
-            "componentCategory": "HEADER",
-            "componentType": "HEADERWITHOUTSTANDINGVALUE",
-            "dataprovider": "",
-            "dataproviderType": "GET",
-            "dpParameters": "",
-            "navigation": ""
-        },
-        {
-            "elementTitle": "FIND ORDER",
-            "position": 2,
-            "style": "{'textColor':'','selectionColor':''}",
-            "componentCategory": "WIDGETTABBARITEM",
-            "componentType": "ORDERSTAB",
-            "dataprovider": "",
-            "dataproviderType": "GET",
-            "dpParameters": "",
-            "navigation": ""
-        },
-        {
-            "elementTitle": "ENTER SERVICES",
-            "position": 3,
-            "style": "{'textColor':'','selectionColor':''}",
-            "componentCategory": "WIDGETTABBARITEM",
-            "componentType": "ORDERSTAB",
-            "dataprovider": "",
-            "dataproviderType": "GET",
-            "dpParameters": "",
-            "navigation": ""
-        },
-        {
-            "elementTitle": "ADD NOTES & MEDIA",
-            "position": 4,
-            "style": "{'textColor':'','selectionColor':''}",
-            "componentCategory": "WIDGETTABBARITEM",
-            "componentType": "ORDERSTAB",
-            "dataprovider": "",
-            "dataproviderType": "GET",
-            "dpParameters": "",
-            "navigation": ""
-        },
-        {
-            "elementTitle": "REVIEW AND CONFIRM",
-            "position": 5,
-            "style": "{'textColor':'','selectionColor':''}",
-            "componentCategory": "WIDGETTABBARITEM",
-            "componentType": "ORDERSTAB",
-            "dataprovider": "",
-            "dataproviderType": "GET",
-            "dpParameters": "",
-            "navigation": ""
-        }],
+                "elementTitle": "Outstanding PO Value",
+                "position": 1,
+                "style": "",
+                "componentCategory": "HEADER",
+                "componentType": "HEADERWITHOUTSTANDINGVALUE",
+                "dataprovider": "",
+                "dataproviderType": "GET",
+                "dpParameters": "",
+                "navigation": ""
+            },
+            {
+                "elementTitle": "FIND ORDER",
+                "position": 2,
+                "style": "{'textColor':'','selectionColor':''}",
+                "componentCategory": "WIDGETTABBARITEM",
+                "componentType": "ORDERSTAB",
+                "dataprovider": "",
+                "dataproviderType": "GET",
+                "dpParameters": "",
+                "navigation": ""
+            },
+            {
+                "elementTitle": "ENTER SERVICES",
+                "position": 3,
+                "style": "{'textColor':'','selectionColor':''}",
+                "componentCategory": "WIDGETTABBARITEM",
+                "componentType": "ORDERSTAB",
+                "dataprovider": "",
+                "dataproviderType": "GET",
+                "dpParameters": "",
+                "navigation": ""
+            },
+            {
+                "elementTitle": "ADD NOTES & MEDIA",
+                "position": 4,
+                "style": "{'textColor':'','selectionColor':''}",
+                "componentCategory": "WIDGETTABBARITEM",
+                "componentType": "ORDERSTAB",
+                "dataprovider": "",
+                "dataproviderType": "GET",
+                "dpParameters": "",
+                "navigation": ""
+            },
+            {
+                "elementTitle": "REVIEW AND CONFIRM",
+                "position": 5,
+                "style": "{'textColor':'','selectionColor':''}",
+                "componentCategory": "WIDGETTABBARITEM",
+                "componentType": "ORDERSTAB",
+                "dataprovider": "",
+                "dataproviderType": "GET",
+                "dpParameters": "",
+                "navigation": ""
+            }],
         "footer": []
     }
 
@@ -596,13 +638,17 @@ export class FP2Component {
         this.cpName = val;
         if (val !== "Select") {
             this.searchAPI = true;
+            this.searchAPI2 = true;
         } else {
             this.searchAPI = false;
+            this.searchAPI2 = false;
         }
 
     }
 
     showListOfAPIs(val: string) {
+        console.log(val)
+        
         if (val.length >= 2) {
             this.loading = true;
             this.apiVal = val;
@@ -611,8 +657,26 @@ export class FP2Component {
                 data => this.APIList = data.d.results,
                 error => console.log(error),
                 () => {
-                this.loading = false
+                    this.loading = false
                     this.apiListDD = true
+                }
+                )
+
+        }
+    }
+
+    showListOfAPIs2(val: string) {
+        console.log(val)
+        if (val.length >= 2) {
+            this.loading = true;
+            this.apiVal = val;
+            this._apiListService.getApiList(this.apiVal, this.systemId, this.cpName)
+                .subscribe(
+                data => this.APIList2 = data.d.results,
+                error => console.log(error),
+                () => {
+                    this.loading = false
+                    this.apiListDD2 = true
                 }
                 )
 
@@ -638,6 +702,25 @@ export class FP2Component {
         }
     }
 
+    showListOfFields2(val: string) {
+        if (val !== 'Select') {
+            this.selectedAPI2 = val;
+            console.log(this.searchAPI);
+            this.loading = true;
+            this._listOfFieldsService.getListOfFields(this.selectedAPI2, this.systemId, this.cpName)
+                .subscribe(
+                data => this.listOfFields2 = data.d.results,
+                error => console.log(error),
+                () => {
+                    this.showFields2 = true
+                    this.loading = false;
+                    //console.log(this.listOfFields)
+                }
+            )
+
+        }
+    }
+
     postallObjects($obj1, $obj2, $obj3, $obj4, $obj5, $obj6) {
         this.loading = true;
         let _token: string = '';
@@ -651,32 +734,32 @@ export class FP2Component {
                 if (_token !== '') {
                     console.log('its not empty');
                     console.log("token before:: " + _token);
-                    
+
                     this._cpdpPostService.doPost1($obj1, _token).subscribe(
-                        () => {}
+                        () => { }
                     )
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost2($obj2, _token).subscribe(
-                            () => {}
+                            () => { }
                         )
                     }, 4000);
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost3($obj3, _token).subscribe(
-                            () => {}
+                            () => { }
                         )
                     }, 6000);
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost4($obj4, _token).subscribe(
-                            () => {}
+                            () => { }
                         )
                     }, 8000);
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost5($obj5, _token).subscribe(
-                            () => {}
+                            () => { }
                         )
                     }, 10000);
 
@@ -687,7 +770,7 @@ export class FP2Component {
                                 this.loading = false;
                                 this.poSummaryPanel = false;
                                 this.success = true;
-                                
+
                                 setTimeout(() => {
                                     this.success = false;
                                 }, 13000);
@@ -775,9 +858,9 @@ export class FP2Component {
         jQuery("#" + val).removeClass('floorplan__highlight');
     }
 
-    togglePanel(id, event:any) {
+    togglePanel(id, event: any) {
         jQuery("." + id).slideToggle();
-        
+
     }
 
     sendFloorplanUI(form: NgForm) {
@@ -794,7 +877,7 @@ export class FP2Component {
         //POSUMMARY
         this.floorplan_new.body[0].dataprovider = form.value.dataProvider;
         this.floorplan_new.body[0].elementTitle = form.value.headerDataDesc;
-        
+
         //POHEADER
         this.floorplan_new.body[1].dataprovider = form.value.bodyDataProvider;
 
@@ -817,32 +900,65 @@ export class FP2Component {
     }
 
     sendFloorplanDC(form: NgForm) {
-        
+
         //this is a hack for the demo purpose
-        var feild1 = form.value.totalAmmount;
-        var parts1 = feild1.split('/', 2);
+        if(form.value.totalAmmount !== undefined){
+            var feild1 = form.value.totalAmmount;
+            var parts1 = feild1.split('/', 2);
+        }else{
+            var parts1 = <any>[];
+            parts1[0] = 'Not Selected';
+            parts1[1] = 'Not Selected';
+        }
+        if(form.value.currencyType !== undefined){
+            var feild2 = form.value.currencyType;
+            var parts2 = feild2.split('/', 2);
+        }else{
+            var parts2 = <any>[];
+            parts2[0] = 'Not Selected';
+            parts2[1] = 'Not Selected';
+        }
+        if(form.value.headerDesc !== undefined){
+            var feild3 = form.value.headerDesc;
+            var parts3 = feild3.split('/', 2);
+        }else{
+            var parts3 = <any>[];
+            parts3[0] = 'Not Selected';
+            parts3[1] = 'Not Selected';
+        }
+        debugger;
+        if(form.value.headerPurchasingDoc !== undefined){
+            var feild4 = form.value.headerPurchasingDoc;
+            var parts4 = feild4.split('/', 2);
+        }else{
+            var parts4 = <any>[];
+            parts4[0] = 'Not Selected';
+            parts4[1] = 'Not Selected';
+        }
+        if(form.value.headerPurchasingOrg !== undefined){
+            var feild5 = form.value.headerPurchasingOrg;
+            var parts5 = feild5.split('/', 2);
+        }else{
+            var parts5 = <any>[];
+            parts5[0] = 'Not Selected';
+            parts5[1] = 'Not Selected';
+        }
+        if(form.value.headerVendor !== undefined){
+            var feild6 = form.value.headerVendor;
+            var parts6 = feild6.split('/', 2);
+        }else{
+            var parts6 = <any>[];
+            parts6[0] = 'Not Selected';
+            parts6[1] = 'Not Selected';
+        }
 
-        var feild2 = form.value.currencyType;
-        var parts2 = feild2.split('/', 2);
-
-        var feild3 = form.value.headerDesc;
-        var parts3 = feild3.split('/', 2);
-
-        var feild4 = form.value.headerPurchasingDoc;
-        var parts4 = feild4.split('/', 2);
-
-        var feild5 = form.value.headerPurchasingOrg;
-        var parts5 = feild5.split('/', 2);
-
-        var feild6 = form.value.headerVendor;
-        var parts6 = feild6.split('/', 2);
-
+        console.log(parts1)
         this.cpdpTotalAmmout.DataSource = form.value.dataSources;
         this.cpdpTotalAmmout.ConnectionProvider = form.value.connectionService;
         this.cpdpTotalAmmout.ParameterName = parts1[1];
         this.cpdpTotalAmmout.APIName = form.value.listofSearchedApis;
         this.cpdpTotalAmmout.FieldName = parts1[0];
-        
+
         this.cpdpTotalAmmout.DataProvider = form.value.dataProviderVal;
 
         this.cpdpCurrencyType.DataSource = form.value.dataSources;
@@ -860,7 +976,7 @@ export class FP2Component {
         this.cpdpHeaderDesc.FieldName = parts3[0];
 
         this.cpdpHeaderDesc.DataProvider = form.value.dataProviderVal;
-        
+
         this.cpdpPurchasingDoc.DataSource = form.value.dataSources;
         this.cpdpPurchasingDoc.ConnectionProvider = form.value.connectionService;
         this.cpdpPurchasingDoc.ParameterName = parts4[1];
@@ -886,27 +1002,28 @@ export class FP2Component {
         this.cpdpPurchasingVendor.DataProvider = form.value.headerDataProviderVal;
 
         console.log(form.value.vendorVal)
-        
+
         console.log("field 1 object...");
         console.log(this.cpdpTotalAmmout)
         console.log("field 2 object...");
         console.log(this.cpdpCurrencyType)
         console.log("field 3 object...");
         console.log(this.cpdpHeaderDesc)
+
         
         //create function todo
-        let cpdpPurchasingDocDPConfig = JSON.parse(this.cpdpPurchasingDoc.DPConfig);
+        let cpdpPurchasingDocDPConfig: Array<any> = JSON.parse(this.cpdpPurchasingDoc.DPConfig);
         cpdpPurchasingDocDPConfig[0].label = form.value.purchasingDocVal;
         this.cpdpPurchasingDoc.DPConfig = JSON.stringify(cpdpPurchasingDocDPConfig[0]);
-        
+
         //create function todo        
         let cpdpPurchasingOrgDPConfig = JSON.parse(this.cpdpPurchasingOrg.DPConfig);
         cpdpPurchasingOrgDPConfig[0].label = form.value.purchasingOrgVal;
         this.cpdpPurchasingOrg.DPConfig = JSON.stringify(cpdpPurchasingOrgDPConfig[0]);
-        
+
         //create function todo
         let cpdpPurchasingVendorDPConfig = JSON.parse(this.cpdpPurchasingVendor.DPConfig);
-        cpdpPurchasingVendorDPConfig[0].label = form.value.vendorVal;    
+        cpdpPurchasingVendorDPConfig[0].label = form.value.vendorVal;
         this.cpdpPurchasingVendor.DPConfig = JSON.stringify(cpdpPurchasingVendorDPConfig[0]);
 
         console.log("field 4 object...");
@@ -915,16 +1032,16 @@ export class FP2Component {
         console.log(this.cpdpPurchasingOrg)
         console.log("field 6 object...");
         console.log(this.cpdpPurchasingVendor)
-            
+
 
         //Calls
-       this.postallObjects(
-           this.cpdpTotalAmmout, 
-           this.cpdpCurrencyType, 
-           this.cpdpHeaderDesc, 
-           this.cpdpPurchasingDoc,
-           this.cpdpPurchasingOrg,
-           this.cpdpPurchasingVendor
+        this.postallObjects(
+            this.cpdpTotalAmmout,
+            this.cpdpCurrencyType,
+            this.cpdpHeaderDesc,
+            this.cpdpPurchasingDoc,
+            this.cpdpPurchasingOrg,
+            this.cpdpPurchasingVendor
         )
     }
 }

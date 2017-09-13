@@ -44,7 +44,7 @@ declare var jQuery: any;
                 <p class="floorplan__guide-desc">Start by searching for the service order</p>
             </div>
 
-            <div class="floorplan__search-bar" style="margin-top: -10px;">
+            <div class="floorplan__search-bar floorplan__search-bar--marginfix">
                 <input type="text" class="floorplan__search-input" placeholder="Search/Scan" />
                 <span class="icon-Scan2 floorplan__icon-Scan2"></span>
             </div>
@@ -64,7 +64,7 @@ declare var jQuery: any;
                 <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="showProperties()"></span>
             </div>
            
-            <div class="form-group" style="padding-top: 40px;">
+            <div class="form-group floorpaln__padding-top-40">
             <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
 
                 <label class="tabs__form-label" for="title">Title</label>
