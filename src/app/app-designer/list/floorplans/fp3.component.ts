@@ -20,7 +20,7 @@ declare var jQuery: any;
         <div class="floorplan">
             <header class="floorplan__header">
                 <div class="floorplan__top">
-                <div class="pull-left">
+                    <div class="pull-left">
                         <span class="icon-acb_back_new floorplan__icon-acb_back_new"></span>
                     </div>
                     <div class="pull-right">
@@ -31,7 +31,26 @@ declare var jQuery: any;
                 <div class="floorplan__name">
                     Service Order
                 </div>
-               
+               <div class="floorplan__header-content">
+                    <div class="floorplan__header-logo">
+
+                    </div>
+                    <div class="floorplan__header-desc">
+                        <span class="floorplan__header-name">
+                            Shell Canada Energy
+                        </span>
+                        <span class="floorplan__header-name">
+                            PO No: 4323456765
+                        </span>
+
+                        <span class="floorplan__header-details">
+                            Document date: March 18, 2017
+                        </span>
+                        <span class="floorplan__header-details">
+                            Outstanding PO Value: 60,000 CAD
+                        </span>
+                    </div>
+               </div>
             </header>
 
             <nav class="floorplan__nav">

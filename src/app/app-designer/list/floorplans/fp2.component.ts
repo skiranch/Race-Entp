@@ -229,9 +229,9 @@ declare var jQuery: any;
                 </select>
             </div>
             
-            <ul class="nav nav-pills">
-                <li class="active"><a data-toggle="tab" href="#1b">{{dataProvider.value}}</a></li>
-                <li><a data-toggle="tab" href="#2b">{{headerDataProvider.value}}</a></li>
+            <ul class="section__nav" [hidden]="searchAPI === false">
+                <li class="section__nav-list active"><a class="section__nav-item" data-toggle="tab" href="#1b">{{dataProvider.value}}</a></li>
+                <li class="section__nav-list"><a class="section__nav-item" data-toggle="tab" href="#2b">{{headerDataProvider.value}}</a></li>
             </ul>
             
             <div class="tab-content clearfix">
@@ -926,7 +926,6 @@ export class FP2Component {
             parts3[0] = 'Not Selected';
             parts3[1] = 'Not Selected';
         }
-        debugger;
         if(form.value.headerPurchasingDoc !== undefined){
             var feild4 = form.value.headerPurchasingDoc;
             var parts4 = feild4.split('/', 2);

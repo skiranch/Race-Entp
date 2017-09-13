@@ -25,4 +25,30 @@
     &__button-done{
         color: #fff;
     }
+
+    &__nav{
+        padding: 0;
+        background: #e3e3e3;
+        text-align: left;
+        border: solid 1px #eee;
+    }
+    &__nav-list{
+        display: inline-block;
+    }
+
+    &__nav-list.active{
+        background: #fff;
+        font-weight: 900;
+    }
+
+    &__nav-item{
+        display: block;
+        padding: 10px;
+        color: #4e4e4f;
+        font-size: 11px;
+
+        &:hover, &:focus{
+            text-decoration: none;
+        }
+    }
 }
