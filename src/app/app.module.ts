@@ -16,7 +16,7 @@ import { firebaseConfig } from './firebaseConfig';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopmenuComponent } from './topmenu/topmenu.component';
 import { HomeComponent } from './home/home.component';
-
+import { OrderByPipe } from './app-generation-portal/orderby.pipe';
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import { HomeComponent } from './home/home.component';
     SidebarComponent,
     TopmenuComponent,
     HomeComponent,
+    OrderByPipe
   ],
 
   imports: [

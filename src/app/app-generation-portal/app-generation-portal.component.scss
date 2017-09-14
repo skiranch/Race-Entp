@@ -27,15 +27,31 @@
 }
 label{
     
-      font-size: 12px;
+      font-size: 11px;
       font-family: Arial, Helvetica, sans-serif;
-      padding:10px 5px 10px 10px;
+      font-weight: bold;
+      width:250px;
+      color: #cccccc
 }
 input[type="text"],select{
     padding: 6px 6px 6px 6px;
     border: solid 1px #dcdcdc;
     border-radius: 15px;
+    height: 33px;
+    width:275px; 
+    
+}
+input[type="color"]{
     height: 30px;
+    width:275px; 
+    border: solid 1px #dcdcdc;
+    border-radius: 15px;
+}
+.multiselect{
+    padding: 6px 6px 6px 6px;
+    border: solid 1px #dcdcdc;
+    border-radius: 15px;
+    height: 70px;
     width:275px; 
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
@@ -58,13 +74,26 @@ input[type="text"],select{
 .nav>li>a:focus, .nav>li>a:hover{
     background-color: transparent;
 }
+.modal-footer
+{
+    box-shadow: 0px -10px 5px -8px #ccc;
+    text-align: center;
+}
+.modal-footerContent
+{
+    align-content: center;
+}
 .modal-header {
     padding-bottom: 5px;
    
     border: 0px; 
 }
 .tab-content .tab-pane {
-	padding: 20px 10px 0 50px;
+    padding: 20px 10px 0 50px;
+    
+}
+.nav-tabs{
+    box-shadow: 0 10px 5px -6px #ccc;
 }
 .modal-body {
     position: relative;
@@ -72,4 +101,39 @@ input[type="text"],select{
 }
 .modal-title{
     padding-left: 15px;
+}
+
+.website-input{
+    height:20px;
+    width:125px;
+}
+.website-head{
+    margin:auto;
+}
+.button-adddel{
+    height: 25px;
+    width:25px;
+}
+.pointer{
+    cursor: pointer;
+}
+.btn{
+    padding: 6px 40px;
+    border-radius: 500px
+}
+.btn.btn-primary {
+        color: #2A9FD9;
+        background-color: #ffffff;
+   }
+.btn.btn-nonprimary{
+    color: #ffffff;
+    background-color: #0B00FF;
+    border-color:#0B00FF;
+}
+.modal-scroll
+{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 15px;
 }
