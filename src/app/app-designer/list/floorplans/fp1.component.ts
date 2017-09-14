@@ -48,7 +48,7 @@ declare var jQuery: any;
                 <input type="text" class="floorplan__search-input" placeholder="Search/Scan" />
                 <span class="icon-Scan2 floorplan__icon-Scan2"></span>
             </div>
-            <div class="floorplan__body">
+            <div class="floorplan__body floorplan__body--img">
                 
             </div>
             <app-fp-footer></app-fp-footer>

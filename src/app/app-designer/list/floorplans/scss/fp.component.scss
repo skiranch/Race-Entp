@@ -52,6 +52,11 @@
         overflow-y: auto;
         background: #eee;
         min-height: 330px;
+
+        &--img{
+            background: #eee url('/assets/img/floorplans/default-img.png') no-repeat;
+            background-size: 100% auto;
+        }
     }
 
     &__nav{

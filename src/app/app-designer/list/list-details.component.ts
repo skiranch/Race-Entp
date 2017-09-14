@@ -86,15 +86,15 @@ import { AngularSplitModule } from 'angular-split';
                 </a>
               </li>
               <li class="tabs__content-item">
-                <a href="#/app-designer/list/ui/fp0" [dragData]="" dnd-draggable [dragEnabled]="true">
+                <a href="#/app-designer/list/ui/fp2" [dragData]="" dnd-draggable [dragEnabled]="true">
                   <img class="full-width" src="./assets/img/floorplans/floorplan-2.png" />
                 </a>
               </li>
-              <li class="tabs__content-item">
+              <!--<li class="tabs__content-item">
                 <a href="#/app-designer/list/ui/fp01" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
                   <img class="full-width" src="./assets/img/floorplans/onboard-login.png" />
                 </a>
-              </li>
+              </li>-->
               
             </ul>
 
