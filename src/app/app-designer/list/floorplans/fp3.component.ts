@@ -32,9 +32,9 @@ declare var jQuery: any;
                     Service Order
                 </div>
                <div class="floorplan__header-content">
-                    <div class="floorplan__header-logo">
+                    <!--<div class="floorplan__header-logo">
 
-                    </div>
+                    </div>-->
                     <div class="floorplan__header-desc">
                         <span class="floorplan__header-name">
                             Shell Canada Energy
@@ -42,13 +42,14 @@ declare var jQuery: any;
                         <span class="floorplan__header-name">
                             PO No: 4323456765
                         </span>
-
-                        <span class="floorplan__header-details">
-                            Document date: March 18, 2017
-                        </span>
-                        <span class="floorplan__header-details">
-                            Outstanding PO Value: 60,000 CAD
-                        </span>
+                        <div class="floorplan__header-details">
+                            <span class="floorplan__header-details-text">
+                                Document date: March 18, 2017
+                            </span>
+                            <span class="floorplan__header-details-text">
+                                Outstanding PO Value: 60,000 CAD
+                            </span>
+                        </div>
                     </div>
                </div>
             </header>
@@ -78,7 +79,7 @@ declare var jQuery: any;
                     </li>
                 </ul>
             </div>
-            <app-fp-footer></app-fp-footer>
+            <app-fp-footer activeSearch="" activeOrders="fp2__footer-link--active"></app-fp-footer>
         </div>
     </div>
 

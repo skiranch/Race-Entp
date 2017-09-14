@@ -23,6 +23,7 @@ import { listRouting } from './list.routing';
 
 //Floorplans
 import { FPFotterComponent } from './floorplans/fp-footer.component';
+import { FPNavComponent } from './floorplans/fp-nav.component';
 import { FP0Component } from './floorplans/fp0.component';
 import { FP01Component } from './floorplans/fp01.component';
 import { FP1Component } from './floorplans/fp1.component';
@@ -56,6 +57,7 @@ import { FP3Component } from './floorplans/fp3.component';
     ListComponent,
     ListDetailsComponent,
     FPFotterComponent,
+    FPNavComponent,
     FP0Component,
     FP01Component,
     FP1Component, //new floorplans

@@ -51,6 +51,17 @@
     font-style: normal;
   }
   
+  .app-designer{
+
+    &__no-padding{
+        padding: 0;
+    }
+
+    &__paddingtop-40{
+        padding-top: 40px;
+    }
+    
+  }
   
 
 /************************* FONTS CSS END *********************/

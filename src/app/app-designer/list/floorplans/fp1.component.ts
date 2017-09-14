@@ -30,15 +30,7 @@ declare var jQuery: any;
                     {{title.value}}
                 </div>
             </header>
-            <nav class="floorplan__nav">
-                    
-                <ul class="floorplan__nav-container">
-                    <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="#">{{tabOne.value}}</a><span class="floorplan__nav-step">1</span></li>
-                    <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabTwo.value}}</a><span class="floorplan__nav-step">2</span></li>
-                    <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabThree.value}}</a><span class="floorplan__nav-step">3</span></li>
-                    <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabFour.value}}</a><span class="floorplan__nav-step">4</span></li>
-                </ul>
-            </nav>
+            <app-fp-nav tabOneName="{{tabOne.value}}" tabTwoName="{{tabTwo.value}}" tabThreeName="{{tabThree.value}}" tabFourName="{{tabFour.value}}"></app-fp-nav>
             <div class="floorplan__guide">
                 <h4 class="floorplan__guide-heading">Submit service confirmation in 4 steps</h4>
                 <p class="floorplan__guide-desc">Start by searching for the service order</p>
@@ -51,7 +43,7 @@ declare var jQuery: any;
             <div class="floorplan__body floorplan__body--img">
                 
             </div>
-            <app-fp-footer></app-fp-footer>
+            <app-fp-footer activeSearch="fp2__footer-link--active" activeOrders=""></app-fp-footer>
         </div>
     </div>
 
@@ -64,9 +56,8 @@ declare var jQuery: any;
                 <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="showProperties()"></span>
             </div>
            
-            <div class="form-group floorpaln__padding-top-40">
-            <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
-
+            <div class="form-group app-designer__paddingtop-40">
+                <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
                 <label class="tabs__form-label" for="title">Title</label>
                 <input type="text" value="Scan service order" class="form-control" name="title" #title [ngModel]="title.value" /> 
             </div>
@@ -114,7 +105,7 @@ declare var jQuery: any;
 })
 
 export class FP1Component {
-    
+
     loading: boolean;
     success: boolean = false;
     public showPropertyPanel: boolean = false;

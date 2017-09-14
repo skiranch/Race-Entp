@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppDesignerJSON }  from '../../globals';
 import { FormlyFieldConfig } from 'ng-formly';
 import { Router } from '@angular/router';
@@ -11,12 +11,12 @@ declare var jQuery: any;
         <div class="fp2__footer">
             <ul class="fp2__footer-container">
                 <li class="fp2__footer-item">
-                    <a class="fp2__footer-link fp2__footer-link--active">
+                    <a class="fp2__footer-link {{activeSearch}}">
                         <span class="icon-inr_search_symbol fp2__icon-inr_search_symbol"></span>
                         Search/Scan
                     </a>
                 </li>
-                <li class="fp2__footer-item"><a class="fp2__footer-link">
+                <li class="fp2__footer-item"><a class="fp2__footer-link {{activeOrders}}">
                     <span class="icon-List fp2__icon-List"></span>
                         Orders
                     </a>
@@ -74,5 +74,6 @@ declare var jQuery: any;
 })
 
 export class FPFotterComponent {
-
+    @Input() activeSearch: string;
+    @Input() activeOrders: string;
 }

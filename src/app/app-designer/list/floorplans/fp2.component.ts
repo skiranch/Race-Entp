@@ -1,4 +1,4 @@
-import { Component, NgModule, TemplateRef } from '@angular/core';
+import { Component, NgModule, Input } from '@angular/core';
 import { NgForm, FormGroup } from '@angular/forms';
 import { AppDesignerJSON } from '../../globals';
 import { FormlyFieldConfig } from 'ng-formly';
@@ -47,8 +47,8 @@ declare var jQuery: any;
                 <p class="floorplan__color-white" id="descHighlight">{{headerDataDesc.value}}</p>
 
             </header>
+
             <nav class="floorplan__nav">
-                    
                 <ul class="floorplan__nav-container">
                     <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="javascript:void(0)">Find order</a><span class="floorplan__nav-step">1</span></li>
                     <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Enter Services</a><span class="floorplan__nav-step">2</span></li>
@@ -56,6 +56,7 @@ declare var jQuery: any;
                     <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Confirm</a><span class="floorplan__nav-step">4</span></li>
                 </ul>
             </nav>
+
             <div class="floorplan__search-bar">
                 <input type="text" class="floorplan__search-input" placeholder="Search/scan" />
                 <span class="icon-Scan2 floorplan__icon-Scan2"></span>
@@ -71,8 +72,7 @@ declare var jQuery: any;
                             <p class="floorplan__body-text-2" >Outstanding PO Value: 180,200 USD</p>-->
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-1 no-padding"><input type="radio" /></div>
-                                    <div class="col-md-11 no-padding">
+                                    <div class="col-md-12 app-designer__no-padding">
                                         <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
                                         <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
                                         <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
@@ -83,7 +83,7 @@ declare var jQuery: any;
                     </li>
                 </ul>
             </div>
-            <app-fp-footer></app-fp-footer>
+            <app-fp-footer activeSearch="" activeOrders="fp2__footer-link--active"></app-fp-footer>
         </div>
     </div>
 
@@ -286,7 +286,7 @@ declare var jQuery: any;
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="floorplan__form-label" for="headerDesc">
                                 Header Description
                             </label>
@@ -296,7 +296,7 @@ declare var jQuery: any;
                                     {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                                 </option>
                             </select>
-                        </div>
+                        </div>-->
 
             </div>
 
@@ -338,6 +338,12 @@ declare var jQuery: any;
                                     {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                                 </option>
                             </select>
+
+                            <select class="form-control" name="headerPurchasingDocType" #headerPurchasingDocType [ngModel]="headerPurchasingDocType.value">
+                                <option value="" disabled selected>--Select type--</option>
+                                <option value="LF">Label Field</option>
+                                <option value="TF">Text Field</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -347,9 +353,15 @@ declare var jQuery: any;
                                 <select (focusout)="removeHighlightCorresponding('purchasingOrgVal')" (focus)="highlightCorresponding('purchasingOrgVal')" class="form-control" #headerPurchasingOrg name="headerPurchasingOrg" [ngModel]="headerPurchasingOrg.value">
                                     <option value="" disabled selected>--Select--</option>
                                     <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
-                                {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
-                            </option>
-                            </select>
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+
+                               <select class="form-control" name="headerPurchasingOrgType" #headerPurchasingOrgType [ngModel]="headerPurchasingOrgType.value">
+                                    <option value="" disabled selected>--Select type--</option>
+                                    <option value="LF">Label Field</option>
+                                    <option value="TF">Text Field</option>
+                                </select>
                         </div>
 
                         <div class="form-group">
@@ -361,6 +373,11 @@ declare var jQuery: any;
                                 <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
                                     {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                                 </option>
+                            </select>
+                            <select class="form-control" name="headerVendorType" #headerVendorType [ngModel]="headerVendorType.value">
+                                <option value="" disabled selected>--Select type--</option>
+                                <option value="LF">Label Field</option>
+                                <option value="TF">Text Field</option>
                             </select>
                         </div>
                     </div>
@@ -466,7 +483,7 @@ export class FP2Component {
 
     //post request 4
     cpdpPurchasingDoc = {
-        "DPConfig": "[{\"label\":\"\",\"position\":\"4\"}]",
+        "DPConfig": "[{\"label\":\"\",\"position\":\"1\",\"uifieldtype\":\"\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
         "DataProvider": "",
@@ -480,7 +497,7 @@ export class FP2Component {
 
     //post request 5
     cpdpPurchasingOrg = {
-        "DPConfig": "[{\"label\":\"\",\"position\":\"5\"}]",
+        "DPConfig": "[{\"label\":\"\",\"position\":\"2\",\"uifieldtype\":\"\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
         "DataProvider": "",
@@ -494,7 +511,7 @@ export class FP2Component {
 
     //post request 6
     cpdpPurchasingVendor = {
-        "DPConfig": "[{\"label\":\"\",\"position\":\"6\"}]",
+        "DPConfig": "[{\"label\":\"\",\"position\":\"3\",\"uifieldtype\":\"\"}]",
         "Key": true,
         "ModuleID": "SES_CONF",
         "DataProvider": "",
@@ -721,7 +738,7 @@ export class FP2Component {
         }
     }
 
-    postallObjects($obj1, $obj2, $obj3, $obj4, $obj5, $obj6) {
+    postallObjects($obj1, $obj2, $obj4, $obj5, $obj6) {
         this.loading = true;
         let _token: string = '';
         let _status;
@@ -746,22 +763,16 @@ export class FP2Component {
                     }, 4000);
 
                     setTimeout(() => {
-                        this._cpdpPostService.doPost3($obj3, _token).subscribe(
+                        this._cpdpPostService.doPost4($obj4, _token).subscribe(
                             () => { }
                         )
                     }, 6000);
 
                     setTimeout(() => {
-                        this._cpdpPostService.doPost4($obj4, _token).subscribe(
-                            () => { }
-                        )
-                    }, 8000);
-
-                    setTimeout(() => {
                         this._cpdpPostService.doPost5($obj5, _token).subscribe(
                             () => { }
                         )
-                    }, 10000);
+                    }, 8000);
 
                     setTimeout(() => {
                         this._cpdpPostService.doPost6($obj6, _token).subscribe(
@@ -773,10 +784,10 @@ export class FP2Component {
 
                                 setTimeout(() => {
                                     this.success = false;
-                                }, 13000);
+                                }, 11000);
                             }
                         )
-                    }, 12000);
+                    }, 10000);
                 }
             }
         )
@@ -968,18 +979,18 @@ export class FP2Component {
 
         this.cpdpCurrencyType.DataProvider = form.value.dataProviderVal;
 
-        this.cpdpHeaderDesc.DataSource = form.value.dataSources;
-        this.cpdpHeaderDesc.ConnectionProvider = form.value.connectionService;
-        this.cpdpHeaderDesc.ParameterName = parts3[1];
-        this.cpdpHeaderDesc.APIName = form.value.listofSearchedApis;
-        this.cpdpHeaderDesc.FieldName = parts3[0];
+        // this.cpdpHeaderDesc.DataSource = form.value.dataSources;
+        // this.cpdpHeaderDesc.ConnectionProvider = form.value.connectionService;
+        // this.cpdpHeaderDesc.ParameterName = parts3[1];
+        // this.cpdpHeaderDesc.APIName = form.value.listofSearchedApis;
+        // this.cpdpHeaderDesc.FieldName = parts3[0];
 
-        this.cpdpHeaderDesc.DataProvider = form.value.dataProviderVal;
+        // this.cpdpHeaderDesc.DataProvider = form.value.dataProviderVal;
 
         this.cpdpPurchasingDoc.DataSource = form.value.dataSources;
         this.cpdpPurchasingDoc.ConnectionProvider = form.value.connectionService;
         this.cpdpPurchasingDoc.ParameterName = parts4[1];
-        this.cpdpPurchasingDoc.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingDoc.APIName = form.value.listofSearchedApis2;
         this.cpdpPurchasingDoc.FieldName = parts4[0];
 
         this.cpdpPurchasingDoc.DataProvider = form.value.headerDataProviderVal;
@@ -987,7 +998,7 @@ export class FP2Component {
         this.cpdpPurchasingOrg.DataSource = form.value.dataSources;
         this.cpdpPurchasingOrg.ConnectionProvider = form.value.connectionService;
         this.cpdpPurchasingOrg.ParameterName = parts5[1];
-        this.cpdpPurchasingOrg.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingOrg.APIName = form.value.listofSearchedApis2;
         this.cpdpPurchasingOrg.FieldName = parts5[0];
 
         this.cpdpPurchasingOrg.DataProvider = form.value.headerDataProviderVal;
@@ -995,7 +1006,7 @@ export class FP2Component {
         this.cpdpPurchasingVendor.DataSource = form.value.dataSources;
         this.cpdpPurchasingVendor.ConnectionProvider = form.value.connectionService;
         this.cpdpPurchasingVendor.ParameterName = parts6[1];
-        this.cpdpPurchasingVendor.APIName = form.value.listofSearchedApis;
+        this.cpdpPurchasingVendor.APIName = form.value.listofSearchedApis2;
         this.cpdpPurchasingVendor.FieldName = parts6[0];
 
         this.cpdpPurchasingVendor.DataProvider = form.value.headerDataProviderVal;
@@ -1006,23 +1017,26 @@ export class FP2Component {
         console.log(this.cpdpTotalAmmout)
         console.log("field 2 object...");
         console.log(this.cpdpCurrencyType)
-        console.log("field 3 object...");
-        console.log(this.cpdpHeaderDesc)
+        // console.log("field 3 object...");
+        // console.log(this.cpdpHeaderDesc)
 
         
         //create function todo
         let cpdpPurchasingDocDPConfig: Array<any> = JSON.parse(this.cpdpPurchasingDoc.DPConfig);
         cpdpPurchasingDocDPConfig[0].label = form.value.purchasingDocVal;
+        cpdpPurchasingDocDPConfig[0].uifieldtype = form.value.headerPurchasingDocType
         this.cpdpPurchasingDoc.DPConfig = JSON.stringify(cpdpPurchasingDocDPConfig[0]);
 
         //create function todo        
         let cpdpPurchasingOrgDPConfig = JSON.parse(this.cpdpPurchasingOrg.DPConfig);
         cpdpPurchasingOrgDPConfig[0].label = form.value.purchasingOrgVal;
+        cpdpPurchasingOrgDPConfig[0].uifieldtype = form.value.headerPurchasingOrgType
         this.cpdpPurchasingOrg.DPConfig = JSON.stringify(cpdpPurchasingOrgDPConfig[0]);
 
         //create function todo
         let cpdpPurchasingVendorDPConfig = JSON.parse(this.cpdpPurchasingVendor.DPConfig);
         cpdpPurchasingVendorDPConfig[0].label = form.value.vendorVal;
+        cpdpPurchasingVendorDPConfig[0].uifieldtype = form.value.headerVendorType
         this.cpdpPurchasingVendor.DPConfig = JSON.stringify(cpdpPurchasingVendorDPConfig[0]);
 
         console.log("field 4 object...");
@@ -1037,7 +1051,6 @@ export class FP2Component {
         this.postallObjects(
             this.cpdpTotalAmmout,
             this.cpdpCurrencyType,
-            this.cpdpHeaderDesc,
             this.cpdpPurchasingDoc,
             this.cpdpPurchasingOrg,
             this.cpdpPurchasingVendor
