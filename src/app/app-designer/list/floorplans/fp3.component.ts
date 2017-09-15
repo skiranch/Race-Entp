@@ -37,19 +37,22 @@ declare var jQuery: any;
                     </div>-->
                     <div class="floorplan__header-desc">
                         <span class="floorplan__header-name">
-                            Shell Canada Energy
+                            Purchasing Doc: 45645645
                         </span>
                         <span class="floorplan__header-name">
-                            PO No: 4323456765
+                           Purchasing Org: R300
                         </span>
-                        <div class="floorplan__header-details">
+                        <span class="floorplan__header-name">
+                            Vendor: 
+                        </span>
+                        <!--<div class="floorplan__header-details">
                             <span class="floorplan__header-details-text">
                                 Document date: March 18, 2017
                             </span>
                             <span class="floorplan__header-details-text">
                                 Outstanding PO Value: 60,000 CAD
                             </span>
-                        </div>
+                        </div>-->
                     </div>
                </div>
             </header>
@@ -71,10 +74,13 @@ declare var jQuery: any;
                 <ul class="floorplan__list-container">
                     <li class="floorplan__list-item">
                         <div class="floorplan__body-container">
-                            <h4 class="floorplan__body-heading">Shell canada energy</h4>
-                            <p class="floorplan__body-text-1" >Purchase order: 13214</p>
-                            <p class="floorplan__body-text-2" >Document date: Jan 21, 2017</p>
-                            <p class="floorplan__body-text-2" >Outstanding PO Value: 180,200 USD</p>
+                            <h4 class="floorplan__body-heading">Item No. 0010</h4>
+                            <p class="floorplan__body-text-1" >Transportation Service - T001</p>
+                            <p class="floorplan__body-text-2" >Total Value: 600.00</p>
+                            <p class="floorplan__body-text-2" >Currency: USD</p>
+                            <p class="floorplan__body-text-2" >Delivery date: 15 Sep, 2017</p>
+                            <p class="floorplan__body-text-2" >Acc Assign Cat: K</p>
+                            <p class="floorplan__body-text-2" >Plant: 1000</p>
                         </div>
                     </li>
                 </ul>
