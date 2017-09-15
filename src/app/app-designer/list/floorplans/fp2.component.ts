@@ -374,7 +374,7 @@ declare var jQuery: any;
                                     {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
                                 </option>
                             </select>
-                            <select class="form-control" name="headerVendorType" #headerVendorType [ngModel]="headerVendorType.value">
+                            <select class="form-control" (change)="enableSubmit()" name="headerVendorType" #headerVendorType [ngModel]="headerVendorType.value">
                                 <option value="" disabled selected>--Select type--</option>
                                 <option value="LF">Label Field</option>
                                 <option value="TF">Text Field</option>
@@ -383,9 +383,8 @@ declare var jQuery: any;
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
-            <p>&nbsp;</p>
-            <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
+            <button type="submit" [disabled]="!toggleButton" class="btn btn-success col-md-12">Submit changes</button>
+            
         </div>
 
         </form>
@@ -399,7 +398,7 @@ declare var jQuery: any;
 })
 
 export class FP2Component {
-
+    toggleButton: boolean = false;
     loading: boolean;
     connectionServiceDD: boolean = false;
     searchAPI: boolean = false;
@@ -917,7 +916,9 @@ export class FP2Component {
         console.log(form.value)
 
     }
-
+    enableSubmit(){
+        this.toggleButton = true;
+    }
     sendFloorplanDC(form: NgForm) {
 
         //this is a hack for the demo purpose
