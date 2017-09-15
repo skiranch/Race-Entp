@@ -33,9 +33,9 @@ import { AngularSplitModule } from 'angular-split';
             <div class="col-md-5">
               <select #device class="form-control" (change)="changeDevice(device.value)">
                     <option value="iphone">Iphone</option>
-                    <option value="android">Android</option>
+                    <!--<option value="android">Android</option>-->
                     <option value="ipad">Ipad</option>
-                    <option value="android-tab">Android Tab</option>
+                   <!-- <option value="android-tab">Android Tab</option>-->
                   </select>
             </div>
             <span class="device-area__rotate-icon" (click)="rotateScreen(device.value)" [hidden]="!sh.showhide.show"></span>
@@ -81,21 +81,45 @@ import { AngularSplitModule } from 'angular-split';
             
           <ul class="tabs__content-items">
               <li class="tabs__content-item">
-                <a href="#/app-designer/list/ui/fp1" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+                <a class="tabs__content-link" href="#/app-designer/list/ui/fp1" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+                  <div class="tabs__content-guide">
+                      <span>Click to add this screen</span>
+                  </div>
                   <img class="full-width" src="./assets/img/floorplans/floorplan-1.png" />
                 </a>
               </li>
               <li class="tabs__content-item">
-                <a href="#/app-designer/list/ui/fp2" [dragData]="" dnd-draggable [dragEnabled]="true">
+                <a class="tabs__content-link" href="#/app-designer/list/ui/fp2" [dragData]="" dnd-draggable [dragEnabled]="true">
+                  <div class="tabs__content-guide">
+                      <span>Click to add this screen</span>
+                  </div>
                   <img class="full-width" src="./assets/img/floorplans/floorplan-2.png" />
                 </a>
               </li>
-              <!--<li class="tabs__content-item">
-                <a href="#/app-designer/list/ui/fp01" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
-                  <img class="full-width" src="./assets/img/floorplans/onboard-login.png" />
+              <li class="tabs__content-item">
+                <a class="tabs__content-link" href="#/app-designer/list/ui/fp3" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+                <div class="tabs__content-guide">
+                    <span>Click to add this screen</span>
+                </div>
+                  <img class="full-width" src="./assets/img/floorplans/floorplan-3.png" />
                 </a>
-              </li>-->
-              
+              </li>
+              <li class="tabs__content-item">
+                <a class="tabs__content-link" href="#/app-designer/list/ui/fp4" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+                <div class="tabs__content-guide">
+                    <span>Click to add this screen</span>
+                </div>
+                  <img class="full-width" src="./assets/img/floorplans/floorplan-4.png" />
+                </a>
+              </li>
+              <li class="tabs__content-item">
+                <a class="tabs__content-link"  href="#/app-designer/list/ui/fp5" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+                <div class="tabs__content-guide">
+                    <span>Click to add this screen</span>
+                </div>
+                  <img class="full-width" src="./assets/img/floorplans/floorplan-5.png" />
+                </a>
+              </li>
             </ul>
 
           </div>

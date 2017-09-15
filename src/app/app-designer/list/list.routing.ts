@@ -9,6 +9,10 @@ import { FP01Component } from './floorplans/fp01.component';
 import { FP1Component } from './floorplans/fp1.component';
 import { FP2Component } from './floorplans/fp2.component';
 import { FP3Component } from './floorplans/fp3.component';
+import { FP4Component } from './floorplans/fp4.component';
+import { FP5Component } from './floorplans/fp5.component';
+
+
 
 
 const listRoutes: Routes = [
@@ -31,6 +35,14 @@ const listRoutes: Routes = [
                 {
                     path: 'fp3',
                     component: FP3Component,
+                },
+                {
+                    path: 'fp4',
+                    component: FP4Component,
+                },
+                {
+                    path: 'fp5',
+                    component: FP5Component,
                 },
                 {
                     path: 'fp0',

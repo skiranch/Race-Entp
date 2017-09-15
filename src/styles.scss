@@ -1,9 +1,8 @@
 /************************* FONTS CSS START IMPORTANT - Do not delete or change *********************/
 
-/*
 @font-face {
     font-family: 'SFUIText-Regular';
-    src:  url('assets/vendor/fonts/body/SFUIText-Regular?ed1wcy');
+    src:  url('assets/vendor/fonts/body/SFUIText-Regular.eot?ed1wcy');
     src:  url('assets/vendor/fonts/body/SFUIText-Regular.eot?ed1wcy#iefix') format('embedded-opentype'),
       url('assets/vendor/fonts/body/SFUIText-Regular.woff2?ed1wcy') format('woff2'),
       url('assets/vendor/fonts/body/SFUIText-Regular.ttf?ed1wcy') format('truetype'),
@@ -12,7 +11,7 @@
     font-weight: normal;
     font-style: normal;
   }
-  */
+  
 
 @font-face {
     font-family: 'SFUIDisplay-Semibold';
@@ -59,6 +58,10 @@
 
     &__paddingtop-40{
         padding-top: 40px;
+    }
+
+    &__margintop-0{
+        margin-top: 0;
     }
     
   }

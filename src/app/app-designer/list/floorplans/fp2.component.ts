@@ -89,7 +89,6 @@ declare var jQuery: any;
 
     <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
     <app-loading *ngIf="loading===true"></app-loading>
-    <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
        
         <!-- UI FORM START-->
         <form #floorplanUIForm="ngForm" (ngSubmit)="sendFloorplanUI(floorplanUIForm)">
@@ -108,11 +107,10 @@ declare var jQuery: any;
                         <span class="section__button-change" (click)="showSourceSelector()">Configure data Providers</span>
                     </span>
 
-                    <h4 class="section__header">
+                    <h4 class="section__header section__click">
                         <span (click)="togglePanel('floorplan__summary-props')">
                             {{dataProvider.value}}
                         </span>
-                        
                     </h4>
                         
                     <div class="floorplan__summary-props">                        
@@ -187,6 +185,8 @@ declare var jQuery: any;
 
                 <div class="floorplan__buttons" [hidden]=" poHeaderPanel === true || poSummaryPanel === true ">
                     <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
+                    <p>&nbsp;</p>
+                    <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
                 </div>
                 
             </div>
@@ -384,6 +384,8 @@ declare var jQuery: any;
                 </div>
             </div>
             <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
+            <p>&nbsp;</p>
+            <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
         </div>
 
         </form>
@@ -408,7 +410,7 @@ export class FP2Component {
     showFields: boolean = false;
     showFields2: boolean = false;
     success: boolean = false;
-
+    
     public showPropertyPanel: boolean = false;
     public poSummaryPanel;
     public poHeaderPanel;
@@ -782,6 +784,8 @@ export class FP2Component {
                                 this.poSummaryPanel = false;
                                 this.success = true;
 
+                                jQuery('.section__click span').click();
+
                                 setTimeout(() => {
                                     this.success = false;
                                 }, 11000);
@@ -812,6 +816,10 @@ export class FP2Component {
                         () => {
                             console.log('completed')
                             this.loading = false;
+                            this.success = true;
+                            setTimeout(() => {
+                                this.success = false;
+                            }, 3000);
                         }
                     )
                 }

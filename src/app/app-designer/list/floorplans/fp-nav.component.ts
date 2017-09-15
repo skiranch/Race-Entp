@@ -5,10 +5,10 @@ import { Component, Input } from '@angular/core';
     template: `
     <nav class="floorplan__nav">
         <ul class="floorplan__nav-container">
-            <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="#">{{tabOneName}}</a><span class="floorplan__nav-step">1</span></li>
-            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabTwoName}}</a><span class="floorplan__nav-step">2</span></li>
-            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabThreeName}}</a><span class="floorplan__nav-step">3</span></li>
-            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="#">{{tabFourName}}</a><span class="floorplan__nav-step">4</span></li>
+            <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="javascript:void(0);">{{tabOneName}}</a><span class="floorplan__nav-step">1</span></li>
+            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0);">{{tabTwoName}}</a><span class="floorplan__nav-step">2</span></li>
+            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0);">{{tabThreeName}}</a><span class="floorplan__nav-step">3</span></li>
+            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0);">{{tabFourName}}</a><span class="floorplan__nav-step">4</span></li>
         </ul>
     </nav>
     `,

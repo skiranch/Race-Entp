@@ -3,11 +3,11 @@ import { Todo } from '../todo/todo';
 import { TodoDataService } from '../todo/todo-data.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
-  selector: 'app-apps',
-  template: `<title>Race Enterprise: App Designer</title>
+    selector: 'app-apps',
+    template: `<title>Race Enterprise: App Designer</title>
             <app-designer-header></app-designer-header>
             <section class="container apps">
             <div class="row">
@@ -77,39 +77,40 @@ declare var jQuery:any;
             <!-- /.modal -->
             <app-designer-footer></app-designer-footer>
             `,
-  styles: [`body{
+    styles: [`body{
             background: #ddd;
         }`],
-  providers: [TodoDataService]
+    providers: [TodoDataService]
 })
 
 export class ListComponent {
-  
-  newTodo: Todo = new Todo();
-  items: FirebaseListObservable<any[]>;
 
-  public name: string;
-  public description: string;
-  public date: string;
-  public icon: boolean;
+    newTodo: Todo = new Todo();
+    items: FirebaseListObservable<any[]>;
 
-  constructor(afDb: AngularFireDatabase) {
-    this.items = afDb.list('/items');
-  } 
-  
-  addTodo(name, description, date, icon){
-    
-    this.name = name;
-    this.description = description;
-    this.date = date;
-    this.icon = icon;
-    console.log(this.newTodo);
-    //close modal window
-    jQuery(".modal button.close").click();
+    public name: string;
+    public description: string;
+    public date: string;
+    public icon: boolean;
 
-    return this.items.push(this.newTodo).then(_ => console.log('item created!'));;
-  }
+    constructor(afDb: AngularFireDatabase) {
+        this.items = afDb.list('/items');
+    }
 
-  removeTodo(key: string) {
-    return this.items.remove(key).then(_ => console.log('item deleted!'));}
+    addTodo(name, description, date, icon) {
+
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.icon = icon;
+        console.log(this.newTodo);
+        //close modal window
+        jQuery(".modal button.close").click();
+
+        return this.items.push(this.newTodo).then(_ => console.log('item created!'));;
+    }
+
+    removeTodo(key: string) {
+        return this.items.remove(key).then(_ => console.log('item deleted!'));
+    }
 }

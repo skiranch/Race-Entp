@@ -2,11 +2,11 @@
  SFUIDisplay-Semibold
  SFUIDisplay-Regular
  SFUIDisplay-Thin
+ SFUIText-Regular
  ****************/
  
  .floorplan{
     width: 100%;
-    background: #fff;
     text-align: center;
     letter-spacing: 0.5px;
     position: relative;
@@ -51,11 +51,11 @@
     &__body{
         overflow-y: auto;
         background: #eee;
-        min-height: 330px;
 
         &--img{
             background: #eee url('/assets/img/floorplans/default-img.png') no-repeat;
             background-size: 100% auto;
+            height: 340px;
         }
     }
     &__nav{
@@ -255,6 +255,12 @@
         padding-left: 5px;
     }
 
+    &__icon-text{
+        font-size: 17px;
+        padding-left: 5px;
+        font-family: 'SFUIDisplay-Regular';
+    }
+
     &__icon-Scan2{
         font-size: 25px;
         position: absolute;
@@ -296,15 +302,44 @@
         color: #fff;
         display: block;
         text-align: left;
-        padding-left: 40px;
+        padding-left: 10px;
     }
 
     &__header-details{
         color:#d3d3d3;
         font-size: 15px;
         text-align: left;
-        padding: 15px 0 0 40px;
+        padding: 15px 0 0 10px;
+    }
 
+    &__margintop-0{
+        margin-top: 0;
+    }
+
+    &__item-name{
+        color: #3f3a3a;
+        font-size: 17px;
+        font-family: 'SFUIDisplay-Semibold';
+    }
+    &__item-text{
+        color: #76767b;
+        font-size: 15px;
+        font-family: 'SFUIDisplay-Regular';
+        display: block;
+        padding: 2px 0;
+    }
+    &__list-form-container{
+        padding-top: 15px;
+    }
+    &__list-form-label{
+        font-size: 17px;
+        font-family: 'SFUIText-Regular';
+        color: #76767b;
+    }
+    &__list-form-elm{
+        border-radius: 5px;
+        padding: 3px 5px;
+        border: solid 1px #c7c7cf;
     }
 }
   

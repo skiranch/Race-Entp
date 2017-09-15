@@ -229,6 +229,24 @@
             }
         }
     }
+
+    &__content-link{
+        display: block;
+        position: relative;
+    }
+    &__content-guide{
+        position: absolute;
+        bottom: 35px;
+        background: #000;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 0;
+        width: 90%;
+        opacity: 0.5;
+        left: 5%;
+        text-align: center;
+    }
     &__content-item-img{
         max-width: 100%;
         cursor: move !important;
@@ -287,5 +305,7 @@
         padding: 5px 15px 5px 5px;
         box-shadow: 0px 8px 4px -5px #ccc;
     }
+
+
 }
 

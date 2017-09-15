@@ -57,7 +57,6 @@ declare var jQuery: any;
             </div>
            
             <div class="form-group app-designer__paddingtop-40">
-                <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
                 <label class="tabs__form-label" for="title">Title</label>
                 <input type="text" value="Scan service order" class="form-control" name="title" #title [ngModel]="title.value" /> 
             </div>
@@ -96,7 +95,8 @@ declare var jQuery: any;
             </div>
 
             <button class="btn btn-success col-md-12" type="submit">Submit changes</button>
-            
+            <p>&nbsp;</p>
+            <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
        </form>
     </div>
   `,

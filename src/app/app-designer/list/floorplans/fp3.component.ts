@@ -66,7 +66,7 @@ declare var jQuery: any;
                 <input type="text" class="floorplan__search-input" placeholder="Search/scan" />
                 <span class="icon-Scan2 floorplan__icon-Scan2"></span>
             </div>
-            <div class="floorplan__body">
+            <div class="floorplan__body" style="min-height: 313px;">
                 <p class="floorplan__select-services">Select services to add entries</p>
                 <ul class="floorplan__list-container">
                     <li class="floorplan__list-item">
@@ -85,7 +85,7 @@ declare var jQuery: any;
 
     <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
         <app-loading *ngIf="loading===true"></app-loading>
-       
+       <p>No properties mapped for this floorplan.</p>
    </div>
 
   `,
@@ -99,7 +99,7 @@ export class FP3Component {
     ){}
 
     gotToNextScreen() {
-        this.router.navigateByUrl('app-designer/list/ui/fp3');
+        this.router.navigateByUrl('app-designer/list/ui/fp4');
     }
 
     gotToPreviousScreen() {
