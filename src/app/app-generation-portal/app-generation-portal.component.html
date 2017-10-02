@@ -44,7 +44,7 @@
       <div class="tabs-wrap">
       <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active">
-              <a href="#productlist" id="tabZero" aria-controls="productlist" role="tab" data-toggle="tab" aria-expanded="true">Proudcts</a>
+              <a href="#productlist" id="tabZero" aria-controls="productlist" role="tab" data-toggle="tab" aria-expanded="true">Products</a>
             </li>
         <li>
           <a href="#connectionsettings" id="tabOne" aria-controls="connectionsettings" role="tab" data-toggle="tab" aria-expanded="true">Connection Settings</a>
@@ -181,8 +181,12 @@
                             <label for="Https">Https</label>
                           </div>
                           <div class="col-md-8">
-                            <input type="checkbox" #Https name="Https" [value]="Https.value" [ngModel]="Https.value"   placeholder="Https">
-                          </div>
+                              <label class="switch">
+                                  <input class="switch-input" type="checkbox" #Https name="Https" [value]="Https.value" [ngModel]="Https.value"   placeholder="Https">
+                                  <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                  <span class="switch-handle"></span> 
+                                </label>
+                              </div>
                       </div>
                       </div>
                       <div class="form-group">
@@ -191,7 +195,11 @@
                           <label for="SampleData">Sample Data</label>
                         </div>
                         <div class="col-md-8">
-                          <input type="checkbox" #SampleData name="SampleData" [value]="SampleData.value" [ngModel]="SampleData.value"  placeholder="Sample Data">
+                            <label class="switch">
+                                <input class="switch-input" type="checkbox" #SampleData name="SampleData" [value]="SampleData.value" [ngModel]="SampleData.value"  placeholder="Sample Data">
+                                <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                <span class="switch-handle"></span> 
+                              </label>
                         </div>
                       </div>
                       </div>
@@ -258,11 +266,18 @@
                             <label for="theme">Theme</label>
                         </div>
                         <div class="col-md-8">
-                         <input type="color" #Theme name="Theme" [ngModel]="Theme.value" style="width: 60px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"/>
-                         <span style="width: 60px;display: block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme.value}}</span>
-                        
+                          <div class="tabs-wrap">
+                            <div class="float: left">
+                         <input type="color" value="#0B72CA"#Theme name="Theme1" [ngModel]="Theme1.value" style="width: 30px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"
+                         style="width: 60px;display: inline-block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme1.value}}>
+                         <input type="color" value="#aaaaaa"#Theme name="Theme2" [ngModel]="Theme2.value" style="width: 30px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"
+                         style="width: 60px;display: inline-block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme2.value}}>
+                         <input type="color" value="#00ff00"#Theme name="Theme3" [ngModel]="Theme3.value" style="width: 30px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"
+                         style="width: 60px;display: inline-block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme3.value}}>
+
                         </div>
-                       
+                        </div>
+                      </div>
                       </div>
                     <div class="row">
                       
@@ -274,8 +289,12 @@
                         <label for="ShowDemoButton">Show Demo Button</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="checkbox" #ShowDemoButton [value]="ShowDemoButton.value" name="ShowDemoButton" [ngModel]="ShowDemoButton.value"  placeholder="Store Demo Button">
-                    </div>
+                        <label class="switch">
+                            <input class="switch-input" type="checkbox" #ShowDemoButton [value]="ShowDemoButton.value" name="ShowDemoButton" [ngModel]="ShowDemoButton.value"  placeholder="Store Demo Button">
+                            <span class="switch-label" data-on="On" data-off="Off"></span> 
+                            <span class="switch-handle"></span> 
+                          </label>
+                        </div>
                   </div>
                   </div>
           </div>
@@ -333,7 +352,11 @@
                         <label for="AppPassCode">App Pass Code</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="checkbox" #AppPassCode name="AppPassCode" [value]="AppPassCode.value" [ngModel]="AppPassCode.value" placeholder="App Pass Code">
+                        <label class="switch">
+                            <input class="switch-input" type="checkbox" #AppPassCode name="AppPassCode" [value]="AppPassCode.value" [ngModel]="AppPassCode.value" placeholder="App Pass Code">
+                            <span class="switch-label" data-on="On" data-off="Off"></span> 
+                            <span class="switch-handle"></span> 
+                          </label>
                     </div>
                   </div>
                   </div>
@@ -343,7 +366,12 @@
                           <label for="TouchId">Touch ID</label>
                       </div>
                       <div class="col-md-8">
-                        <input type="checkbox" #TouchId name="TouchId" [value]="TouchId.value" [ngModel]="TouchId.value"  placeholder="Touch ID">
+                          <label class="switch">
+                              <input class="switch-input" type="checkbox" #TouchId name="TouchId" [value]="TouchId.value" [ngModel]="TouchId.value"  placeholder="Touch ID">
+                              <span class="switch-label" data-on="On" data-off="Off"></span> 
+                              <span class="switch-handle"></span> 
+                            </label>
+                        
                       </div>
                   </div>
                   </div>
