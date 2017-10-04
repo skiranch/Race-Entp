@@ -62,7 +62,7 @@ export class AppGenerationPortalComponent implements OnInit {
     "Modified": "",
     "Settings": ""
   }
-  constructor(private _getDataService: AppSettingsListService, private _appsettingsPostService: AppSettingsPostService,) {}
+  constructor(private _getDataService: AppSettingsListService, private _appsettingsPostService: AppSettingsPostService,public myElement: ElementRef) {this.elementRef = myElement;}
   ngOnInit() {
     this.getData();
    this.sort(this.column);
@@ -259,6 +259,47 @@ export class AppGenerationPortalComponent implements OnInit {
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   };
+  public query = '';
+  public languages = [ "chinese","spanish","English","Hindi","Arabic","Portuguese","Russian","Japanese", "French",
+                      ];
+  public filteredList = [];
+  public elementRef;
+  public selected=[];
+
+ 
+  filter() {
+    if (this.query !== ""){
+        this.filteredList = this.languages.filter(function(el){
+            return el.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+        }.bind(this));
+    }else{
+        this.filteredList = [];
+    }
+}
+ 
+select(item){
+  this.selected.push(item);
+  this.query = '';
+  this.filteredList = [];
+}
+removing(item){
+this.selected.splice(this.selected.indexOf(item),1);
+}
+    
+    handleClick(event){
+      var clickedComponent = event.target;
+      var inside = false;
+      do {
+          if (clickedComponent === this.elementRef.nativeElement) {
+              inside = true;
+          }
+         clickedComponent = clickedComponent.parentNode;
+      } while (clickedComponent);
+       if(!inside){
+           this.filteredList = [];
+       }
+   }
+
     
   }
 

@@ -1,0 +1,371 @@
+<div class="frame">
+        <span class="frame__prev glyphicon glyphicon-triangle-right" (click)="gotToNextScreen()">Next</span>
+        <span class="frame__next glyphicon glyphicon-triangle-left" (click)="gotToPreviousScreen()">Prev</span>
+        <a href="javascript:void(0)" class="legend" (click)="showProperties()">Properties</a>
+            <div class="floorplan">
+                <header class="floorplan__header">
+                    <div class="floorplan__top">
+                    <div class="pull-left">
+                            <span class="icon-acb_back_new floorplan__icon-acb_back_new"></span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="icon-inr_search_symbol floorplan__icon-inr_search_symbol"></span>
+                            <span class="icon-Nav_settings floorplan__icon-Nav_settings"></span>
+                        </div>
+                    </div>
+                    <div class="floorplan__name">
+                        {{pageTitle.value}}
+                    </div>
+    
+                    <h1 class="floorplan__value">
+                        <span id="valHighlight">{{headerDataVal.value}}</span>
+                        <span class="floorplan__value--part" id="currencyHighlight">{{headerDataValCurrency.value}}</span>
+                    </h1>
+                    <p class="floorplan__color-white" id="descHighlight">{{headerDataDesc.value}}</p>
+    
+                </header>
+    
+                <nav class="floorplan__nav">
+                    <ul class="floorplan__nav-container">
+                        <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="javascript:void(0)">Find order</a><span class="floorplan__nav-step">1</span></li>
+                        <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Enter Services</a><span class="floorplan__nav-step">2</span></li>
+                        <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Attach Media</a><span class="floorplan__nav-step">3</span></li>
+                        <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Confirm</a><span class="floorplan__nav-step">4</span></li>
+                    </ul>
+                </nav>
+    
+                <div class="floorplan__search-bar">
+                    <input type="text" class="floorplan__search-input" placeholder="Search/scan" />
+                    <span class="icon-Scan2 floorplan__icon-Scan2"></span>
+                </div>
+                <div class="floorplan__body">
+                    <p class="floorplan__select-services">Select services to add entries</p>
+                    <ul class="floorplan__list-container">
+                        <li class="floorplan__list-item">
+                            <div class="floorplan__body-container">
+                                <!--<h4 class="floorplan__body-heading">Shell canada energy</h4>
+                                <p class="floorplan__body-text-1" >Purchase order: 13214</p>
+                                <p class="floorplan__body-text-2" >Document date: Jan 21, 2017</p>
+                                <p class="floorplan__body-text-2" >Outstanding PO Value: 180,200 USD</p>-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12 app-designer__no-padding">
+                                            <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
+                                            <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
+                                            <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <app-fp-footer activeSearch="" activeOrders="fp2__footer-link--active"></app-fp-footer>
+            </div>
+        </div>
+    
+        <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
+        <app-loading *ngIf="loading===true"></app-loading>
+           
+            <!-- UI FORM START-->
+            <form #floorplanUIForm="ngForm" (ngSubmit)="sendFloorplanUI(floorplanUIForm)">
+                
+                <div class="tabs__buttons">
+                    <button class="btn btn-primary btn-sm" (click)="showProperties()" type="button">Done</button>
+                    <button class="btn btn-sm btn-danger" type="button" (click)="removeFloorplan()">Remove</button>
+                    <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="showProperties()"></span>
+                </div>
+            
+                <div class="section">
+                    
+                    <div [hidden]="poSummaryPanel === true || poHeaderPanel ===true ">
+                        
+                        <span class="section__selected-source">
+                            <span class="section__button-change" (click)="showSourceSelector()">Configure data Providers</span>
+                        </span>
+    
+                        <h4 class="section__header section__click">
+                            <span (click)="togglePanel('floorplan__summary-props')">
+                                {{dataProvider.value}}
+                            </span>
+                        </h4>
+                            
+                        <div class="floorplan__summary-props">                        
+                            <h6 class="floorplan__header-text2">Top Menu</h6>
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="pageTitle">Page Title</label>
+                                <input type="text" value="Service Orders" #pageTitle name="pageTitle" class="form-control" [ngModel]="pageTitle.value" />
+                            </div>
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="dataProvider">Data Provider</label>
+                                <input type="text" value="POSUMMARY" #dataProvider name="dataProvider" class="form-control" [ngModel]="dataProvider.value" />
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="floorplan__form-label" for="headerIconsColor">Icons Color</label>
+                                <input type="color" value="#87A4B8" #headerIconsColor name="headerIconsColor" class="floorplan__input-small" [ngModel]="headerIconsColor.value" />
+                            </div>-->
+                            <div>
+                                <hr/>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label class="floorplan__form-label" for="headerColor">Header Background</label>
+                                <input type="color" value="#435F73" #headerColor name="headerColor" class="floorplan__input-small" [ngModel]="headerColor.value" />
+                            </div>-->
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerDataVal">Header data value</label>
+                                <input type="text" value="180,200" disabled #headerDataVal name="headerDataVal" class="form-control" [ngModel]="headerDataVal.value" />
+                            </div>
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerDataValCurrency">Header data currency</label>
+                                <input type="text" value="USD" disabled #headerDataValCurrency name="headerDataValCurrency" class="form-control" [ngModel]="headerDataValCurrency.value" />
+                            </div>
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerDataDesc">Header data description</label>
+                                <input type="text" value="Outststanding PO Value" name="headerDataDesc" #headerDataDesc class="form-control" [ngModel]="headerDataDesc.value" />
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div [hidden]=" poHeaderPanel === true || poSummaryPanel ===true">
+    
+                        <h4 class="section__header">
+                            <span (click)="togglePanel('floorplan__header-props')">
+                                {{headerDataProvider.value}}
+                            </span>
+                        </h4>
+    
+                        <div class="floorplan__header-props" style="display: none;">
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerDataProvider">Data Provider</label>
+                                <input type="text" value="POHEADER" #headerDataProvider name="headerDataProvider" class="form-control" [ngModel]="headerDataProvider.value" />
+                            </div>
+    
+                            <div class="form-group">
+                                <input type="text" value="Purchasing Doc:" #purchasingDoc name="purchasingDoc" class="form-control" [ngModel]="purchasingDoc.value" />
+                                <input type="text" value="4500004876" class="form-control" disabled />
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" value="Purchasing Org:" #purchasingOrg name="purchasingOrg" class="form-control" [ngModel]="purchasingOrg.value" />
+                                <input type="text" value="R300" class="form-control" disabled />
+                            </div>
+    
+                            <div class="form-group">
+                                <input type="text" value="Vendor:" #vendor name="vendor" class="form-control" [ngModel]="vendor.value" />
+                                <input type="text" value="" class="form-control" disabled />
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="floorplan__buttons" [hidden]=" poHeaderPanel === true || poSummaryPanel === true ">
+                        <button type="submit" class="btn btn-success col-md-12">Submit changes</button>
+                        <p>&nbsp;</p>
+                        <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
+                    </div>
+                    
+                </div>
+            </form>
+            <!-- UI FORM END-->
+    
+            <!--POSUMMARY START-->
+            <form #floorplanDCForm="ngForm" (ngSubmit)="sendFloorplanDC(floorplanDCForm)">
+                
+            <div [hidden]="poSummaryPanel !==true">
+    
+                <h4 class="section__header">
+                    {{dataProvider.value}} / {{headerDataProvider.value}}
+                    
+                    <span class="section__selected-source">
+                        <span class="section__button-done" (click)="showSourceSelector()">Back</span>
+                    </span>
+    
+                </h4>
+            
+                <div class="form-group">
+                    <label class="floorplan__form-label">Select data sources</label>
+                    <select class="form-control" #dataSources name="dataSources" (change)="showSelectedServices(dataSources.value)" [ngModel]="dataSources.value">
+                        <option value="" disabled selected>--Select--</option>
+                        <option value="{{data.DataSource}}" *ngFor="let data of dataSource">
+                            {{data.DataSource}}
+                        </option>
+                    </select>
+                </div>
+    
+                <div class="form-group" *ngIf="connectionServiceDD !== false">
+                    <label class="floorplan__form-label" for="connectionService">
+                        Connection services
+                    </label>
+                    <select class="form-control" #connectionService name="connectionService" (change)="onSelectService(connectionService.value)" [ngModel]="connectionService.value">
+                        <option value="" disabled selected>--Select--</option>
+                        <option value="{{data.ConnectionProvider}}" *ngFor="let data of connectionProviders">
+                            {{data.ConnectionProvider}}
+                        </option>
+                    </select>
+                </div>
+                
+                <ul class="section__nav" [hidden]="searchAPI === false">
+                    <li class="section__nav-list active"><a class="section__nav-item" data-toggle="tab" href="#1b">{{dataProvider.value}}</a></li>
+                    <li class="section__nav-list"><a class="section__nav-item" data-toggle="tab" href="#2b">{{headerDataProvider.value}}</a></li>
+                </ul>
+                
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="1b">
+                    
+                        <div class="form-group" [hidden]="searchAPI === false">
+                            <label class="floorplan__form-label" for="searchApi">Search API</label>
+                            <input type="text" class="form-control" #searchApi (blur)="showListOfAPIs(searchApi.value)" placeholder="Enter API name" />
+                        </div>
+    
+                        <div class="form-group">
+                            <div *ngIf="apiListDD !== false">
+                                <label class="floorplan__form-label" for="listofSearchedApis">
+                                    Select API
+                                </label>
+                                <select  class="form-control" #listofSearchedApis name="listofSearchedApis" (change)="showListOfFields(listofSearchedApis.value)" [ngModel]="listofSearchedApis.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.APIName}}" *ngFor="let data of APIList">
+                                        {{data.APIName}} - {{data.APIDesc}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+    
+                <div class="" *ngIf="showFields !== false">
+                            <input type="hidden" [ngModel]="dataProvider.value" #dataProviderVal name="dataProviderVal" value="dataProvider.value" />
+                            <input type="hidden" [ngModel]="headerDataProvider.value" #headerDataProviderVal name="headerDataProviderVal" value="headerDataProvider.value" />
+    
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="totalAmmount">
+                                    Total Ammount
+                                </label>
+                            
+                                <select (focusout)="removeHighlightCorresponding('valHighlight')" (focus)="highlightCorresponding('valHighlight')" class="form-control" name="totalAmmount" #totalAmmount [ngModel]="totalAmmount.value">
+                                    
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields">
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="currencyType">
+                                    Currency Type
+                                </label>
+                                <select (focusout)="removeHighlightCorresponding('currencyHighlight')" (focus)="highlightCorresponding('currencyHighlight')" class="form-control" #currencyType name="currencyType" [ngModel]="currencyType.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+                            </div>
+    
+                            <!--<div class="form-group">
+                                <label class="floorplan__form-label" for="headerDesc">
+                                    Header Description
+                                </label>
+                                <select (focusout)="removeHighlightCorresponding('descHighlight')" (focus)="highlightCorresponding('descHighlight')" class="form-control" #headerDesc name="headerDesc" [ngModel]="headerDesc.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields" >
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+                            </div>-->
+    
+                </div>
+    
+                    </div>
+                    <div class="tab-pane" id="2b">
+                    
+                        <input type="hidden" [ngModel]="purchasingDoc.value" #purchasingDocVal name="purchasingDocVal" value="purchasingDoc.value" />
+                        <input type="hidden" [ngModel]="purchasingOrg.value" #purchasingOrgVal name="purchasingOrgVal" value="purchasingOrg.value" />
+                        <input type="hidden" [ngModel]="vendor.value" #vendorVal name="vendorVal" value="vendor.value" />
+                        
+                        <div class="form-group" [hidden]="searchAPI2 === false">
+                            <label class="floorplan__form-label" for="searchApi2">Search API</label>
+                            <input type="text" class="form-control" #searchApi2 (blur)="showListOfAPIs2(searchApi2.value)" placeholder="Enter API name" />
+                        </div>
+    
+                        <div class="form-group">
+                            <div *ngIf="apiListDD2 !== false">
+                                <label class="floorplan__form-label" for="listofSearchedApis">
+                                    Select API
+                                </label>
+                                <select  class="form-control" #listofSearchedApis2 name="listofSearchedApis2" (change)="showListOfFields2(listofSearchedApis2.value)" [ngModel]="listofSearchedApis2.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data2.APIName}}" *ngFor="let data2 of APIList2">
+                                        {{data2.APIName}} - {{data2.APIDesc}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+    
+                        <div class="" *ngIf="showFields2 !== false">
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerPurchasingDoc">
+                                    {{purchasingDoc.value}}
+                                </label>
+                            
+                                <select (focusout)="removeHighlightCorresponding('purchasingDocVal')" (focus)="highlightCorresponding('purchasingDocVal')" class="form-control" name="headerPurchasingDoc" #headerPurchasingDoc [ngModel]="headerPurchasingDoc.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2">
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+    
+                                <select class="form-control" name="headerPurchasingDocType" #headerPurchasingDocType [ngModel]="headerPurchasingDocType.value">
+                                    <option value="" disabled selected>--Select type--</option>
+                                    <option value="LF">Label Field</option>
+                                    <option value="TF">Text Field</option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group">
+                                    <label class="floorplan__form-label" for="headerPurchasingOrg">
+                                        {{purchasingOrg.value}}
+                                    </label>
+                                    <select (focusout)="removeHighlightCorresponding('purchasingOrgVal')" (focus)="highlightCorresponding('purchasingOrgVal')" class="form-control" #headerPurchasingOrg name="headerPurchasingOrg" [ngModel]="headerPurchasingOrg.value">
+                                        <option value="" disabled selected>--Select--</option>
+                                        <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
+                                            {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                        </option>
+                                    </select>
+    
+                                   <select class="form-control" name="headerPurchasingOrgType" #headerPurchasingOrgType [ngModel]="headerPurchasingOrgType.value">
+                                        <option value="" disabled selected>--Select type--</option>
+                                        <option value="LF">Label Field</option>
+                                        <option value="TF">Text Field</option>
+                                    </select>
+                            </div>
+    
+                            <div class="form-group">
+                                <label class="floorplan__form-label" for="headerVendor">
+                                    {{vendor.value}}
+                                </label>
+                                <select (focusout)="removeHighlightCorresponding('purchasingVendorVal')" (focus)="highlightCorresponding('purchasingVendorVal')" class="form-control" #headerVendor name="headerVendor" [ngModel]="headerVendor.value">
+                                    <option value="" disabled selected>--Select--</option>
+                                    <option value="{{data.FieldName}}/{{data.ParameterName}}" *ngFor="let data of listOfFields2" >
+                                        {{data.ParameterType}} - {{data.FieldName}} - {{data.FieldDesc}}
+                                    </option>
+                                </select>
+                                <select class="form-control" (change)="enableSubmit()" name="headerVendorType" #headerVendorType [ngModel]="headerVendorType.value">
+                                    <option value="" disabled selected>--Select type--</option>
+                                    <option value="LF">Label Field</option>
+                                    <option value="TF">Text Field</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="!toggleButton" class="btn btn-success col-md-12">Submit changes</button>
+                
+            </div>
+    
+            </form>
+            <!--POSUMMARY END-->
+    
+       </div>
+    

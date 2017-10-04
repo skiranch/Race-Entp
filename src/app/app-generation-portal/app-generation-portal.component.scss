@@ -13,26 +13,33 @@
     &__table thead{
         background: rgb(147, 161, 172);
         color: #fff;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     &__table tbody{
         color: rgb(96, 96, 96);
-        font-size: 12px;
+        font-size: 13px;
     }
 
     &__table tbody td{
         padding: 15px 10px;
     }
 }
+.content{
+    &__table th,td{      
+    border-bottom: 1px solid #aaaaaa;
+      
+        text-align: center;
+    }
+}
 
 label{
     
       font-size: 14px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: sans-serif;
       font-weight: bold;
       width:250px;
-      color: #aaaaaa
+      color: #888888
 }
 label{
     text-align: right;
@@ -67,7 +74,10 @@ input[type="color"]{
     color:#0B72CB;
 }
 .nav-tabs > li >a{
-    color:#787D79;
+    color:#666666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 /* remove the "grey" border when hovering the li elements */
 .nav-tabs>li>a:hover{
@@ -78,6 +88,7 @@ input[type="color"]{
 .nav>li>a:focus, .nav>li>a:hover{
     background-color: transparent;
 }
+
 .modal-footer
 {
     box-shadow: 0px -10px 0px -9px #ccc;
@@ -96,15 +107,26 @@ input[type="color"]{
     padding: 20px 10px 0 50px;
     
 }
+
 .nav-tabs{
     box-shadow: 0 10px 0px -9px #ccc;
 }
 .modal-body {
     position: relative;
     padding: 2px 20px 0px 20px;
+    height:400px;
+    overflow-y:auto;
+    overflow-x: none;
+    font-family: 'Times New Roman', Times, serif;
 }
 .modal-title{
     padding-left: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+.modal-title{
+    color: #111111;
 }
 
 .website-input{
@@ -142,12 +164,13 @@ input[type="color"]{
     margin-bottom: 15px;
 }
 
+
+
 /*UI Toggle Switch*/
   .switch {
 	position: relative;
 	display: block;
-	vertical-align: top;
-	width: 100px;
+	width: 70px;
 	height: 30px;
 	padding: 3px;
 	margin: 0 10px 10px 0;
@@ -235,7 +258,7 @@ input[type="color"]{
 	box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
 .switch-input:checked ~ .switch-handle {
-	left: 74px;
+	left: 45px;
 	box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
 }
  
@@ -252,7 +275,7 @@ input[type="color"]{
 
 /* Drop down for language Selection of Options*/ 
 .selected{
-	border:solid #4CAF50 1px;
+	border:hidden;
 	float:left; 
 	margin:2px;
 	padding:2px 15px;
@@ -263,3 +286,69 @@ input[type="color"]{
 	font-weight:bold;
 }
 /*End of Drop down for language Selection of Options*/
+/* Rounded Check box*/
+.round {
+    position: relative;
+    width: 100px;
+    float: left;
+    display: inline;
+    align-self: auto;
+    padding: 2px 10px 10px 10px;
+  }
+  
+  .round label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 5px;
+    width: 18px;
+  }
+  
+  .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    content: "";
+    height:4px;
+    left: 4px;
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    transform: rotate(-45deg);
+    width: 8px;
+  }
+  
+  .round input[type="checkbox"] {
+    visibility: hidden;
+  }
+  
+  .round input[type="checkbox"]:checked + label {
+    background-color: #2A9FD9;
+    border-color: #2A9FD9;
+  }
+  
+  .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    background-color: #f1f2f3;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  /* End of Rounded Check Box*/

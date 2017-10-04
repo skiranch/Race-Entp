@@ -1,0 +1,88 @@
+<div class="frame">
+        <span class="frame__prev glyphicon glyphicon-triangle-right" (click)="gotToNextScreen()">Next</span>
+        <!--<span class="frame__next glyphicon glyphicon-triangle-left">Prev</span>-->
+          <a href="javascript:void(0)" class="legend" (click)="showProperties()">Properties</a>
+              <div class="floorplan">
+                  <header class="floorplan__header" [ngStyle]="{'background': headerColor.value }">
+                      <div class="floorplan__top">
+                          <div class="pull-left">
+                              <span class="icon-acb_back_new floorplan__icon-acb_back_new"></span>
+                          </div>
+                          <div class="pull-right">
+                              <span class="icon-inr_search_symbol floorplan__icon-inr_search_symbol"></span>
+                              <span class="icon-Nav_settings floorplan__icon-Nav_settings"></span>
+                          </div>
+                      </div>
+                     <div class="floorplan__name">
+                          {{title.value}}
+                      </div>
+                  </header>
+                  <app-fp-nav tabOneName="{{tabOne.value}}" tabTwoName="{{tabTwo.value}}" tabThreeName="{{tabThree.value}}" tabFourName="{{tabFour.value}}"></app-fp-nav>
+                  <div class="floorplan__guide">
+                      <h4 class="floorplan__guide-heading">Submit service confirmation in 4 steps</h4>
+                      <p class="floorplan__guide-desc">Start by searching for the service order</p>
+                  </div>
+      
+                  <div class="floorplan__search-bar floorplan__search-bar--marginfix">
+                      <input type="text" class="floorplan__search-input" placeholder="Search/Scan" />
+                      <span class="icon-Scan2 floorplan__icon-Scan2"></span>
+                  </div>
+                  <div class="floorplan__body floorplan__body--img">
+                      
+                  </div>
+                  <app-fp-footer activeSearch="fp2__footer-link--active" activeOrders=""></app-fp-footer>
+              </div>
+          </div>
+      
+          <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
+               <app-loading *ngIf="loading===true"></app-loading>
+               <form #floorplanForm="ngForm" (ngSubmit)="onSubmit(floorplanForm)">
+                  <div class="tabs__buttons">
+                      <button class="btn btn-primary btn-sm" type="button" (click)="showProperties()">Done</button>
+                      <button class="btn btn-sm btn-danger" type="button" (click)="removeFloorplan()">Remove</button>
+                      <span class="pull-right tabs__close-icon glyphicon glyphicon-remove-circle" (click)="showProperties()"></span>
+                  </div>
+                 
+                  <div class="form-group app-designer__paddingtop-40">
+                      <label class="tabs__form-label" for="title">Title</label>
+                      <input type="text" value="Scan service order" class="form-control" name="title" #title [ngModel]="title.value" /> 
+                  </div>
+      
+                  <!--<div class="form-group">
+                      <label class="tabs__form-label" for="titleColor">Title Color</label>
+                      <input type="color" value="#87A4B8" class="floorplan__input-small" name="titleColor" #titleColor [ngModel]="titleColor.value" /> 
+                  </div>-->
+      
+                   <div class="form-group">
+                      <label class="tabs__form-label" for="headerColor">Header Color</label>
+                      <input type="color" value="#435F73" class="floorplan__input-small" name="headerColor" #headerColor [ngModel]="headerColor.value" /> 
+                  </div>
+      
+                  <!--<div class="form-group">
+                      <label class="tabs__form-label" for="headerIconsColor">Header Icons Color</label>
+                      <input type="color" value="#87A4B8" class="floorplan__input-small" name="headerIconsColor" #headerIconsColor [ngModel]="headerIconsColor.value" /> 
+                  </div>
+                  <div class="form-group">
+                      <label class="tabs__form-label" for="tabsColor">Tabs Color</label>
+                      <input type="color" value="#337ab7" class="floorplan__input-small" name="tabsColor" #tabsColor [ngModel]="tabsColor.value" /> 
+                  </div>-->
+      
+                  <div class="form-group">
+                      <label class="tabs__form-label" for="tabsColor">Tabs</label>
+                      <input type="text" value="Find order" class="form-control" name="tabOne" #tabOne [ngModel]="tabOne.value" /> 
+                  </div>
+                  <div class="form-group">
+                      <input type="text" value="Enter services" class="form-control" name="tabTwo" #tabTwo [ngModel]="tabTwo.value" /> 
+                  </div>
+                  <div class="form-group">
+                      <input type="text" value="Attch notes & media" class="form-control" name="tabThree" #tabThree [ngModel]="tabThree.value" /> 
+                  </div>
+                  <div class="form-group">
+                      <input type="text" value="Confirm" class="form-control" name="tabFour" #tabFour [ngModel]="tabFour.value" /> 
+                  </div>
+      
+                  <button class="btn btn-success col-md-12" type="submit">Submit changes</button>
+                  <p>&nbsp;</p>
+                  <alert type="success" *ngIf="success===true">Configuration saved successfully!!</alert>
+             </form>
+          </div>
