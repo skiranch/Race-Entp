@@ -36,29 +36,28 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-          <button type="button" routerLink="/app-generation-portal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title bold">NEW SETTING</h4>
-      </div>
-      <div class="modal-body">
+          <button type="button" routerLink="/app-generation-portal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><b>&times;</b></span></button>
+          <h4 class="modal-title">NEW SETTING</h4>
       <form #appSettingsForm="ngForm" name="appSettingsForm" (ngSubmit)="onSubmit(appSettingsForm)">
       <div class="tabs-wrap">
       <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active">
-              <a href="#productlist" id="tabZero" aria-controls="productlist" role="tab" data-toggle="tab" aria-expanded="true">Proudcts</a>
+              <a href="#productlist" id="tabZero" aria-controls="productlist" role="tab" data-toggle="tab" aria-expanded="true"><b>Products</b></a>
             </li>
         <li>
-          <a href="#connectionsettings" id="tabOne" aria-controls="connectionsettings" role="tab" data-toggle="tab" aria-expanded="true">Connection Settings</a>
+          <a href="#connectionsettings" id="tabOne" aria-controls="connectionsettings" role="tab" data-toggle="tab" aria-expanded="true"><b>Connection Settings</b></a>
         </li>
         <li>
-          <a href="#branding"  id="tabTwo"  aria-controls="branding" role="tab" data-toggle="tab" aria-expanded="false">Branding</a>
+          <a href="#branding"  id="tabTwo"  aria-controls="branding" role="tab" data-toggle="tab" aria-expanded="false"><b>Branding</b></a>
         </li>
         <li>
-          <a href="#othersettings"  id="tabThree" aria-controls="othersettings" role="tab" data-toggle="tab" aria-expanded="false">Other Settings</a>
+          <a href="#othersettings"  id="tabThree" aria-controls="othersettings" role="tab" data-toggle="tab" aria-expanded="false"><b>Other Settings</b></a>
         </li>
       </ul>
-    
+      
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="productlist">
+            <div class="modal-body">
             <div class="form-group">
                       <div class="row">
                           <div class="col-md-4">
@@ -75,6 +74,7 @@
                           </div>
                         </div>
                         </div>
+                      </div>
                         <div class="modal-footer">
                         <div class="form-group">
                         <div class="row">
@@ -89,7 +89,8 @@
                     </div>
             </div>
       <div role="tabpanel" class="tab-pane" id="connectionsettings">
-        <div class="modal-scroll">
+          <div class="modal-body">
+        
         <div class="form-group">            
               <div class="row modalControl_centercontent">
                             <div class="col-md-4">
@@ -181,8 +182,12 @@
                             <label for="Https">Https</label>
                           </div>
                           <div class="col-md-8">
-                            <input type="checkbox" #Https name="Https" [value]="Https.value" [ngModel]="Https.value"   placeholder="Https">
-                          </div>
+                              <label class="switch">
+                                  <input class="switch-input" type="checkbox" #Https name="Https" [value]="Https.value" [ngModel]="Https.value"   placeholder="Https">
+                                  <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                  <span class="switch-handle"></span> 
+                                </label>
+                              </div>
                       </div>
                       </div>
                       <div class="form-group">
@@ -191,11 +196,16 @@
                           <label for="SampleData">Sample Data</label>
                         </div>
                         <div class="col-md-8">
-                          <input type="checkbox" #SampleData name="SampleData" [value]="SampleData.value" [ngModel]="SampleData.value"  placeholder="Sample Data">
+                            <label class="switch">
+                                <input class="switch-input" type="checkbox" #SampleData name="SampleData" [value]="SampleData.value" [ngModel]="SampleData.value"  placeholder="Sample Data">
+                                <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                <span class="switch-handle"></span> 
+                              </label>
                         </div>
                       </div>
                       </div>
-        </div>
+        
+      </div>
                       <div class="modal-footer">
                       <div class="form-group">
                       <div class="row">
@@ -211,7 +221,8 @@
       </div>
     
       <div role="tabpanel" class="tab-pane" id="branding">
-          <div class="modal-scroll">
+          <div class="modal-body">
+          
       <div class="form-group">
                     <div class="row">
                       <div class="col-md-4">
@@ -258,11 +269,14 @@
                             <label for="theme">Theme</label>
                         </div>
                         <div class="col-md-8">
-                         <input type="color" #Theme name="Theme" [ngModel]="Theme.value" style="width: 60px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"/>
-                         <span style="width: 60px;display: block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme.value}}</span>
-                        
+                          <div class="tabs-wrap">
+                            <div class="float: left">
+                         <input type="color" value="#0B72CA"#Theme name="Theme" [ngModel]="Theme.value" style="width: 30px; padding: 0; border: 0; border-radius: 0; box-shadow: none;"
+                         style="width: 60px;display: inline-block; color:black;text-align:center; padding: 0;background-color:#e0e0e0 ;border: 1; border-radius: 1; box-shadow: none;">{{Theme.value}}>
+                         
                         </div>
-                       
+                        </div>
+                      </div>
                       </div>
                     <div class="row">
                       
@@ -274,11 +288,16 @@
                         <label for="ShowDemoButton">Show Demo Button</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="checkbox" #ShowDemoButton [value]="ShowDemoButton.value" name="ShowDemoButton" [ngModel]="ShowDemoButton.value"  placeholder="Store Demo Button">
-                    </div>
+                        <label class="switch">
+                            <input class="switch-input" type="checkbox" #ShowDemoButton [value]="ShowDemoButton.value" name="ShowDemoButton" [ngModel]="ShowDemoButton.value"  placeholder="Store Demo Button">
+                            <span class="switch-label" data-on="On" data-off="Off"></span> 
+                            <span class="switch-handle"></span> 
+                          </label>
+                        </div>
                   </div>
                   </div>
-          </div>
+          
+        </div>
                   <div class="modal-footer">
                   <div class="form-group">
                   <div class="row">
@@ -294,7 +313,8 @@
       </div>
     
       <div role="tabpanel" class="tab-pane" id="othersettings">
-          <div class="modal-scroll">
+          <div class="modal-body">
+         
       <div class="form-group">
                 <div class="row">
                     <div class="col-md-4">
@@ -310,30 +330,54 @@
                   </div>
                   </div>
                   <div class="form-group">
-                  <div class="row">
-                   <div class="col-md-4">
-                     <label for="languages">Languages</label>
-                   </div>
-                   <div class="col-md-8">
-                      <select #Languages multiple class="multiselect" name="Languages" [ngModel]="''">
-                        <option value="">Select Languages</option>
-                        <option value="0">English</option>
-                        <option value="1">German</option>
-                        <option value="2">French</option>
-                        <option value="3">Spanish</option>
-                        <option value="4">Portuguese</option>
-                        <option value="5">Chinese</option>
-                      </select>
-                   </div>
+                      <div class="row">
+                       <div class="col-md-4">
+                         <label for="languages">Languages</label>
+                       </div>
+                           <div class="col-md-8">
+                             <div class="form-inline">
+                              <div class="col-md-3" >
+                                  <div class="round">
+                                      <input type="checkbox" id="checkbox1" value="English">English
+                                      <label for="checkbox1"></label></div></div>
+                                      <div class="col-md-3" >
+                                      <div class="round">
+                                          <input type="checkbox" id="checkbox2" value="German">German
+                                          <label for="checkbox2"></label></div></div>
+                                          <div class="col-md-3" >
+                                          <div class="round">
+                                              <input type="checkbox" id="checkbox3" value="French">French
+                                              <label for="checkbox3"></label></div></div>
+                                        </div>
+                                  <input class="form-control" name="language" placeholder="Select Language" type="text" [(ngModel)]=query (keyup)=filter()>
+                                <div *ngIf="filteredList.length > 0">
+                                      <ul *ngFor="let item of filteredList" >
+                                        <li>
+                                          <a (click)="select(item)">{{item}}</a>
+                                             </li>
+                                        </ul>
+                                  </div>
+                                  <div *ngFor="let item of selected">
+                                      <div class="selected" >
+                                          <span>{{item}}</span>
+                                          <a (click)="removing(item)">x</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                    </div>
                   </div>
-                  </div>
+    
                   <div class="form-group">
                   <div class="row">
                     <div class="col-md-4">
                         <label for="AppPassCode">App Pass Code</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="checkbox" #AppPassCode name="AppPassCode" [value]="AppPassCode.value" [ngModel]="AppPassCode.value" placeholder="App Pass Code">
+                        <label class="switch">
+                            <input class="switch-input" type="checkbox" #AppPassCode name="AppPassCode" [value]="AppPassCode.value" [ngModel]="AppPassCode.value" placeholder="App Pass Code">
+                            <span class="switch-label" data-on="On" data-off="Off"></span> 
+                            <span class="switch-handle"></span> 
+                          </label>
                     </div>
                   </div>
                   </div>
@@ -343,11 +387,17 @@
                           <label for="TouchId">Touch ID</label>
                       </div>
                       <div class="col-md-8">
-                        <input type="checkbox" #TouchId name="TouchId" [value]="TouchId.value" [ngModel]="TouchId.value"  placeholder="Touch ID">
+                          <label class="switch">
+                              <input class="switch-input" type="checkbox" #TouchId name="TouchId" [value]="TouchId.value" [ngModel]="TouchId.value"  placeholder="Touch ID">
+                              <span class="switch-label" data-on="On" data-off="Off"></span> 
+                              <span class="switch-handle"></span> 
+                            </label>
+                        
                       </div>
                   </div>
                   </div>
                   <div class="form-group">
+                    <div class="content__table">
                   <div class="row">
                       <div class="col-md-4">
                         <label for="Website URL">Website URL</label>
@@ -389,6 +439,7 @@
                   </div>
                   </div>
           </div>
+        </div>
                   <div class="modal-footer">
                   <div class="form-group">
                   <div class="row">
@@ -401,12 +452,12 @@
                   </div>
                 </div>
                   </div>
-      </div>
+     
     </div>
-    
     </div>
+  </div>
           </form>
-      </div>
+      
       </div>
   </div>
   </div>
