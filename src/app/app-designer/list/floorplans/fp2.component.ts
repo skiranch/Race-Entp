@@ -20,7 +20,6 @@ console.log(floorplanData);
 declare var jQuery: any;
 
 @Component({
-<<<<<<< HEAD
     template: `
   <div class="frame">
     <span class="frame__prev glyphicon glyphicon-triangle-right" (click)="gotToNextScreen()">Next</span>
@@ -395,9 +394,7 @@ declare var jQuery: any;
    </div>
 
   `,
-=======
-    templateUrl: `./fp2.component.html`,
->>>>>>> a58307452778d46a2848d7072c3542a6b29c33b7
+   
     styleUrls: ['./scss/fp.component.scss', './scss/section.scss'],
     providers: [DataSourceService, ConnectionProviderService, APIListService, ListOfFieldsService, CPDPPostService, FloorplanUIPostService]
 })

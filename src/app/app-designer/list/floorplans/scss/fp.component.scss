@@ -38,6 +38,12 @@
         &--marginfix{
             margin-top: -10px;
         }
+        &--noSearch{
+            background: #ccc;
+            text-align: center;
+            color: #ccc;
+        }
+
     }
 
     &__search-input{
@@ -63,7 +69,8 @@
         width: 100%;
         height: 46px;
         white-space: nowrap;
-        overflow-x: auto;
+        overflow: hidden;
+        background-color: white;
         
     }
     &__nav-container{

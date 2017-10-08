@@ -1,13 +1,12 @@
 <div class="frame">
         <!--<span class="frame__prev glyphicon glyphicon-triangle-right" (click)="gotToNextScreen()">Next</span>-->
-        <span class="frame__next glyphicon glyphicon-triangle-left" (click)="gotToPreviousScreen()">Prev</span>
         <a href="javascript:void(0)" class="legend" (click)="showProperties()">Properties</a>
             <div class="floorplan">
                 <header class="floorplan__header">
                     <div class="floorplan__top">
                         <div class="pull-left">
-                            <span class="frame__next glyphicon glyphicon-triangle-right"></span>
-                        </div>
+                            <span class="glyphicon glyphicon-menu-left" (click)="goToBackScreen()"></span>
+                        </div> 
                         <div class="pull-right">
                             <span class="floorplan__icon-text">Filter</span>
                         </div>
@@ -21,24 +20,105 @@
                             </div>-->
                             <div class="floorplan__header-desc">
                                 <span class="floorplan__header-name">
-                                    Purchasing Doc: 45645645
+                                    Shell Canada Energy
                                 </span>
                                 <span class="floorplan__header-name">
-                                   Purchasing Org: R300
+                                   PO. No. 2017005004
                                 </span>
-                                <span class="floorplan__header-name">
-                                    Vendor: 
-                                </span>
-                                <!--<div class="floorplan__header-details">
+                                <div class="floorplan__header-details">
                                     <span class="floorplan__header-details-text">
                                         Document date: March 18, 2017
                                     </span>
                                     <span class="floorplan__header-details-text">
                                         Outstanding PO Value: 60,000 CAD
                                     </span>
-                                </div>-->
+                                </div>
                             </div>
                        </div>
                     </header>
+                    <nav class="floorplan__nav">
+                        <ul class="floorplan__nav-container">
+                            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Find order</a><span class="floorplan__nav-step">1</span></li>
+                            <li class="floorplan__nav-item floorplan__nav-item--active"><a class="floorplan__nav-link" href="javascript:void(0)">Enter Services</a><span class="floorplan__nav-step">2</span></li>
+                            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Attach Media</a><span class="floorplan__nav-step">3</span></li>
+                            <li class="floorplan__nav-item"><a class="floorplan__nav-link" href="javascript:void(0)">Confirm</a><span class="floorplan__nav-step">4</span></li>
+                        </ul>
+                    </nav>
+                    <div class="floorplan__body--overflow">
+                        <p class="floorplan__select-services">Select services to add entries</p>
+                        <ul class="floorplan__list-container">
+                                
+                            <li class="floorplan__list-item no-padding">
+                                    <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-9 app-designer__no-padding">     
+                                       <div class="pull left">
+                                    <h4 class="floorplan__body-heading">Foundation Laying Services</h4>
+                                    <p class="floorplan__body-text-1" >Delivery Date: Jul 19, 2017</p>
+                                    <p class="floorplan__body-text-2" >Allocated Value: 25,000 USD</p>
+                                    <p class="floorplan__body-text-2" >Outstanding Value: 6,000 USD</p>
+                                    <!--<div class="row">
+                                       <div class="col-md-12">
+                                            <div class="col-md-12 app-designer__no-padding">
+                                                <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
+                                                <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
+                                                <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-offset-9">
+                        <div class="container-fluid"><div class="pull right">
+                                <div class="floorplan__body-text-2" >1Entry<span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </li>
+                 
+                                
+                            <li class="floorplan__list-item no-padding">
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="col-md-9 app-designer__no-padding">     
+                                               <div class="pull left">
+                            <h4 class="floorplan__body-heading">Wall Building and Finishing Services</h4>
+                            <p class="floorplan__body-text-1" >Delivery Date: Jul 30, 2017</p>
+                            <p class="floorplan__body-text-2" >Allocated Value: 25,000 USD</p>
+                            <p class="floorplan__body-text-2" >Outstanding Value: 12,500 USD</p>
+                            <!--<div class="row">
+                               <div class="col-md-12">
+                                    <div class="col-md-12 app-designer__no-padding">
+                                        <h4 class="floorplan__body-heading" id="purchasingDocVal">{{purchasingDoc.value}} 4500004876</h4>
+                                        <h4 class="floorplan__body-heading" id="purchasingOrgVal">{{purchasingOrg.value}} R300</h4>
+                                        <p class="floorplan__body-text-1" id="purchasingVendorVal">{{vendor.value }} </p>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-md-offset-9">
+                            <div class="container-fluid"><div class="pull right">
+                                    <div class="floorplan__body-text-2" >
+                                        <span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </li>
+            
+            </ul>
+                    </div>
+                   <div class="fp6_footer">
+                       <button>continue</button>
+                   </div>
             </div>
         </div>
+        <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
+                <app-loading *ngIf="loading===true"></app-loading>
+

@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 
 @Component({
     templateUrl:`./fp6.component.html`,
-    styleUrls: ['./scss/fp.component.scss', './scss/section.scss'],
+    styleUrls: ['./scss/fp.component.scss', './scss/section.scss','./fp6.component.scss'],
    
 
 })
   
-export class fp6component{}
+export class FP6Component {}
