@@ -1,0 +1,140 @@
+<div class="frame">
+        <span class="frame__prev glyphicon glyphicon-triangle-right" (click)="gotToNextScreen()">Next</span>
+        <span class="frame__next glyphicon glyphicon-triangle-left" (click)="gotToPreviousScreen()">Prev</span>
+        <a href="javascript:void(0)" class="legend" (click)="showProperties()">Properties</a>
+            <div class="floorplan">
+                <header class="floorplan__header">
+                    <div class="floorplan__top">
+                        <div class="pull-left">
+                            <span class="glyphicon glyphicon-menu-left" (click)="goToBackScreen()"></span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="floorplan__icon-text">Filter</span>
+                        </div>
+                    </div>
+                    <div class="floorplan__name">
+                       Contract
+                    </div>
+                    <div class="floorplan__header-content">
+                        <!--<div class="floorplan__header-logo">
+    
+                        </div>-->
+                        <div class="floorplan__header-desc">
+                            <span class="floorplan__header-name">
+                                GNA Constructions
+                            </span>
+                            <span class="floorplan__header-name">
+                               Contract No. 99001
+                            </span>
+                            <div class="floorplan__header-details">
+                                <span class="floorplan__header-details-text2">
+                                    Agreement date: Jan 21, 2017
+                                </span><br>
+                                <span class="floorplan__header-details-text2">
+                                    Contract start: Jan 28, 2017
+                                </span><br>
+                                <span class="floorplan__header-details-text2">
+                                    Contract Expires: May 15, 2017
+                                </span><br>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="floorplan__search-bar floorplan__margintop-0">
+                    <input type="text" class="floorplan__search-input" placeholder="Search/scan" />
+                    <span class="icon-Scan2 floorplan__icon-Scan2"></span>
+                </div>
+                <div class="floorplan__body">
+                    <p class="floorplan__select-services">Enter from planned service items</p>
+                </div>
+                    <div class="floorplan__body-overflow">
+                        <ul class="floorplan__list-container">
+                            <span style="max-height: 300px; overflow-y: auto;overflow-x:hidden">
+                                <li class="floorplan__list-item no-padding">
+                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-left">
+                                                <input type="checkbox"  />
+                                                <span class="floorplan__item-name"><span style="padding:none;">Item 1</span></span>
+                                            </div>
+                                                <div class="col-11 col-md-offset-auto">
+                                                        <div class="floorplan__body-text-2" ><div style="float: right;"><span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></div>
+                                                                </div>
+                                                                </div>
+                                                <div class="col-md-11">
+                                                <div class="floorplan__item-name"><span style="font-size: medium;"> Portland Cement bag 94lb</span></div>
+                                                <div class="floorplan__item-text"><span style="font-size: small;">Contract no:99001</span></div>
+                                                <div class="floorplan__item-text"><span style="font-size: small;">Unit Price:22.09 CAD</span></div>
+                                                <div class="floorplan__list-form-container">
+                                                    <div class="form-group clearfix"><span style="font-size: medium;">
+                                                        <label class="floorplan__list-form-label col-md-5 app-designer__no-padding">Qauntity</label>
+                                                        <input placeholder="Enter" type="text" class="floorplan__list-form-elm col-md-5 app-designer__no-padding" />
+                                                        <span class="floorplan__list-form-label col-md-2 app-designer__no-padding text-right">HRS</span>
+                                                    </span></div>
+    
+                                                    <div class="form-group clearfix"><span style="font-size: medium;">
+                                                        <label class="floorplan__list-form-label col-md-5 app-designer__no-padding">Value</label>
+                                                        <span class="floorplan__list-form-label col-md-4 app-designer__no-padding pull-right text-right">0 CAD</span>
+                                                    </span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </li>
+                            <li class="floorplan__list-item no-padding">
+                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-left">
+                                                <input type="checkbox"  />
+                                                <span class="floorplan__item-name"><span style="padding:none;">Item 2</span></span>
+                                            </div>
+                                                <div class="col-11 col-md-offset-auto">
+                                                        <div class="floorplan__body-text-2" ><div style="float: right;"><span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></div>
+                                                                </div>
+                                                                </div>
+                                                <div class="col-md-11">
+                                                <div class="floorplan__item-name"><span style="font-size: medium;">20-mesh Coarse Silica Sand</span></div>
+                                                <div class="floorplan__item-text"><span style="font-size: small;">Contract no:99001</span></div>
+                                                <div class="floorplan__item-text"><span style="font-size: small;">Unit Price:15.09 CAD</span></div>
+                                                <div class="floorplan__list-form-container">
+                                                    <div class="form-group clearfix"><span style="font-size: medium;">
+                                                        <label class="floorplan__list-form-label col-md-5 app-designer__no-padding">Qauntity</label>
+                                                        <input placeholder="Enter" type="text" class="floorplan__list-form-elm col-md-5 app-designer__no-padding" />
+                                                        <span class="floorplan__list-form-label col-md-2 app-designer__no-padding text-right">HRS</span>
+                                                    </span></div>
+    
+                                                    <div class="form-group clearfix"><span style="font-size: medium;">
+                                                        <label class="floorplan__list-form-label col-md-5 app-designer__no-padding">Value</label>
+                                                        <span class="floorplan__list-form-label col-md-4 app-designer__no-padding pull-right text-right">0 CAD</span>
+                                                    </span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </li>
+                            </span>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="fp8_footer">
+                        
+                        <div class="col-md-4"><span style="float:left">
+                            <button>Select All</button></span>
+                        </div>
+                        <div class="col-md-4 .offset-md-2">
+                                <div class="floorplan__item-text2"><span style="font-size:x-small;text-align:center">
+                            <p>Service Entered</p></span></div>
+                        </div>
+                        <div class="col-md-4 .offset-md-4"><span style="float:right">
+                            <button>Apply All</button></span>
+                        </div>
+                    </div>
+            </div>
+    
+        <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
+            <app-loading *ngIf="loading===true"></app-loading>
+            <p>No properties mapped for this floorplan.</p>
+       </div>
+    

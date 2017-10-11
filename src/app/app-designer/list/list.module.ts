@@ -32,6 +32,8 @@ import { FP3Component } from './floorplans/fp3.component';
 import { FP4Component } from './floorplans/fp4.component';
 import { FP5Component } from './floorplans/fp5.component';
 import { FP6Component } from './floorplans/fp6.component';
+import { FP7Component } from './floorplans/fp7.component';
+import { FP8Component } from './floorplans/fp8.component';
 
 
 
@@ -72,6 +74,8 @@ import { FP6Component } from './floorplans/fp6.component';
     FP4Component,
     FP5Component,
     FP6Component,
+    FP7Component,
+    FP8Component,
     RepeatComponent,
     LoadingComponent
   ],

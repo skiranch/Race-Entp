@@ -120,6 +120,30 @@ import { AngularSplitModule } from 'angular-split';
                   <img class="full-width" src="./assets/img/floorplans/floorplan-5.png" />
                 </a>
               </li>
+              <li class="tabs__content-item">
+              <a class="tabs__content-link"  href="#/app-designer/list/ui/fp6" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+              <div class="tabs__content-guide">
+                  <span>Click to add this screen</span>
+              </div>
+                <img class="full-width" src="./assets/img/floorplans/floorplan-6.png" />
+              </a>
+            </li>
+            <li class="tabs__content-item">
+            <a class="tabs__content-link"  href="#/app-designer/list/ui/fp7" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+            <div class="tabs__content-guide">
+                <span>Click to add this screen</span>
+            </div>
+              <img class="full-width" src="./assets/img/floorplans/floorplan-7.png" />
+            </a>
+          </li>
+          <li class="tabs__content-item">
+          <a class="tabs__content-link"  href="#/app-designer/list/ui/fp8" [dropZones]="['zone1']"  [dragData]="flooplanData"  dnd-draggable [dragEnabled]="true">
+          <div class="tabs__content-guide">
+              <span>Click to add this screen</span>
+          </div>
+            <img class="full-width" src="./assets/img/floorplans/floorplan-8.png" />
+          </a>
+        </li>
             </ul>
 
           </div>

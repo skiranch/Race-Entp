@@ -48,11 +48,11 @@
                         <p class="floorplan__select-services">Select services to add entries</p>
                         <ul class="floorplan__list-container">
                                 
-                            <li class="floorplan__list-item no-padding">
-                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-9 app-designer__no-padding">     
-                                       <div class="pull left">
+                                <li class="floorplan__list-item no-padding">
+                                        <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-9 app-designer__no-padding">     
+                                     
                                     <h4 class="floorplan__body-heading">Foundation Laying Services</h4>
                                     <p class="floorplan__body-text-1" >Delivery Date: Jul 19, 2017</p>
                                     <p class="floorplan__body-text-2" >Allocated Value: 25,000 USD</p>
@@ -66,25 +66,22 @@
                                             </div>
                                         </div>
                                     </div>-->
-                                
-                            </div>
                         </div>
-                        <div class="col-md-offset-9">
-                        <div class="container-fluid"><div class="pull right">
-                                <div class="floorplan__body-text-2" >1Entry<span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></div>
-                                            </div>
+                        <div class="col-9 col-md-offset-auto">
+                                        <div class="floorplan__body-text-4" ><div style="float: right;"><span style="font-size:smaller">1 Entry</span><small><span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></small>
+                                            
                                         </div>
                                         </div>
                                     </div>
                                 </div>
+                                        </div>
                                 </li>
                  
                                 
-                            <li class="floorplan__list-item no-padding">
-                                    <div class="row">
-                                    <div class="col-md-12">
-                                            <div class="col-md-9 app-designer__no-padding">     
-                                               <div class="pull left">
+                                <li class="floorplan__list-item no-padding">
+                                        <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-9 app-designer__no-padding">     
                             <h4 class="floorplan__body-heading">Wall Building and Finishing Services</h4>
                             <p class="floorplan__body-text-1" >Delivery Date: Jul 30, 2017</p>
                             <p class="floorplan__body-text-2" >Allocated Value: 25,000 USD</p>
@@ -98,17 +95,15 @@
                                     </div>
                                 </div>
                             </div>-->
-                        </div>
                     </div>
-                    <div class="col-md-offset-9">
-                            <div class="container-fluid"><div class="pull right">
-                                    <div class="floorplan__body-text-2" >
-                                        <span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span>
-                                    </div>
+                    <div class="col-9 col-md-offset-auto">
+                            
+                                    <div class="floorplan__body-text-4" ><div style="float: right"><span style="font-size:smaller">      </span><small><span class="glyphicon glyphicon-menu-right" (click)="showEntries()"></span></small>
+                                
                                 </div>
                                 </div>
                             </div>
-                    </div>
+                        </div>
                 </div>
                 </li>
             
@@ -119,6 +114,6 @@
                    </div>
             </div>
         </div>
-        <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false">
+        <div class="tabs__properties loginFormProperties" [hidden]="showPropertyPanel == false"></div>
                 <app-loading *ngIf="loading===true"></app-loading>
 

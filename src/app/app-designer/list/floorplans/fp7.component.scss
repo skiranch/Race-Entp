@@ -1,0 +1,27 @@
+.btn-group-xs>.btn, .btn-xs{
+    padding:3px 14px;
+    border-color: #c4def5;}
+    .btn-default.active, .btn-default:active, .btn-default:hover{
+        background-color: #c4def5;
+        color:#435F73;
+   }
+   .btn-default{
+    color:#c4def5;
+    background-color: #435F73
+   }    
+
+.btn-group-xs{
+    padding-top: 5px;
+}
+.fp7_footer {
+    background:white;
+    width:100%;
+    height:40px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    padding-top: 2%;
+    text-align: center;
+    color: #337ab7;
+
+}
